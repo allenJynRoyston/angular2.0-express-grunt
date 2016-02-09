@@ -1,0 +1,24 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
+2 info using npm@2.14.12
+3 info using node@v4.2.6
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart app@0.0.0
+6 info start app@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 verbose stack Error: write EPIPE
+8 verbose stack     at Object.exports._errnoException (util.js:870:11)
+8 verbose stack     at exports._exceptionWithHostPort (util.js:893:20)
+8 verbose stack     at WriteWrap.afterWrite (net.js:763:14)
+9 verbose cwd /home/allen/Projects/angular-2.0-boilerplate/app
+10 error Linux 3.19.0-49-generic
+11 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+12 error node v4.2.6
+13 error npm  v2.14.12
+14 error code EPIPE
+15 error errno EPIPE
+16 error syscall write
+17 error write EPIPE
+18 error If you need help, you may report this error at:
+18 error     <https://github.com/npm/npm/issues>
+19 verbose exit [ 1, true ]
