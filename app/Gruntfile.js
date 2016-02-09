@@ -7,7 +7,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-nodemon');
+
 
   // Project configuration.
   grunt.initConfig({
@@ -102,11 +104,38 @@ module.exports = function(grunt) {
     },
     //-------------
 
+
+    //-------------
+    jade: {
+      app:{
+        options: {
+            client: false,
+            pretty: true,
+        },
+        files: [{
+          src: "appViews/*.jade",
+          dest: "public/",
+          expand: true,
+          ext: ".html"
+        }]
+      }
+    },
+    //-------------
+
+
     //-------------
     watch: {
+
+
       //------------------
 		  reloads: {
-		    files: ['views/*.*', 'public/app/*.js'],
+		    files: [
+          'views/*.*',
+          'public/app/**/*.js',
+          'public/appViews/*.html',
+          'appViews/*.jade',
+        ],
+        tasks: ['jade:app'],
 		    options: {
 					livereload: 35729,	// https://github.com/gruntjs/grunt-contrib-watch#optionslivereload
 		      spawn: false
@@ -143,6 +172,10 @@ module.exports = function(grunt) {
 
   // ***** GRUNT COMMANDS *******//
   //*****************************//
+
+    // -------------------
+    grunt.registerTask('_jade', ['jade:app'])
+    // -------------------
 
     // -------------------
     grunt.registerTask('css', ['concat:css', 'cssmin:css'])
