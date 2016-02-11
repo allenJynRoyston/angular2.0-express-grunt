@@ -113,8 +113,7 @@ module.exports = function(grunt) {
             pretty: true,
         },
         files: [{
-          src: "appViews/*.jade",
-          dest: "public/",
+          src: "public/views/**/*.jade",
           expand: true,
           ext: ".html"
         }]
@@ -133,7 +132,7 @@ module.exports = function(grunt) {
           'views/*.*',
           'public/app/**/*.js',
           'public/appViews/*.html',
-          'appViews/*.jade',
+          'public/views/**/*.jade',
         ],
         tasks: ['jade:app'],
 		    options: {
@@ -185,7 +184,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
       'concat:core',      'uglify:core',
       'concat:framework', 'uglify:framework',
-      'concat:css'
+      'concat:css', 'cssmin:css'
     ])
     // -------------------
 

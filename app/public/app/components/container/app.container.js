@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../directives/highlight/highlight.directive', './../directives/semantic-ui-accordian/accordian.directive', './../directives/semantic-ui-checkbox/checkbox.directive', './../directives/semantic-ui-dimmer/dimmer.directive'], function(exports_1) {
+System.register(['angular2/core', './../../directives/highlight/highlight.directive', './../../directives/semantic-ui-accordian/accordian.directive', './../../directives/semantic-ui-checkbox/checkbox.directive', './../../directives/semantic-ui-dimmer/dimmer.directive'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(['angular2/core', './../directives/highlight/highlight.directive
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1;
-    var AppComponent;
+    var appContainer;
     return {
         setters:[
             function (core_1_1) {
@@ -29,21 +29,21 @@ System.register(['angular2/core', './../directives/highlight/highlight.directive
                 dimmer_directive_1 = dimmer_directive_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
+            appContainer = (function () {
+                function appContainer() {
                 }
-                AppComponent = __decorate([
+                appContainer = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         directives: [highlight_directive_1.HighlightDirective, accordian_directive_1.uiSemanticAccordian, checkbox_directive_1.uiSemanticCheckbox, dimmer_directive_1.uiSemanticDimmer],
-                        templateUrl: '../appViews/home.html'
+                        templateUrl: './views/home/home.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], appContainer);
+                return appContainer;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("appContainer", appContainer);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=app.container.js.map

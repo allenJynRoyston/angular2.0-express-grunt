@@ -3,15 +3,19 @@ html
   head
     title= title    
     link(rel='stylesheet', href='/stylesheets/minified/style.min.css')
-    // core angular2 files
-    script(src='javascripts/minified/core.min.js')         
-    script(src='node_modules/angular2/bundles/angular2-polyfills.js')
-    
-    // framewor
+
+    // framework
     script(src='javascripts/unminified/framework.js') 
     
     // live reload for development    
-    script(src='//localhost:35729/livereload.js')    // for scripts
+    script(src='//localhost:35729/livereload.js')  
     
+
   body
     block content
+  
+  footer
+  
+    // core angular2 files needed to be loaded AFTER everything else
+    script(src='javascripts/minified/core.min.js')         
+    script(src='node_modules/angular2/bundles/angular2-polyfills.js')
