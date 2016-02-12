@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    script.
+      document.write('<base href="' + document.location + '" />');
+    
+    title= title       
+    link(rel='stylesheet', href='/stylesheets/minified/style.min.css')
+
+    // framework
+    script(src='javascripts/unminified/framework.js') 
+    
+    // live reload for development    
+    script(src='//localhost:35729/livereload.js')  
+    
+
+  body
+    block content
+  
+  footer
+  
+    // core angular2 files needed to be loaded AFTER everything else
+    script(src='javascripts/minified/core.min.js')         
+    script(src='node_modules/angular2/bundles/angular2-polyfills.js')
