@@ -2,13 +2,22 @@ doctype html
 html
   head
     script.
-      document.write('<base href="' + document.location + '" />');
+    base(href="/")
     
     title= title       
     link(rel='stylesheet', href='/stylesheets/minified/style.min.css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    
+    // angular 2 core files
+    script(src='javascripts/minified/core.js')
+    
+    // cannot be minified
+    script(src='node_modules/angular2/bundles/angular2-polyfills.js')
+    script(src='node_modules/angular2/bundles/router.dev.js')
+    script(src='javascripts/system.config.js')
 
     // framework
-    script(src='javascripts/unminified/framework.js') 
+    script(src='javascripts/minified/framework.js') 
     
     // live reload for development    
     script(src='//localhost:35729/livereload.js')  
@@ -18,7 +27,3 @@ html
     block content
   
   footer
-  
-    // core angular2 files needed to be loaded AFTER everything else
-    script(src='javascripts/minified/core.min.js')         
-    script(src='node_modules/angular2/bundles/angular2-polyfills.js')

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './../routeOne/routeOne', './../routeTwo/routeTwo', './../../directives/highlight/highlight.directive', './../../directives/semantic-ui-accordian/accordian.directive', './../../directives/semantic-ui-checkbox/checkbox.directive', './../../directives/semantic-ui-dimmer/dimmer.directive'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './../home/home', './../about/about', './../contact/contact', './../../directives/highlight/highlight.directive'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/router', './../routeOne/routeOne', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, routeOne_1, routeTwo_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1;
+    var core_1, router_1, home_1, about_1, contact_1, highlight_directive_1;
     var appContainer;
     return {
         setters:[
@@ -19,23 +19,17 @@ System.register(['angular2/core', 'angular2/router', './../routeOne/routeOne', '
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (routeOne_1_1) {
-                routeOne_1 = routeOne_1_1;
+            function (home_1_1) {
+                home_1 = home_1_1;
             },
-            function (routeTwo_1_1) {
-                routeTwo_1 = routeTwo_1_1;
+            function (about_1_1) {
+                about_1 = about_1_1;
+            },
+            function (contact_1_1) {
+                contact_1 = contact_1_1;
             },
             function (highlight_directive_1_1) {
                 highlight_directive_1 = highlight_directive_1_1;
-            },
-            function (accordian_directive_1_1) {
-                accordian_directive_1 = accordian_directive_1_1;
-            },
-            function (checkbox_directive_1_1) {
-                checkbox_directive_1 = checkbox_directive_1_1;
-            },
-            function (dimmer_directive_1_1) {
-                dimmer_directive_1 = dimmer_directive_1_1;
             }],
         execute: function() {
             appContainer = (function () {
@@ -44,21 +38,24 @@ System.register(['angular2/core', 'angular2/router', './../routeOne/routeOne', '
                 appContainer = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        directives: [router_1.ROUTER_DIRECTIVES, highlight_directive_1.HighlightDirective, accordian_directive_1.uiSemanticAccordian, checkbox_directive_1.uiSemanticCheckbox, dimmer_directive_1.uiSemanticDimmer],
-                        //templateUrl: './views/home/home.html'
-                        template: "\n    <h1 class=\"title\">Component Router</h1>\n    <nav>\n      <a [routerLink]=\"['About']\">About</a>\n    </nav>\n    <router-outlet></router-outlet>\n    "
+                        directives: [router_1.ROUTER_DIRECTIVES, highlight_directive_1.HighlightDirective],
+                        templateUrl: './views/index/index.html'
                     }),
                     router_1.RouteConfig([
                         {
-                            path: '/',
+                            path: '/home',
                             name: 'Home',
-                            component: routeOne_1.RouteOneComponent,
-                            useAsDefault: true
+                            component: home_1.homeComponent,
                         },
                         {
                             path: '/about',
                             name: 'About',
-                            component: routeTwo_1.RouteTwoComponent,
+                            component: about_1.aboutComponent,
+                        },
+                        {
+                            path: '/contact',
+                            name: 'Contact',
+                            component: contact_1.contactComponent,
                         },
                     ]), 
                     __metadata('design:paramtypes', [])
