@@ -30,7 +30,6 @@ System.register(['angular2/core'], function(exports_1) {
                             i.options.animation = "scale down";
                         }
                     }
-                    console.log(i.options.animation);
                     $(i.options.selector)
                         .sidebar('setting', 'transition', i.options.animation)
                         .sidebar('toggle');

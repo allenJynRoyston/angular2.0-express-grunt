@@ -21,7 +21,6 @@ export class uiSemanticSidebar {
             i.options.animation = "scale down"
         }
     }
-    console.log(i.options.animation)
     $(i.options.selector)
       .sidebar('setting', 'transition', i.options.animation)
       .sidebar('toggle')
