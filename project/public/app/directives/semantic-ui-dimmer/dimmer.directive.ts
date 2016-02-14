@@ -2,7 +2,7 @@ declare var $:any;
 
 import {Directive, ElementRef, Input} from 'angular2/core';
 @Directive({
-  selector: '[dimmer]',
+  selector: '[ui-dimmer]',
   host: {
     '(mouseenter)': 'onMouseEnter()',
     '(mouseclick)': 'onMouseLeave()',

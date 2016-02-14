@@ -23,7 +23,7 @@ System.register(['angular2/core'], function(exports_1) {
                     var i = this;
                     setTimeout(function () {
                         if (i.toggle) {
-                            $('.ui.checkbox').checkbox('toggle');
+                            $(el.nativeElement).checkbox('toggle');
                         }
                     }, 0);
                 }
@@ -39,7 +39,7 @@ System.register(['angular2/core'], function(exports_1) {
                 ], uiSemanticCheckbox.prototype, "toggle", void 0);
                 uiSemanticCheckbox = __decorate([
                     core_1.Directive({
-                        selector: '[checkbox]',
+                        selector: '[ui-checkbox]',
                         host: {
                             '(mouseenter)': 'onMouseEnter()',
                             '(mouseclick)': 'onMouseLeave()',

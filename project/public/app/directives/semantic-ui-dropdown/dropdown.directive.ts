@@ -2,34 +2,35 @@ declare var $:any;
 
 import {Directive, ElementRef, Input} from 'angular2/core';
 @Directive({
-  selector: '[ui-checkbox]',
+  selector: '[ui-dropdown]',
   host: {
     '(mouseenter)': 'onMouseEnter()',
     '(mouseclick)': 'onMouseLeave()',
     '(click)':      'onClick()'
   }
 })
-export class uiSemanticCheckbox {
-  @Input('toggle') toggle:Boolean;
-
-  onClick(){
-
-  }
-  onMouseEnter() {
-
-  }
-  onMouseLeave() {
-
-  }
+export class uiSemanticDropdown {
+  @Input('options') options:any;
 
   constructor(private el: ElementRef) {
     var i = this;
     setTimeout(function(){
-      if(i.toggle){
-        $(el.nativeElement).checkbox('toggle')
+      if(i.options == undefined){
+        i.options = {}
       }
+      $(el.nativeElement).dropdown(i.options)
     }, 0)
+  }
+
+  onMouseEnter(){
 
   }
 
+  onMouseLeave(){
+
+  }
+
+  onClick(){
+
+  }
 }

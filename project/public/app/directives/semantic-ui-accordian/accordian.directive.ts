@@ -2,7 +2,7 @@ declare var $:any;
 
 import {Directive, ElementRef, Input} from 'angular2/core';
 @Directive({
-  selector: '[accordian]',
+  selector: '[ui-accordian]',
 })
 export class uiSemanticAccordian {
   constructor(el: ElementRef) {

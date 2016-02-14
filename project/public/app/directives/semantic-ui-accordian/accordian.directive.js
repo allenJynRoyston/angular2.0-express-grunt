@@ -23,7 +23,7 @@ System.register(['angular2/core'], function(exports_1) {
                 }
                 uiSemanticAccordian = __decorate([
                     core_1.Directive({
-                        selector: '[accordian]',
+                        selector: '[ui-accordian]',
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], uiSemanticAccordian);

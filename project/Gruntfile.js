@@ -177,7 +177,8 @@ module.exports = function(grunt) {
     //-------------
 		shell: {
         options: {
-            stderr: false
+            stderr: false,
+            maxBuffer: Infinity
         },
         start: {
             command: 'npm start'

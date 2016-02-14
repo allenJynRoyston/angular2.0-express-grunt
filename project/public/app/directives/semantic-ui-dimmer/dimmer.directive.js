@@ -30,7 +30,7 @@ System.register(['angular2/core'], function(exports_1) {
                 };
                 uiSemanticDimmer = __decorate([
                     core_1.Directive({
-                        selector: '[dimmer]',
+                        selector: '[ui-dimmer]',
                         host: {
                             '(mouseenter)': 'onMouseEnter()',
                             '(mouseclick)': 'onMouseLeave()',

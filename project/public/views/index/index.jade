@@ -1,7 +1,39 @@
-.ui.three.item.menu
-  a.item([routerLink]="['Home']") Home
-  a.item([routerLink]="['About']") About
-  a.item([routerLink]="['Contact']") Contact
+#sidebar1.ui.right.vertical.menu.sidebar.inverted
+  a.item
+    | Item 1
+  a.item
+    | Item 2
+  a.item
+    | Item 3
+#sidebar2.ui.left.vertical.menu.sidebar.inverted
+  a.item
+    | Item 1
+  a.item
+    | Item 2
+  a.item
+    | Item 3    
+    
+#sidebar3.ui.bottom.menu.sidebar.inverted
+  a.item
+    | Item 1
+  a.item
+    | Item 2
+  a.item
+    | Item 3    
 
-br
-router-outlet
+#sidebar4.ui.top.menu.sidebar.inverted
+  a.item
+    | Item 1
+  a.item
+    | Item 2
+  a.item
+    | Item 3            
+    
+.pusher
+  .ui.container
+    .ui.three.item.menu
+      a.item([routerLink]="['Home']") Home
+      a.item([routerLink]="['About']") About
+      a.item([routerLink]="['Contact']") Contact
+    br
+    router-outlet
