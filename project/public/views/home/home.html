@@ -15,15 +15,15 @@
 <div class="ui sub header">Accordian</div>
 <div class="ui segment">
   <div ui-accordian="ui-accordian" class="ui styled fluid accordion">
-    <div class="active title"><i class="dropdown icon"></i>		What is a dog?</div>
+    <div class="active title"><i class="dropdown icon"></i>    What is a dog?</div>
     <div class="active content">
       <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
     </div>
-    <div class="title"><i class="dropdown icon"></i>		What kinds of dogs are there?</div>
+    <div class="title"><i class="dropdown icon"></i>    What kinds of dogs are there?</div>
     <div class="content">
       <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
     </div>
-    <div class="title"><i class="dropdown icon"></i>		How do you acquire a dog?</div>
+    <div class="title"><i class="dropdown icon"></i>    How do you acquire a dog?</div>
     <div class="content">
       <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
       <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
@@ -40,10 +40,54 @@
 </div><br/><br/>
 <hr/>
 <div class="ui sub header">Blur</div>
-<div ui-dimmer="ui-dimmer" class="ui blurring segment">
-  <div class="ui"></div>
-  <p>I can blur!</p>
-  <p>neat!</p>
+<div class="ui segment">
+  <div class="ui grid">
+    <div class="four wide column">
+      <div ui-dimmer="ui-dimmer" class="ui card blurring">
+        <div class="image"><img src="media/images/rachel.png"/></div>
+        <div class="content"><a class="header">Click </a>
+          <div class="meta"><span class="date">to blur</span></div>
+        </div>
+        <div class="extra content"><a><i class="user icon"></i>      22 Friends</a></div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <div ui-dimmer="ui-dimmer" [options]="{on: 'hover'}" class="ui card blurring">
+        <div class="image"><img src="media/images/rachel.png"/></div>
+        <div class="content"><a class="header">Hover</a>
+          <div class="meta"><span class="date">to blur</span></div>
+        </div>
+        <div class="extra content"><a><i class="user icon"></i>      22 Friends  </a></div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <div ui-dimmer="ui-dimmer" class="ui card blurring">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <h2 class="ui inverted icon header"><i class="heart icon"></i>          Dimmed Message!      </h2>
+            </div>
+          </div>
+        </div>
+        <div class="image"><img src="media/images/rachel.png"/></div>
+        <div class="content"><a class="header">With Content</a>
+          <div class="meta"><span class="date">to blur</span></div>
+        </div>
+        <div class="extra content"><a><i class="user icon"></i>      22 Friends     </a></div>
+      </div>
+    </div>
+    <div class="four wide column">
+      <div id="dimExample" class="ui card blurring"> 
+        <div class="image"><img src="media/images/rachel.png"/></div>
+        <div class="content"><a class="header">Click Button</a>
+          <div class="meta"><span class="date">to blur</span></div>
+        </div>
+        <div class="extra content">
+          <div ui-dimmer-button="ui-dimmer-button" [options]="{selector: '#dimExample'}" class="ui button">Dim Button            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div><br/><br/>
 <hr/>
 <div class="ui sub header">Selection</div>

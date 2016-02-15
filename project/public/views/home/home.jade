@@ -19,19 +19,19 @@ hr
   .ui.styled.fluid.accordion(ui-accordian)
     .active.title
       i.dropdown.icon
-      | 		What is a dog?
+      |     What is a dog?
     .active.content
       p
         | A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
     .title
       i.dropdown.icon
-      | 		What kinds of dogs are there?
+      |     What kinds of dogs are there?
     .content
       p
         | There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.
     .title
       i.dropdown.icon
-      | 		How do you acquire a dog?
+      |     How do you acquire a dog?
     .content
       p
         | Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
@@ -53,10 +53,61 @@ br
 br
 hr
 .ui.sub.header Blur
-.ui.blurring.segment(ui-dimmer)
-  .ui
-  p I can blur!
-  p neat!
+.ui.segment
+  .ui.grid
+    .four.wide.column
+      .ui.card.blurring(ui-dimmer)
+        .image
+          img(src='media/images/rachel.png')
+        .content
+          a.header Click 
+          .meta
+            span.date to blur
+        .extra.content
+          a
+            i.user.icon
+            |       22 Friends
+    .four.wide.column
+      .ui.card.blurring(ui-dimmer [options]="{on: 'hover'}")
+        .image
+          img(src='media/images/rachel.png')
+        .content
+          a.header Hover
+          .meta
+            span.date to blur
+        .extra.content
+          a
+            i.user.icon
+            |       22 Friends  
+    .four.wide.column
+      .ui.card.blurring(ui-dimmer)
+        .ui.dimmer
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.heart.icon
+                |           Dimmed Message!      
+        .image
+          img(src='media/images/rachel.png')
+        .content
+          a.header With Content
+          .meta
+            span.date to blur
+        .extra.content
+          a
+            i.user.icon
+            |       22 Friends     
+    .four.wide.column
+      #dimExample.ui.card.blurring  
+        .image
+          img(src='media/images/rachel.png')
+        .content
+          a.header Click Button
+          .meta
+            span.date to blur
+        .extra.content
+          .ui.button(ui-dimmer-button [options]="{selector: '#dimExample'}")
+            | Dim Button            
 
 
 br

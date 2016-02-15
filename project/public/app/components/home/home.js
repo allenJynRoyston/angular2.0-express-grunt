@@ -9,7 +9,7 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1, dropdown_directive_1, embed_directive_1, modal_directive_1, popup_directive_1, progress_directive_1, progress_directive_2, rating_directive_1, search_directive_1, shape_directive_1, sidebar_directive_1;
+    var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1, dimmer_directive_2, dropdown_directive_1, embed_directive_1, modal_directive_1, popup_directive_1, progress_directive_1, progress_directive_2, rating_directive_1, search_directive_1, shape_directive_1, sidebar_directive_1;
     var homeComponent;
     return {
         setters:[
@@ -27,6 +27,7 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
             },
             function (dimmer_directive_1_1) {
                 dimmer_directive_1 = dimmer_directive_1_1;
+                dimmer_directive_2 = dimmer_directive_1_1;
             },
             function (dropdown_directive_1_1) {
                 dropdown_directive_1 = dropdown_directive_1_1;
@@ -94,6 +95,7 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
                             accordian_directive_1.uiSemanticAccordian,
                             checkbox_directive_1.uiSemanticCheckbox,
                             dimmer_directive_1.uiSemanticDimmer,
+                            dimmer_directive_2.uiSemanticDimmerButton,
                             dropdown_directive_1.uiSemanticDropdown,
                             embed_directive_1.uiSemanticEmbed,
                             modal_directive_1.uiSemanticModal,

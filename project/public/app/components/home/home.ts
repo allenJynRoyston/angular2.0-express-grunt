@@ -5,6 +5,7 @@ import {HighlightDirective} from './../../directives/highlight/highlight.directi
 import {uiSemanticAccordian} from './../../directives/semantic-ui-accordian/accordian.directive';
 import {uiSemanticCheckbox} from './../../directives/semantic-ui-checkbox/checkbox.directive';
 import {uiSemanticDimmer} from './../../directives/semantic-ui-dimmer/dimmer.directive';
+import {uiSemanticDimmerButton} from './../../directives/semantic-ui-dimmer/dimmer.directive';
 import {uiSemanticDropdown} from './../../directives/semantic-ui-dropdown/dropdown.directive';
 import {uiSemanticEmbed} from './../../directives/semantic-ui-embed/embed.directive';
 import {uiSemanticModal} from './../../directives/semantic-ui-modal/modal.directive';
@@ -22,6 +23,7 @@ import {uiSemanticSidebar} from './../../directives/semantic-ui-sidebar/sidebar.
 		uiSemanticAccordian,
 		uiSemanticCheckbox,
 		uiSemanticDimmer,
+		uiSemanticDimmerButton,
 		uiSemanticDropdown,
 		uiSemanticEmbed,
 		uiSemanticModal,
