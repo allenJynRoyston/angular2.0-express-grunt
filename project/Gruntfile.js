@@ -36,12 +36,12 @@ module.exports = function(grunt) {
       core: {
         src: [
           // angularjs 2 required files - in public directory
-          'public/node_modules/es6-shim/es6-shim.min.js',
-          'public/node_modules/systemjs/dist/system-polyfills.js',
-          'public/node_modules/systemjs/dist/system.src.js',
-          'public/node_modules/rxjs/bundles/Rx.js',
-					'public/node_modules/angular2/bundles/angular2.dev.js',
-          'node_modules/angular2/bundles/angular2-polyfills.min.js'
+          'public/javascripts/angular2/es6-shim.min.js',
+          'public/javascripts/angular2/system-polyfills.js',
+          'public/javascripts/angular2/system.src.js',
+          'public/javascripts/angular2/bundles/Rx.js',
+					'public/javascripts/angular2/angular2.dev.js',
+          'public/javascripts/angular2/angular2-polyfills.min.js'
         ],
         dest: 'public/javascripts/unminified/core.js',
       },
