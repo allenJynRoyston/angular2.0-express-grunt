@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../directives/highlight/highlight.directive', './../../directives/semantic-ui-accordian/accordian.directive', './../../directives/semantic-ui-checkbox/checkbox.directive', './../../directives/semantic-ui-dimmer/dimmer.directive'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,32 +9,21 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1;
+    var core_1;
     var aboutComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (highlight_directive_1_1) {
-                highlight_directive_1 = highlight_directive_1_1;
-            },
-            function (accordian_directive_1_1) {
-                accordian_directive_1 = accordian_directive_1_1;
-            },
-            function (checkbox_directive_1_1) {
-                checkbox_directive_1 = checkbox_directive_1_1;
-            },
-            function (dimmer_directive_1_1) {
-                dimmer_directive_1 = dimmer_directive_1_1;
             }],
         execute: function() {
+            // directives
             aboutComponent = (function () {
                 function aboutComponent() {
                 }
                 aboutComponent = __decorate([
                     core_1.Component({
-                        directives: [highlight_directive_1.HighlightDirective, accordian_directive_1.uiSemanticAccordian, checkbox_directive_1.uiSemanticCheckbox, dimmer_directive_1.uiSemanticDimmer],
+                        directives: [],
                         templateUrl: './views/about/about.html'
                     }), 
                     __metadata('design:paramtypes', [])

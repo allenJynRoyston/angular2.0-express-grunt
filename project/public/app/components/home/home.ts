@@ -17,6 +17,7 @@ import {uiSemanticSearch} from './../../directives/semantic-ui-search/search.dir
 import {uiSemanticShape} from './../../directives/semantic-ui-shape/shape.directive';
 import {uiSemanticSidebar} from './../../directives/semantic-ui-sidebar/sidebar.directive';
 
+
 @Component({
 	directives: [
 		HighlightDirective,

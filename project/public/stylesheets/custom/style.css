@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+/*  SETS WIDTH OF PAGE CONTAINER */
+#hero-container{
+	max-width: 700px!important;
+}
+
+.hide-segment{
+  box-shadow: none!important;
+  border: none!important
+}

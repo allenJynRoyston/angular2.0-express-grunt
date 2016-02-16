@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './../home/home', './../about/about', './../contact/contact', './../../directives/highlight/highlight.directive'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './../home/home', './../about/about', './../contact/contact', './../../directives/semantic-ui-sticky/sticky.directive'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/router', './../home/home', './../abo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, home_1, about_1, contact_1, highlight_directive_1;
+    var core_1, router_1, home_1, about_1, contact_1, sticky_directive_1;
     var appContainer;
     return {
         setters:[
@@ -28,8 +28,8 @@ System.register(['angular2/core', 'angular2/router', './../home/home', './../abo
             function (contact_1_1) {
                 contact_1 = contact_1_1;
             },
-            function (highlight_directive_1_1) {
-                highlight_directive_1 = highlight_directive_1_1;
+            function (sticky_directive_1_1) {
+                sticky_directive_1 = sticky_directive_1_1;
             }],
         execute: function() {
             appContainer = (function () {
@@ -38,10 +38,15 @@ System.register(['angular2/core', 'angular2/router', './../home/home', './../abo
                 appContainer = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        directives: [router_1.ROUTER_DIRECTIVES, highlight_directive_1.HighlightDirective],
+                        directives: [router_1.ROUTER_DIRECTIVES, sticky_directive_1.uiSemanticSticky],
                         templateUrl: './views/index/index.html'
                     }),
                     router_1.RouteConfig([
+                        {
+                            path: '/',
+                            name: 'Home',
+                            component: home_1.homeComponent,
+                        },
                         {
                             path: '/home',
                             name: 'Home',

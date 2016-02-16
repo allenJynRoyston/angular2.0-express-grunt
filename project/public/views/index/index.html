@@ -4,8 +4,28 @@
 <div id="sidebar3" class="ui bottom menu sidebar inverted"><a class="item">Item 1</a><a class="item">Item 2</a><a class="item">Item 3    </a></div>
 <div id="sidebar4" class="ui top menu sidebar inverted"><a class="item">Item 1</a><a class="item">Item 2</a><a class="item">Item 3            </a></div>
 <div class="pusher">
-  <div class="ui container">
-    <div class="ui three item menu"><a [routerLink]="['Home']" class="item">Home</a><a [routerLink]="['About']" class="item">About</a><a [routerLink]="['Contact']" class="item">Contact</a></div><br/>
-    <router-outlet></router-outlet>
+  <div id="hero-container" class="ui container">
+    <div class="ui segment hide-border hide-segment">
+      <div class="left ui rail"><br/><br/><br/>
+        <div ui-sticky="ui-sticky" class="ui sticky"><br/><br/>
+          <div class="ui segment">
+            <h3 class="ui header">Sticky Left</h3>
+            <div class="ui"><img style="width: 50px; height: auto" src="media/images/steve.jpg"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="right ui rail">
+        <div ui-sticky="ui-sticky" class="ui sticky"><br/><br/>
+          <div class="ui segment">
+            <h3 class="ui header">Stuck Right</h3>
+            <div class="ui"><img style="width: 50px; height: auto" src="media/images/rachel.png"/></div>
+            <div class="ui"><img style="width: 50px; height: auto" src="media/images/rachel.png"/></div>
+            <div class="ui"><img style="width: 50px; height: auto" src="media/images/rachel.png"/></div>
+          </div>
+        </div>
+      </div>
+      <div class="ui three item menu"><a [routerLink]="['Home']" class="item">Home</a><a [routerLink]="['About']" class="item">About</a><a [routerLink]="['Contact']" class="item">Contact</a></div><br/>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

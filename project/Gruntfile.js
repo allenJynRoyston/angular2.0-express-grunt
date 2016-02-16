@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         logConcurrentOutput: true
       },
   		watch: [
-        'shell:start', 'watch:reloads', 'nodemon:dev'
+        'shell:start', 'watch:css', 'watch:reloads', 'nodemon:dev'
        ]
   	},
     //-------------
@@ -44,16 +44,6 @@ module.exports = function(grunt) {
           'node_modules/angular2/bundles/angular2-polyfills.min.js'
         ],
         dest: 'public/javascripts/unminified/core.js',
-      },
-      //---------
-
-      //---------
-      modules:{
-        src:[
-          //'public/node_modules/angular2/bundles/router.min.js',
-          //'public/javascripts/system.config.js',
-        ],
-        dest: 'public/javascripts/unminified/modules.js'
       },
       //---------
 
@@ -98,13 +88,6 @@ module.exports = function(grunt) {
         dest: 'public/javascripts/minified/framework.js'
       },
 
-      modules: {
-        src: [
-            'public/javascripts/unminified/modules.js',
-        ],
-        dest: 'public/javascripts/minified/modules.js'
-      },
-
       framework: {
         src: [
             'public/javascripts/unminified/framework.js',
@@ -118,7 +101,7 @@ module.exports = function(grunt) {
     cssmin: {
       css: {
         src: 'public/stylesheets/unminified/style.css',
-        dest: 'public/stylesheets/minified/style.css'
+        dest: 'public/stylesheets/minified/style.min.css'
       }
     },
     //-------------
@@ -144,6 +127,14 @@ module.exports = function(grunt) {
     //-------------
     watch: {
 
+			//------------------
+		  css: {
+		    files: [
+          'public/stylesheets/**/*.css',
+        ],
+        tasks: ['concat:css', 'cssmin:css']
+		  },
+		  //------------------
 
       //------------------
 		  reloads: {
@@ -202,7 +193,6 @@ module.exports = function(grunt) {
 
     // -------------------
     grunt.registerTask('build', [
-      'concat:modules',   'uglify:modules',
       'concat:core',      'uglify:core',
       'concat:framework', 'uglify:framework',
       'concat:css', 'cssmin:css'

@@ -30,10 +30,35 @@
     | Item 3            
     
 .pusher
-  .ui.container
-    .ui.three.item.menu
-      a.item([routerLink]="['Home']") Home
-      a.item([routerLink]="['About']") About
-      a.item([routerLink]="['Contact']") Contact
-    br
-    router-outlet
+    #hero-container.ui.container
+      .ui.segment.hide-border.hide-segment
+        .left.ui.rail
+          br
+          br
+          br
+          .ui.sticky(ui-sticky)
+            br
+            br
+            .ui.segment
+              h3.ui.header Sticky Left
+              .ui
+                img(style='width: 50px; height: auto' src='media/images/steve.jpg')
+        .right.ui.rail
+          .ui.sticky(ui-sticky)
+            br
+            br
+            .ui.segment
+              h3.ui.header Stuck Right
+              .ui
+                img(style='width: 50px; height: auto' src='media/images/rachel.png')
+              .ui
+                img(style='width: 50px; height: auto' src='media/images/rachel.png')  
+              .ui
+                img(style='width: 50px; height: auto' src='media/images/rachel.png')                                
+    
+        .ui.three.item.menu
+          a.item([routerLink]="['Home']") Home
+          a.item([routerLink]="['About']") About
+          a.item([routerLink]="['Contact']") Contact
+        br
+        router-outlet

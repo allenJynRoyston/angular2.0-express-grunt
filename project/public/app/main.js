@@ -16,7 +16,7 @@ System.register(['./components/container/app.container', 'angular2/platform/brow
             // bootstrap app
             setTimeout(function () {
                 browser_1.bootstrap(app_container_1.appContainer, [router_1.ROUTER_PROVIDERS]);
-            }, 500);
+            }, 0);
         }
     }
 });

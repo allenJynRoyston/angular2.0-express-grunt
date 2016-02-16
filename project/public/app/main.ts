@@ -10,4 +10,4 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 // bootstrap app
 setTimeout(function(){
   bootstrap(appContainer, [ROUTER_PROVIDERS]);
-}, 500)
+}, 0)

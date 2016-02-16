@@ -8,17 +8,20 @@ import {aboutComponent} from './../about/about';
 import {contactComponent} from './../contact/contact'
 
 // directives
-import {HighlightDirective} from './../../directives/highlight/highlight.directive';
-
-
+import {uiSemanticSticky} from './../../directives/semantic-ui-sticky/sticky.directive';
 
 @Component({
     selector: 'my-app',
-    directives: [ROUTER_DIRECTIVES, HighlightDirective],
+    directives: [ROUTER_DIRECTIVES, uiSemanticSticky],
     templateUrl: './views/index/index.html'
 })
 @RouteConfig([
 
+	{
+    path:'/',
+    name: 'Home',
+    component: homeComponent,
+  },
 
   {
     path:'/home',
