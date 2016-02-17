@@ -34,10 +34,11 @@ hr
     .three.wide.column
         img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
 
-.ui.sub.header Looping
-.ui.segment  
+.ui.sub.header 
+  p Looping
   .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer2 .image', loop: false}") Stop Loop
   .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer2 .image', animation: 'bounce', loop: true}") Start Loop
+.ui.segment    
   #imageContainer2.ui.grid.centered
     .three.wide.column     
         img.ui.image.centered.tiny(src='media/images/steve.jpg')

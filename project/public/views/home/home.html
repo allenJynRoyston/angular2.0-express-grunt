@@ -29,10 +29,12 @@
     <div class="three wide column"><img ui-transition-onload="ui-transition-onload" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
   </div>
 </div>
-<div class="ui sub header">Looping</div>
-<div class="ui segment"> 
+<div class="ui sub header"> 
+  <p>Looping</p>
   <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer2 .image', loop: false}" class="ui button tiny">Stop Loop</div>
   <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer2 .image', animation: 'bounce', loop: true}" class="ui button tiny">Start Loop</div>
+</div>
+<div class="ui segment">   
   <div id="imageContainer2" class="ui grid centered">
     <div class="three wide column">    <img src="media/images/steve.jpg" class="ui image centered tiny"/></div>
   </div>
