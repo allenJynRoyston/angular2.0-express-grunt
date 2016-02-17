@@ -10,39 +10,39 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var uiSemanticSticky;
+    var uiSemanticTab;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            uiSemanticSticky = (function () {
-                function uiSemanticSticky(el) {
+            uiSemanticTab = (function () {
+                function uiSemanticTab(el) {
                     this.el = el;
                     var i = this;
                     setTimeout(function () {
                         if (i.options == undefined) {
                             i.options = {};
                         }
-                        $(el.nativeElement).sticky(i.options);
-                    }, 100);
+                        $(el.nativeElement).find('.menu .item').tab(i.options);
+                    });
                 }
                 __decorate([
                     core_1.Input('options'), 
                     __metadata('design:type', Object)
-                ], uiSemanticSticky.prototype, "options", void 0);
-                uiSemanticSticky = __decorate([
+                ], uiSemanticTab.prototype, "options", void 0);
+                uiSemanticTab = __decorate([
                     core_1.Directive({
-                        selector: '[ui-sticky]',
+                        selector: '[ui-tab]',
                         host: {}
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
-                ], uiSemanticSticky);
-                return uiSemanticSticky;
+                ], uiSemanticTab);
+                return uiSemanticTab;
             }());
-            exports_1("uiSemanticSticky", uiSemanticSticky);
+            exports_1("uiSemanticTab", uiSemanticTab);
         }
     }
 });
-//# sourceMappingURL=sticky.directive.js.map
+//# sourceMappingURL=tab.directive.js.map

@@ -14,6 +14,71 @@ hr
 br
 br
 hr
+.ui.sub.header 
+  p Animation   
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer1 .image', animation : 'scale', reverse : 'auto', interval: 200}") Fade 
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer1 .image', animation : 'jiggle', duration: '.5s', reverse : 'auto', interval: 200}") Jiggle 
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer1 .image', animation : 'pulse', duration: '.5s', reverse : 'auto', interval: 200}") Pulse
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer1 .image', animation : 'horizontal flip', duration: '.5s', reverse : 'auto', interval: 200}") Horizontal Flip
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer1 .image', animation : 'vertical flip', duration: '.5s', reverse : 'auto', interval: 200}") Vertical Flip
+.ui.segment  
+  #imageContainer1.ui.grid.centered
+    .three.wide.column     
+        img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'horizontal flip in', duration: '1s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'vertical flip in', duration: '1s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'pulse', duration: '1s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'bounce', duration: '1s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-onload [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+
+.ui.sub.header Looping
+.ui.segment  
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer2 .image', loop: false}") Stop Loop
+  .ui.button.tiny(ui-transition-button [options]="{selector: '#imageContainer2 .image', animation: 'bounce', loop: true}") Start Loop
+  #imageContainer2.ui.grid.centered
+    .three.wide.column     
+        img.ui.image.centered.tiny(src='media/images/steve.jpg')
+        
+.ui.sub.header On Hover
+.ui.segment  
+  #imageContainer3.ui.grid.centered
+    .three.wide.column     
+        img.ui.image.centered.tiny(ui-transition-hover [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-hover [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-hover [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-hover [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+    .three.wide.column
+        img.ui.image.centered.tiny(ui-transition-hover [options]="{animation: 'jiggle', duration: '.5s'}" src='media/images/rachel.png')
+
+
+
+br
+br
+hr
+.ui.sub.header Tabs
+.ui.segment   
+  div(ui-tab)
+    .ui.top.attached.tabular.menu
+      a.item.active(data-tab='first') First
+      a.item(data-tab='second') Second
+      a.item(data-tab='third') Third
+    .ui.bottom.attached.tab.segment.active(data-tab='first')
+      | First
+    .ui.bottom.attached.tab.segment(data-tab='second')
+      | Second
+    .ui.bottom.attached.tab.segment(data-tab='third')
+      | Third
+
+    
+br
+br
+hr
 .ui.sub.header Accordian
 .ui.segment
   .ui.styled.fluid.accordion(ui-accordian)

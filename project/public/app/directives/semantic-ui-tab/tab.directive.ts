@@ -2,12 +2,12 @@ declare var $:any;
 
 import {Directive, ElementRef, Input} from 'angular2/core';
 @Directive({
-  selector: '[ui-sticky]',
+  selector: '[ui-tab]',
   host: {
 
   }
 })
-export class uiSemanticSticky {
+export class uiSemanticTab {
   @Input('options') options:any
 
   constructor(private el: ElementRef){
@@ -16,8 +16,8 @@ export class uiSemanticSticky {
       if(i.options == undefined){
         i.options = {}
       }
-      $(el.nativeElement).sticky(i.options)
-    },100)
+      $(el.nativeElement).find('.menu .item').tab(i.options)
+    })
   }
 
 }

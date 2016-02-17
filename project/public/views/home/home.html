@@ -12,6 +12,52 @@
   <h4><span [myHighlight]="'yellow'">Highlight Text</span></h4>
 </div><br/><br/>
 <hr/>
+<div class="ui sub header"> 
+  <p>Animation   </p>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer1 .image', animation : 'scale', reverse : 'auto', interval: 200}" class="ui button tiny">Fade </div>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer1 .image', animation : 'jiggle', duration: '.5s', reverse : 'auto', interval: 200}" class="ui button tiny">Jiggle </div>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer1 .image', animation : 'pulse', duration: '.5s', reverse : 'auto', interval: 200}" class="ui button tiny">Pulse</div>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer1 .image', animation : 'horizontal flip', duration: '.5s', reverse : 'auto', interval: 200}" class="ui button tiny">Horizontal Flip</div>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer1 .image', animation : 'vertical flip', duration: '.5s', reverse : 'auto', interval: 200}" class="ui button tiny">Vertical Flip</div>
+</div>
+<div class="ui segment"> 
+  <div id="imageContainer1" class="ui grid centered">
+    <div class="three wide column">    <img ui-transition-onload="ui-transition-onload" [options]="{animation: 'horizontal flip in', duration: '1s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-onload="ui-transition-onload" [options]="{animation: 'vertical flip in', duration: '1s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-onload="ui-transition-onload" [options]="{animation: 'pulse', duration: '1s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-onload="ui-transition-onload" [options]="{animation: 'bounce', duration: '1s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-onload="ui-transition-onload" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+  </div>
+</div>
+<div class="ui sub header">Looping</div>
+<div class="ui segment"> 
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer2 .image', loop: false}" class="ui button tiny">Stop Loop</div>
+  <div ui-transition-button="ui-transition-button" [options]="{selector: '#imageContainer2 .image', animation: 'bounce', loop: true}" class="ui button tiny">Start Loop</div>
+  <div id="imageContainer2" class="ui grid centered">
+    <div class="three wide column">    <img src="media/images/steve.jpg" class="ui image centered tiny"/></div>
+  </div>
+</div>
+<div class="ui sub header">On Hover</div>
+<div class="ui segment"> 
+  <div id="imageContainer3" class="ui grid centered">
+    <div class="three wide column">    <img ui-transition-hover="ui-transition-hover" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-hover="ui-transition-hover" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-hover="ui-transition-hover" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-hover="ui-transition-hover" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+    <div class="three wide column"><img ui-transition-hover="ui-transition-hover" [options]="{animation: 'jiggle', duration: '.5s'}" src="media/images/rachel.png" class="ui image centered tiny"/></div>
+  </div>
+</div><br/><br/>
+<hr/>
+<div class="ui sub header">Tabs</div>
+<div class="ui segment">  
+  <div ui-tab="ui-tab">
+    <div class="ui top attached tabular menu"><a data-tab="first" class="item active">First</a><a data-tab="second" class="item">Second</a><a data-tab="third" class="item">Third</a></div>
+    <div data-tab="first" class="ui bottom attached tab segment active">First</div>
+    <div data-tab="second" class="ui bottom attached tab segment">Second</div>
+    <div data-tab="third" class="ui bottom attached tab segment">Third</div>
+  </div>
+</div><br/><br/>
+<hr/>
 <div class="ui sub header">Accordian</div>
 <div class="ui segment">
   <div ui-accordian="ui-accordian" class="ui styled fluid accordion">

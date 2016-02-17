@@ -16,6 +16,10 @@ import {uiSemanticRating} from './../../directives/semantic-ui-rating/rating.dir
 import {uiSemanticSearch} from './../../directives/semantic-ui-search/search.directive';
 import {uiSemanticShape} from './../../directives/semantic-ui-shape/shape.directive';
 import {uiSemanticSidebar} from './../../directives/semantic-ui-sidebar/sidebar.directive';
+import {uiSemanticTab} from './../../directives/semantic-ui-tab/tab.directive';
+import {uiSemanticTransitionOnload} from './../../directives/semantic-ui-transition/transition.directive';
+import {uiSemanticTransitionButton} from './../../directives/semantic-ui-transition/transition.directive';
+import {uiSemanticTransitionHover} from './../../directives/semantic-ui-transition/transition.directive';
 
 
 @Component({
@@ -34,7 +38,11 @@ import {uiSemanticSidebar} from './../../directives/semantic-ui-sidebar/sidebar.
 		uiSemanticRating,
 		uiSemanticSearch,
 		uiSemanticShape,
-		uiSemanticSidebar
+		uiSemanticSidebar,
+		uiSemanticTab,
+		uiSemanticTransitionOnload,
+		uiSemanticTransitionButton,
+		uiSemanticTransitionHover
 	],
 	templateUrl: './views/home/home.html'
 })
