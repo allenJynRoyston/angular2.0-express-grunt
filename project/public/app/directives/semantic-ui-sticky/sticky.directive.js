@@ -26,7 +26,7 @@ System.register(['angular2/core'], function(exports_1) {
                             i.options = {};
                         }
                         $(el.nativeElement).sticky(i.options);
-                    }, 100);
+                    }, 500);
                 }
                 __decorate([
                     core_1.Input('options'), 

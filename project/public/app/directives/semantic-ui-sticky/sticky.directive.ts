@@ -17,7 +17,7 @@ export class uiSemanticSticky {
         i.options = {}
       }
       $(el.nativeElement).sticky(i.options)
-    },100)
+    },500)
   }
 
 }
