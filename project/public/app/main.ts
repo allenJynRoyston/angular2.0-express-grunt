@@ -4,6 +4,8 @@
 // components
 import {appContainer} from './components/container/app.container'
 import {appHeader}    from './components/header/header'
+import {appSidebar}    from './components/sidebar/sidebar'
+import {testComponent} from './components/test/test';
 
 // modules
 import {bootstrap}    from 'angular2/platform/browser'
@@ -13,6 +15,8 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 
 // bootstrap app
 setTimeout(function(){
+  bootstrap(testComponent, [ROUTER_PROVIDERS])
   bootstrap(appHeader, [ROUTER_PROVIDERS]);
   bootstrap(appContainer, [ROUTER_PROVIDERS]);
+  bootstrap(appSidebar, [ROUTER_PROVIDERS]);
 }, 0)

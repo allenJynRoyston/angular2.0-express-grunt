@@ -15,7 +15,7 @@ export class uiSemanticSticky {
     setTimeout(function(){
       if(i.options == undefined){
         i.options = {}
-      }
+      }			
       $(el.nativeElement).sticky(i.options)
     },500)
   }

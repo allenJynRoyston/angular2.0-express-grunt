@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './../../directives/semantic-ui-sticky/sticky.directive'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,35 +9,32 @@ System.register(['angular2/core', 'angular2/router', './../../directives/semanti
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, sticky_directive_1;
-    var appHeader;
+    var core_1;
+    var testComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
-            function (sticky_directive_1_1) {
-                sticky_directive_1 = sticky_directive_1_1;
             }],
         execute: function() {
-            appHeader = (function () {
-                function appHeader() {
+            testComponent = (function () {
+                function testComponent() {
+                    this.name = 'Max';
                 }
-                appHeader = __decorate([
+                testComponent.prototype.sayMyName = function () {
+                    console.log('My name is', this.name);
+                };
+                testComponent = __decorate([
                     core_1.Component({
-                        selector: 'app-header',
-                        directives: [router_1.ROUTER_DIRECTIVES, sticky_directive_1.uiSemanticSticky],
-                        templateUrl: './views/header/header.html'
+                        selector: 'test-component',
+                        template: "\n  <br><br>\n    <div>Hello my name is {{name}}. \n    <button (click)=\"sayMyName()\">Say my name</button></div>\n  <br><br>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], appHeader);
-                return appHeader;
+                ], testComponent);
+                return testComponent;
             }());
-            exports_1("appHeader", appHeader);
+            exports_1("testComponent", testComponent);
         }
     }
 });
-//# sourceMappingURL=header.js.map
+//# sourceMappingURL=test.js.map

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './../../directives/highlight/highlight.directive', './../../directives/semantic-ui-accordian/accordian.directive', './../../directives/semantic-ui-checkbox/checkbox.directive', './../../directives/semantic-ui-dimmer/dimmer.directive', './../../directives/semantic-ui-dropdown/dropdown.directive', './../../directives/semantic-ui-embed/embed.directive', './../../directives/semantic-ui-modal/modal.directive', './../../directives/semantic-ui-popup/popup.directive', './../../directives/semantic-ui-progress/progress.directive', './../../directives/semantic-ui-rating/rating.directive', './../../directives/semantic-ui-search/search.directive', './../../directives/semantic-ui-shape/shape.directive', './../../directives/semantic-ui-sidebar/sidebar.directive', './../../directives/semantic-ui-tab/tab.directive', './../../directives/semantic-ui-transition/transition.directive'], function(exports_1) {
+System.register(['angular2/core', './../../directives/highlight/highlight.directive', './../../directives/semantic-ui-accordian/accordian.directive', './../../directives/semantic-ui-checkbox/checkbox.directive', './../../directives/semantic-ui-dimmer/dimmer.directive', './../../directives/semantic-ui-dropdown/dropdown.directive', './../../directives/semantic-ui-embed/embed.directive', './../../directives/semantic-ui-modal/modal.directive', './../../directives/semantic-ui-popup/popup.directive', './../../directives/semantic-ui-progress/progress.directive', './../../directives/semantic-ui-rating/rating.directive', './../../directives/semantic-ui-search/search.directive', './../../directives/semantic-ui-shape/shape.directive', './../../directives/semantic-ui-sidebar/sidebar.directive', './../../directives/semantic-ui-tab/tab.directive', './../../directives/semantic-ui-transition/transition.directive', './../../components/test/test'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1, dimmer_directive_2, dropdown_directive_1, embed_directive_1, modal_directive_1, popup_directive_1, progress_directive_1, progress_directive_2, rating_directive_1, search_directive_1, shape_directive_1, sidebar_directive_1, tab_directive_1, transition_directive_1, transition_directive_2, transition_directive_3;
+    var core_1, highlight_directive_1, accordian_directive_1, checkbox_directive_1, dimmer_directive_1, dimmer_directive_2, dropdown_directive_1, embed_directive_1, modal_directive_1, popup_directive_1, progress_directive_1, progress_directive_2, rating_directive_1, search_directive_1, shape_directive_1, sidebar_directive_1, tab_directive_1, transition_directive_1, transition_directive_2, transition_directive_3, test_1;
     var homeComponent;
     return {
         setters:[
@@ -64,6 +64,9 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
                 transition_directive_1 = transition_directive_1_1;
                 transition_directive_2 = transition_directive_1_1;
                 transition_directive_3 = transition_directive_1_1;
+            },
+            function (test_1_1) {
+                test_1 = test_1_1;
             }],
         execute: function() {
             homeComponent = (function () {
@@ -117,7 +120,8 @@ System.register(['angular2/core', './../../directives/highlight/highlight.direct
                             tab_directive_1.uiSemanticTab,
                             transition_directive_1.uiSemanticTransitionOnload,
                             transition_directive_2.uiSemanticTransitionButton,
-                            transition_directive_3.uiSemanticTransitionHover
+                            transition_directive_3.uiSemanticTransitionHover,
+                            test_1.testComponent
                         ],
                         templateUrl: './views/home/home.html'
                     }), 

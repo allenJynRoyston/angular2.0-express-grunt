@@ -21,6 +21,8 @@ import {uiSemanticTransitionOnload} from './../../directives/semantic-ui-transit
 import {uiSemanticTransitionButton} from './../../directives/semantic-ui-transition/transition.directive';
 import {uiSemanticTransitionHover} from './../../directives/semantic-ui-transition/transition.directive';
 
+import {testComponent} from './../../components/test/test';
+
 
 @Component({
 	directives: [
@@ -42,7 +44,9 @@ import {uiSemanticTransitionHover} from './../../directives/semantic-ui-transiti
 		uiSemanticTab,
 		uiSemanticTransitionOnload,
 		uiSemanticTransitionButton,
-		uiSemanticTransitionHover
+		uiSemanticTransitionHover,
+
+		testComponent
 	],
 	templateUrl: './views/home/home.html'
 })
