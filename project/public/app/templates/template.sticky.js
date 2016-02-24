@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../test/test'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,32 +9,29 @@ System.register(['angular2/core', '../test/test'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, test_1;
-    var aboutComponent;
+    var core_1;
+    var templateSticky;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (test_1_1) {
-                test_1 = test_1_1;
             }],
         execute: function() {
-            // directives
-            aboutComponent = (function () {
-                function aboutComponent() {
+            templateSticky = (function () {
+                function templateSticky() {
                 }
-                aboutComponent = __decorate([
+                templateSticky = __decorate([
                     core_1.Component({
-                        directives: [test_1.testComponent],
-                        templateUrl: './views/about/about.html'
+                        selector: 'my-app',
+                        directives: [],
+                        templateUrl: './views/templates/sticky.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], aboutComponent);
-                return aboutComponent;
+                ], templateSticky);
+                return templateSticky;
             }());
-            exports_1("aboutComponent", aboutComponent);
+            exports_1("templateSticky", templateSticky);
         }
     }
 });
-//# sourceMappingURL=about.js.map
+//# sourceMappingURL=template.sticky.js.map

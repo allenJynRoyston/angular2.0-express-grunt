@@ -1,8 +1,11 @@
+// components
 import {Component}     from 'angular2/core';
-// directives
+import {testComponent} from '../test/test';
 
+
+// directives
 @Component({
-	directives: [],
+	directives: [testComponent],
 	templateUrl: './views/about/about.html'
 })
 

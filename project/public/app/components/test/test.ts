@@ -4,7 +4,7 @@ import {Component} from 'angular2/core';
   selector: 'test-component',
   template: `
   <br><br>
-    <div>Hello my name is {{name}}. 
+    <div>Hello my name is {{name}}.
     <button (click)="sayMyName()">Say my name</button></div>
   <br><br>
   `

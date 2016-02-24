@@ -27,7 +27,7 @@ System.register(['angular2/core'], function(exports_1) {
                 testComponent = __decorate([
                     core_1.Component({
                         selector: 'test-component',
-                        template: "\n  <br><br>\n    <div>Hello my name is {{name}}. \n    <button (click)=\"sayMyName()\">Say my name</button></div>\n  <br><br>\n  "
+                        template: "\n  <br><br>\n    <div>Hello my name is {{name}}.\n    <button (click)=\"sayMyName()\">Say my name</button></div>\n  <br><br>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], testComponent);
