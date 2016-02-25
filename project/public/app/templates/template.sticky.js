@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../components/page_home/page.home', '../components/page_about/page.about', '../components/page_directives/page.directives', '../directives/semantic-ui-dropdown/dropdown.directive', '../directives/semantic-ui-visibility/visibility.directive', '../parts/boilerplate.parts'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,12 +9,33 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, router_1, page_home_1, page_about_1, page_directives_1, dropdown_directive_1, visibility_directive_1, boilerplate_parts_1;
     var templateSticky;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (page_home_1_1) {
+                page_home_1 = page_home_1_1;
+            },
+            function (page_about_1_1) {
+                page_about_1 = page_about_1_1;
+            },
+            function (page_directives_1_1) {
+                page_directives_1 = page_directives_1_1;
+            },
+            function (dropdown_directive_1_1) {
+                dropdown_directive_1 = dropdown_directive_1_1;
+            },
+            function (visibility_directive_1_1) {
+                visibility_directive_1 = visibility_directive_1_1;
+            },
+            function (boilerplate_parts_1_1) {
+                boilerplate_parts_1 = boilerplate_parts_1_1;
             }],
         execute: function() {
             templateSticky = (function () {
@@ -23,9 +44,40 @@ System.register(['angular2/core'], function(exports_1) {
                 templateSticky = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        directives: [],
+                        directives: [
+                            // core
+                            router_1.ROUTER_DIRECTIVES,
+                            //Directives
+                            dropdown_directive_1.uiSemanticDropdown,
+                            visibility_directive_1.uiSemanticVisibility,
+                            // boilerplate
+                            boilerplate_parts_1.partsHeader,
+                            boilerplate_parts_1.partsFooter,
+                        ],
                         templateUrl: './views/templates/sticky.html'
-                    }), 
+                    }),
+                    router_1.RouteConfig([
+                        {
+                            path: '/',
+                            name: 'Home',
+                            component: page_directives_1.pageDirectives,
+                        },
+                        {
+                            path: '/home',
+                            name: 'Home',
+                            component: page_home_1.pageHome,
+                        },
+                        {
+                            path: '/directives',
+                            name: 'Directives',
+                            component: page_directives_1.pageDirectives,
+                        },
+                        {
+                            path: '/about',
+                            name: 'About',
+                            component: page_about_1.pageAbout,
+                        },
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], templateSticky);
                 return templateSticky;

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './../../directives/semantic-ui-sticky/sticky.directive'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,35 +9,28 @@ System.register(['angular2/core', 'angular2/router', './../../directives/semanti
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, sticky_directive_1;
-    var appHeader;
+    var core_1;
+    var pageAbout;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
-            function (sticky_directive_1_1) {
-                sticky_directive_1 = sticky_directive_1_1;
             }],
         execute: function() {
-            appHeader = (function () {
-                function appHeader() {
+            pageAbout = (function () {
+                function pageAbout() {
                 }
-                appHeader = __decorate([
+                pageAbout = __decorate([
                     core_1.Component({
-                        selector: 'app-header',
-                        directives: [router_1.ROUTER_DIRECTIVES, sticky_directive_1.uiSemanticSticky],
-                        templateUrl: './views/header/header.html'
+                        directives: [],
+                        template: "\n\t<div style='height: 800px'>\n\t\t<h1> About </h1>\n\t</div>\n\t"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], appHeader);
-                return appHeader;
+                ], pageAbout);
+                return pageAbout;
             }());
-            exports_1("appHeader", appHeader);
+            exports_1("pageAbout", pageAbout);
         }
     }
 });
-//# sourceMappingURL=header.js.map
+//# sourceMappingURL=page.about.js.map
