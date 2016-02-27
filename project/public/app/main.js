@@ -1,12 +1,12 @@
 // production/dev mode
 //import {enableProdMode} from 'angular2/core';
-System.register(['./templates/template.sticky', 'angular2/platform/browser', 'angular2/router'], function(exports_1) {
+System.register(['./templates/template.homepage', 'angular2/platform/browser', 'angular2/router'], function(exports_1) {
     "use strict";
-    var template_sticky_1, browser_1, router_1;
+    var template_homepage_1, browser_1, router_1;
     return {
         setters:[
-            function (template_sticky_1_1) {
-                template_sticky_1 = template_sticky_1_1;
+            function (template_homepage_1_1) {
+                template_homepage_1 = template_homepage_1_1;
             },
             function (browser_1_1) {
                 browser_1 = browser_1_1;
@@ -15,14 +15,12 @@ System.register(['./templates/template.sticky', 'angular2/platform/browser', 'an
                 router_1 = router_1_1;
             }],
         execute: function() {
+            // production/devMode
             //enableProdMode();
             // bootstrap app
             setTimeout(function () {
-                browser_1.bootstrap(template_sticky_1.templateSticky, [router_1.ROUTER_PROVIDERS]);
-                //bootstrap(testComponent, [ROUTER_PROVIDERS])
-                //bootstrap(appHeader, [ROUTER_PROVIDERS]);
-                //bootstrap(appContainer, [ROUTER_PROVIDERS]);
-                //bootstrap(appSidebar, [ROUTER_PROVIDERS]);
+                //bootstrap(templateSticky, 		[ROUTER_PROVIDERS])
+                browser_1.bootstrap(template_homepage_1.templateHomepage, [router_1.ROUTER_PROVIDERS]);
             }, 0);
         }
     }
