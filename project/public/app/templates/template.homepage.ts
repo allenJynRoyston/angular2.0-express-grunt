@@ -10,6 +10,7 @@ import {pageDirectives} from '../components/page_directives/page.directives';
 // Directives
 import {uiSemanticDropdown} from '../directives/semantic-ui-dropdown/dropdown.directive';
 import {uiSemanticVisibility} from '../directives/semantic-ui-visibility/visibility.directive';
+import {uiSemanticSidebar} from '../directives/semantic-ui-sidebar/sidebar.directive';
 
 // parts
 import {partsHeader, partsFooter} from '../parts/boilerplate.parts';
@@ -24,6 +25,7 @@ import {partsHeader, partsFooter} from '../parts/boilerplate.parts';
     //Directives
     uiSemanticDropdown,
     uiSemanticVisibility,
+    uiSemanticSidebar,
 
 		// boilerplate
 		partsHeader,
@@ -63,9 +65,17 @@ import {partsHeader, partsFooter} from '../parts/boilerplate.parts';
 
 ])
 export class templateHomepage {
+  onPassed:any;
 
 	constructor(){
-
+    this.onPassed = {
+      40: function() {
+       console.log("passed 40")
+      },
+      80: function() {
+       console.log("passed 80")
+      }
+    }
   }
 
 }

@@ -13,15 +13,15 @@
 <!-- Page Contents-->
 <div class="pusher">
   <div ui-visibility="ui-visibility" [options]="{once: false, onBottomPassed: {selector: '.fixed.menu', action: 'transition', params: 'fade in'}, onBottomPassedReverse: {selector: '.fixed.menu', action: 'transition', params: 'fade out'} }" class="ui inverted vertical masthead center aligned segment">
-    <div class="ui container">
-      <div class="ui large secondary inverted pointing menu"><a class="toc item"><i class="sidebar icon"></i></a><a class="active item">Home</a><a class="item">Work</a><a class="item">Company</a><a class="item">Careers</a>
+    <div ui-visiblity="ui-visiblity" class="ui container">
+      <div class="ui large secondary inverted pointing menu"><a class="active item">Home</a><a class="item">Work</a><a class="item">Company</a><a class="item">Careers</a>
         <div class="right item"><a class="ui inverted button">Log in</a><a class="ui inverted button">Sign Up</a></div>
       </div>
     </div>
     <div class="ui text container">
       <h1 class="ui inverted header">Imagine-a-Company</h1>
       <h2>Do whatever you want when you want to.</h2>
-      <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+      <div ui-sidebar="ui-sidebar" [options]="{selector: '.sidebar', animation: 'slide out'}" class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
     </div>
   </div>
   <div class="ui vertical stripe segment">
@@ -33,7 +33,7 @@
           <h3 class="ui header">We Make Bananas That Can Dance</h3>
           <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
         </div>
-        <div class="six wide right floated column"><img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image"/></div>
+        <div class="six wide right floated column"><img src="media/images/steve.jpg" class="ui large bordered rounded image"/></div>
       </div>
       <div class="row">
         <div class="center aligned column"><a class="ui huge button">Check Them Out</a></div>
@@ -49,7 +49,7 @@
         </div>
         <div class="column">
           <h3>"I shouldn't have gone with their competitor."</h3>
-          <p><img src="assets/images/avatar/nan.jpg" class="ui avatar image"/><b>Nan</b> Chief Fun Officer Acme Toys</p>
+          <p><img src="media/images/rachel.png" class="ui avatar image"/><b>Nan</b> Chief Fun Officer Acme Toys</p>
         </div>
       </div>
     </div>
