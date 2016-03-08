@@ -1,0 +1,49 @@
+
+<div class="ui vertical stripe">
+  <div class="ui middle aligned stackable grid container">
+    <div class="row">
+      <div class="eight wide column"> <img src="media/images/mehighfive.jpg" class="ui medium bordered centered circular image is-pointer"/></div>
+      <div class="six wide column">
+        <h3 class="ui header">10+ Years Of Experience</h3>
+        <p>
+          I've been developing websites since 2005, but I've been programming since the mid 90's.  Remember QBasic?  Actionscript?  DarkBasic?
+          No?  Hey, neither do I because those languages suck at making websites.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui container">   
+  <div class="ui middle aligned stackable grid container equal">
+    <div class="row">
+      <div style="padding: 0" class="eight wide column"> 
+        <h1>Stuff I Know!</h1>
+      </div>
+      <div style="padding: 0; text-align: right" class="eight wide column"> 
+        <p style="font-size: 12px" ui-transition-button="ui-transition-button" [options]="{selector: '.dancer', animation: 'tada', interval: 10}" class="orange is-pointer">Jazz hands!</p>
+      </div>
+    </div>
+  </div><br/><br/>
+  <div class="ui link cards centered eight doubling segment">
+    <div *ngFor="#s of skills" class="card blurring dancer">
+      <div ui-dimmer="ui-dimmer" [options]="{on: 'hover'}" class="ui dimmer">
+        <div class="content">
+          <h5>{{s.title}}      </h5>
+        </div>
+      </div>
+      <div style="padding: 10px" class="image"><img src="{{s.src}}"/></div>
+    </div>
+  </div><br/><br/>
+  <div class="ui vertical stripe">
+    <div class="ui middle aligned stackable grid container">
+      <div class="center aligned column">
+        <h1>Download Resume     </h1>
+        <div class="ui buttons">
+          <button class="ui button">&nbsp;PDF&nbsp;</button>
+          <div class="or"></div>
+          <button class="ui facebook button">DOCX  </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

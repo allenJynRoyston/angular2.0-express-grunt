@@ -1,0 +1,133 @@
+.ui.inverted.vertical.center.aligned.segment.mobile.hidden
+  .ui.container(style='padding: 50px')
+    .ui.text.container      
+      #shape1.ui.shape
+        .sides
+          joke-container.side.active
+            .content.joke-container
+              .center
+                h1.ui.inverted.header
+                  | Why did the web developer cross the road?
+                img.ui.large.bordered.rounded.image.centered(src='media/images/proself.jpg' )   
+                h2
+                  | To get to the other site.
+                br        
+          .joke-container.side(*ngFor="#j of jokes; #index = index")
+            .content.joke-container
+              .center
+                h1.ui.inverted.header
+                  | {{j.setup}}
+                img.ui.large.bordered.rounded.image.centered(src='media/images/proself.jpg' )   
+                h2
+                  | {{j.punchline}}
+                br
+
+      .ui.huge.facebook.button(ui-shape [options]="{selector: '#shape1', animation: 'flip left'}")
+        | Come at me bro
+        i.right.arrow.icon
+
+.ui.inverted.vertical.center.aligned.segment.mobile.only
+  .ui.container
+    br
+    br
+    h1 - Yo! -
+    img.ui.large.bordered.rounded.image.centered(src='media/images/proself.jpg' )   
+
+.ui.vertical.stripe
+  .ui.middle.aligned.stackable.grid.container
+    .row
+      .eight.wide.column
+        h3.ui.header My name is Allen
+        p
+          | And I love to build things! It doesn't matter if it's a website, an app, or a giant killer robot designed to feast on the souls of the living (his name is Snuggles, btw).
+        h3.ui.header More Than Just a Developer
+        p
+          | This isn't just a job for me; this is my passion.  
+          | I'm constantly exploring new technologies and incorporating the very best of what I find.  
+      .six.wide.right.floated.column( (click)="page.imageModal.image = 'media/images/self.jpg'; page.imageModal.description = 'True story:  I did not actually say that.'" ui-modal [options]="{selector: '#modal1', blurring: true, transition: 'scale'}")        
+        img.ui.large.bordered.rounded.image.is-pointer(src='media/images/self.jpg') 
+      
+.ui.container
+  .ui.link.cards.centered.four.doubling
+    .card.blurring(*ngFor="#c of content" ui-dimmer [options]="{on: 'hover'}")
+      .ui.dimmer
+        .content
+          h1 {{c.text}}
+      .content
+        .header 
+          center
+            h3 {{c.title}}
+      .image(style='padding: 10px')
+        img(src='{{c.image}}' )        
+
+.ui.vertical.strip  
+  #modal1.ui.modal.basic
+    i.close.icon
+    .image.content
+      .ui.image.large.centered
+        img(src='{{page.imageModal.image}}')
+        center
+          small {{page.imageModal.description}}
+
+  
+.ui.vertical.stripe
+  .ui.middle.aligned.stackable.grid.container
+    .center.aligned.column
+        h3 Check out my stuff!        
+        .ui.buttons
+          button.ui.button( (click)="linkTo( ['Portfolio'] )" ) Portfolio
+          .or
+          button.ui.facebook.button.large(  (click)="linkTo( ['About'] )" ) Résumé  
+
+      
+.ui.vertical.stripe.quote.segment.inverted.mobile.hidden
+  .ui.equal.width.stackable.internally.celled.grid.doubling
+    .center.aligned.row
+      .column(*ngFor='#c of commentsAboutMe ')
+        div(style='min-height: 200px')
+          h3
+            | "{{c.quote}}"             
+        p
+          br
+          br
+          img.ui.avatar.image(src='{{c.image}}')      
+          br
+          br
+          | {{c.from}}
+          br
+          small {{c.company}}
+br          
+.ui.vertical.stripe.quote.segment.inverted
+  .ui.equal.width.stackable.internally.celled.grid.doubling
+    .center.aligned.row          
+      .column
+        h3
+          | "HIRE THIS BEAUTIFUL LUNATIC RIGHT NOW!"    
+        br
+        br
+        img.ui.avatar.image(src='media/images/rachel.png')      
+        br
+        br
+        p
+          | You, Smartest Hiring Manager Ever
+        small
+          | The Place Where You Work At
+        
+.ui.vertical.stripe.segment
+  .ui.text.container
+    h3.ui.header But No Seriously
+    p
+      | I'm good at this and I'm always making stuff and I'm always active building something.  Check me out at Github or Bitbucket.  
+    a.ui.facebook.button(href="https://github.com/allenRoyston" target="_blank")
+      i.github.icon 
+      | Github       
+    a.ui.facebook.button(href='https://bitbucket.org/allenACR/' target='_blank')
+      i.bitbucket.icon 
+      | Bitbucket
+    h4.ui.horizontal.header.divider
+      a Unnecessary divider
+    h3.ui.header Are you still reading this?
+    p
+      | Most people just kinda fizzle out at the end.  They see a few pictures, maybe recognizing a few awful jokes and move on.  But not you, oh no
+      | - you're determined.  Unfotunately for you I'm out of stuff.  I mean, I guess I could tell you about how I, like, totally dunked on Shaq that one time, 
+      | but odds are nobody even gets that reference anymore.  Man, weren't his movies terrible?      
