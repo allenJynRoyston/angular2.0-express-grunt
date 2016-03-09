@@ -1,0 +1,124 @@
+
+<div class="ui inverted vertical center aligned segment mobile hidden">
+  <div style="padding: 50px" class="ui container">
+    <div class="ui text container">     
+      <div id="shape1" class="ui shape">
+        <div class="sides">
+          <joke-container class="side active">
+            <div class="content joke-container">
+              <div class="center">
+                <h1 class="ui inverted header">Why did the web developer cross the road?</h1><img src="media/images/proself.jpg" class="ui large bordered rounded image centered"/>
+                <h2>To get to the other site.</h2><br/>
+              </div>
+            </div>
+          </joke-container>
+          <div *ngFor="#j of jokes; #index = index" class="joke-container side">
+            <div class="content joke-container">
+              <div class="center">
+                <h1 class="ui inverted header">{{j.setup}}</h1><img src="media/images/proself.jpg" class="ui large bordered rounded image centered"/>
+                <h2>{{j.punchline}}</h2><br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ui-shape="ui-shape" [options]="{selector: '#shape1', animation: 'flip left'}" class="ui huge facebook button">Come at me bro<i class="right arrow icon"></i></div>
+    </div>
+  </div>
+</div>
+<div class="ui inverted vertical center aligned segment mobile only">
+  <div class="ui container"><br/><br/>
+    <h1>- Yo! -</h1><img src="media/images/proself.jpg" class="ui large bordered rounded image centered"/>
+  </div>
+</div>
+<div class="ui vertical stripe">
+  <div class="ui middle aligned stackable grid container">
+    <div class="row">
+      <div class="eight wide column">
+        <h3 class="ui header">My name is Allen</h3>
+        <p>And I love to build things! It doesn't matter if it's a website, an app, or a giant killer robot designed to feast on the souls of the living (his name is Snuggles, btw).</p>
+        <h3 class="ui header">More Than Just a Developer</h3>
+        <p>
+          This isn't just a job for me; this is my passion.  
+          I'm constantly exploring new technologies and incorporating the very best of what I find.  
+        </p>
+      </div>
+      <div (click)="page.imageModal.image = 'media/images/self.jpg'; page.imageModal.description = 'True story:  I did not actually say that.'" ui-modal="ui-modal" [options]="{selector: '#modal1', blurring: true, transition: 'scale'}" class="six wide right floated column">       <img src="media/images/self.jpg" class="ui large bordered rounded image is-pointer"/></div>
+    </div>
+  </div>
+</div>
+<div class="ui container">
+  <div class="ui link cards centered four doubling">
+    <div *ngFor="#c of content" ui-dimmer="ui-dimmer" [options]="{on: 'hover'}" class="card blurring">
+      <div class="ui dimmer">
+        <div class="content">
+          <h1>{{c.text}}</h1>
+        </div>
+      </div>
+      <div class="content">
+        <div class="header"> 
+          <center>
+            <h3>{{c.title}}</h3>
+          </center>
+        </div>
+      </div>
+      <div style="padding: 10px" class="image"><img src="{{c.image}}"/></div>
+    </div>
+  </div>
+</div>
+<div class="ui vertical strip"> 
+  <div id="modal1" class="ui modal basic"><i class="close icon"></i>
+    <div class="image content">
+      <div class="ui image large centered"><img src="{{page.imageModal.image}}"/>
+        <center><small>{{page.imageModal.description}}</small></center>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui vertical stripe">
+  <div class="ui middle aligned stackable grid container">
+    <div class="center aligned column">
+      <h3>Check out my stuff!        </h3>
+      <div class="ui buttons">
+        <button (click)="linkTo( ['Portfolio'] )" class="ui button">Portfolio</button>
+        <div class="or"></div>
+        <button (click)="linkTo( ['Resume'] )" class="ui facebook button large">Résumé  </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui vertical stripe quote segment inverted mobile hidden">
+  <div class="ui equal width stackable internally celled grid doubling">
+    <div class="center aligned row">
+      <div *ngFor="#c of commentsAboutMe " class="column">
+        <div style="min-height: 200px">
+          <h3>"{{c.quote}}"             </h3>
+        </div>
+        <p><br/><br/><img src="{{c.image}}" class="ui avatar image"/><br/><br/>{{c.from}}<br/><small>{{c.company}}</small></p>
+      </div>
+    </div>
+  </div>
+</div><br/>
+<div class="ui vertical stripe quote segment inverted">
+  <div class="ui equal width stackable internally celled grid doubling">
+    <div class="center aligned row">         
+      <div class="column">
+        <h3>"HIRE THIS BEAUTIFUL LUNATIC RIGHT NOW!"    </h3><br/><br/><img src="media/images/rachel.png" class="ui avatar image"/><br/><br/>
+        <p>You, Smartest Hiring Manager Ever</p><small>The Place Where You Work At</small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui vertical stripe segment">
+  <div class="ui text container">
+    <h3 class="ui header">But No Seriously</h3>
+    <p>I'm good at this and I'm always making stuff and I'm always active building something.  Check me out at Github or Bitbucket.  </p><a href="https://github.com/allenRoyston" target="_blank" class="ui facebook button"><i class="github icon"> </i>Github       </a><a href="https://bitbucket.org/allenACR/" target="_blank" class="ui facebook button"><i class="bitbucket icon"> </i>Bitbucket</a>
+    <h4 class="ui horizontal header divider"><a>Unnecessary divider</a></h4>
+    <h3 class="ui header">Are you still reading this?</h3>
+    <p>
+      Most people just kinda fizzle out at the end.  They see a few pictures, maybe recognizing a few awful jokes and move on.  But not you, oh no
+      - you're determined.  Unfotunately for you I'm out of stuff.  I mean, I guess I could tell you about how I, like, totally dunked on Shaq that one time, 
+      but odds are nobody even gets that reference anymore.  Man, weren't his movies terrible?      
+    </p>
+  </div>
+</div>

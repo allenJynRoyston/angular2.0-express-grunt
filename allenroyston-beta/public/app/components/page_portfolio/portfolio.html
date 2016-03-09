@@ -1,0 +1,69 @@
+
+<div style="height: 32px; width: 100%" class="mobile only"></div>
+<div ui-tab="ui-tab" class="ui">
+  <div class="ui top attached menu inverted"><a data-tab="first" style="width: 25%" class="active item">Active</a><a data-tab="second" style="width: 25%" class="item">Mockups</a><a data-tab="third" style="width: 25%" class="item">Projects</a><a data-tab="forth" style="width: 25%" class="item">Github</a></div>
+  <div data-tab="first" class="ui bottom attached active tab segment">
+    <div class="ui items divided link">
+      <div *ngFor="#s of liveSites" style="padding: 20px" class="item ui">       
+        <div class="image ui small">         <img src="{{s.src}}"/></div>
+        <div style="padding: 20px" class="content"><a target="_blank" href="{{s.url}}" class="header">{{s.title}}</a>
+          <div class="meta"><span>{{s.description}}</span></div>
+          <div class="description">
+            <p></p>
+          </div>
+          <div class="extra"><br/>
+            <div class="ui label"> <i class="fa fa-external-link">&nbsp;&nbsp;Check it out!</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-tab="second" class="ui bottom attached tab segment">
+    <div class="ui items divided link">
+      <div *ngFor="#s of siteMockups" style="padding: 20px" class="item ui">       
+        <div class="image ui small">         <img src="{{s.src}}"/></div>
+        <div style="padding: 20px" class="content middle aligned"><a target="_blank" href="{{s.url}}" class="header">{{s.title}}</a>
+          <div class="meta"><span>{{s.description}}</span></div>
+          <div class="description">
+            <p></p>
+          </div>
+          <div class="extra">
+            <div class="ui label"> <i class="fa fa-external-link"></i><a target="_blank" href="{{s.url}}">&nbsp;&nbsp;Check it out!   </a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-tab="third" class="ui bottom attached tab segment">
+    <div class="ui items divided link">
+      <div *ngFor="#s of myProjects" style="padding: 20px" class="item ui">       
+        <div class="image ui small">         <img src="{{s.src}}"/></div>
+        <div style="padding: 20px" class="content middle aligned"><a target="_blank" href="{{s.url}}" class="header">{{s.title}}</a>
+          <div class="meta"><span>{{s.description}}</span></div>
+          <div class="description">
+            <p></p>
+          </div>
+          <div class="extra">
+            <div class="ui label"> <i class="fa fa-external-link"></i><a target="_blank" href="{{s.url}}">&nbsp;&nbsp;Check it out!   </a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-tab="forth" class="ui bottom attached tab segment">
+    <div class="ui items divided link">
+      <div *ngFor="#s of myRepos" style="padding: 20px" class="item ui">       
+        <div class="image ui small">         <img src="{{s.src}}"/></div>
+        <div style="padding: 20px" class="content middle aligned"><a target="_blank" href="{{s.url}}" class="header">{{s.title}}</a>
+          <div class="meta"><span>{{s.description}}</span></div>
+          <div class="description">
+            <p></p>
+          </div>
+          <div class="extra">
+            <div class="ui label"> <i class="fa fa-external-link"></i><a target="_blank" href="{{s.url}}">&nbsp;&nbsp;Check it out!   </a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
