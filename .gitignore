@@ -11,11 +11,8 @@ Thumbs.db
 # PACKAGES #
 ######################
 node_modules/
-public/bower_components/
 app/node_modules
 app/public/node_modules
 
 # FILES #
 ######################
-app/conf/devconfig.js
-nohup.out

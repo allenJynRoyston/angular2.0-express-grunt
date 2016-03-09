@@ -1,6 +1,6 @@
 // production/dev mode
 //import {enableProdMode} from 'angular2/core';
-System.register(['./components/page_layout/page.layout', 'angular2/platform/browser', 'angular2/router'], function(exports_1) {
+System.register(['./components/_layout/page.layout', 'angular2/platform/browser', 'angular2/router'], function(exports_1) {
     "use strict";
     var page_layout_1, browser_1, router_1;
     return {

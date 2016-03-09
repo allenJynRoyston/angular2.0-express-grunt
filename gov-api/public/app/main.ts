@@ -2,7 +2,7 @@
 //import {enableProdMode} from 'angular2/core';
 
 // components
-import {templateHomepage}    from './components/page_layout/page.layout';
+import {templateHomepage}    from './components/_layout/page.layout';
 
 // modules
 import {bootstrap}        from 'angular2/platform/browser'
