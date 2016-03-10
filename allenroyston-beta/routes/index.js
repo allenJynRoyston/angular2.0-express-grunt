@@ -1,13 +1,15 @@
-var express = require('express');
-var router = express.Router();
+//---------------------------------------------- default
+exports.home = function(req, res){
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	var app = express();
-  res.render('index', {
-		title: 'Allen Royston - Fullstack Developer',
-		enviroment: app.get('env')
+	res.render('index', {
+		title: 'Government API',
+		enviroment: req.device.enviroment,
+		isMobile: 	req.device.isMobile,
+		isIphone: 	req.device.isIphone,
+		isIpad: 		req.device.isIpad,
+		isAndroid: 	req.device.isAndroid,
+		userAgent: 	req.device.ua
 	});
-});
 
-module.exports = router;
+};
+//----------------------------------------------

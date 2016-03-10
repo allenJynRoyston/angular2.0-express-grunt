@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', '../../apiComponents/fuelstations/fuelstations'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1;
+    var core_1, common_1, fuelstations_1;
     var aboutPage;
     return {
         setters:[
@@ -18,11 +18,11 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (fuelstations_1_1) {
+                fuelstations_1 = fuelstations_1_1;
             }],
         execute: function() {
-            // page containers
-            // directives
-            // parts
             // declare
             aboutPage = (function () {
                 function aboutPage() {
@@ -30,6 +30,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                 aboutPage = __decorate([
                     core_1.Component({
                         directives: [
+                            fuelstations_1.fuelStations,
                             common_1.CORE_DIRECTIVES,
                         ],
                         templateUrl: './app/components/about/about.html'

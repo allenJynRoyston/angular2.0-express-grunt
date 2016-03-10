@@ -1,8 +1,10 @@
 //---------------------------------------------- default
-exports.home = function(req, res){
+exports.endpoint = function(req, res){
 
+	console.log("END POINT")
+	/*
 	res.render('index', {
-		title: 'Express/Semantic/Angular2 Boilerplate',
+		title: 'Government API',
 		enviroment: req.device.enviroment,
 		isMobile: 	req.device.isMobile,
 		isIphone: 	req.device.isIphone,
@@ -10,6 +12,7 @@ exports.home = function(req, res){
 		isAndroid: 	req.device.isAndroid,
 		userAgent: 	req.device.ua
 	});
+	*/
 
 };
 //----------------------------------------------

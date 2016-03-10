@@ -3,18 +3,23 @@ import {Component}        from 'angular2/core';
 import {CORE_DIRECTIVES}  from 'angular2/common';
 import {apiServices}       from '../../services/api.gov'
 declare var $;
-
+declare var google;
 //------------------------------------
 @Component({
   selector: 'fuel-stations',
   directives: [CORE_DIRECTIVES],
   providers: [apiServices],
+  styles: [`
+    #map {
+        height: 100%;
+    }
+  `],
   template: `
   <h1>Fuel Stations</h1>
   <li *ngFor="#station of data.fuelstations.fuel_stations; #index = index">
     {{index}}: {{station.city}}
   </li>
-
+  <div id="map"></div>
   `
 })
 export class fuelStations {
@@ -34,6 +39,20 @@ export class fuelStations {
     this._apiService.getFuelStations(function(res){
           d.fuelstations = res;
     })
+
+    this._apiService.getGoogleMaps(function(res){
+      console.log(res)
+    })
+    /*
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+    */
+
   }
 
 }

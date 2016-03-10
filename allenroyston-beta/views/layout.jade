@@ -11,31 +11,68 @@ html
     
     // title
     if enviroment=="development"   
-      title=title
-        |  Development 
+      title #{title} (#{enviroment})
     if enviroment!="development"   
-      title=title
+      title #{title}
     
     // css
     link(rel='stylesheet', href='/stylesheets/minified/style.min.css')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
     
-    // angular 2 core files
-    script(src='javascripts/minified/core.js')
-    
-    // cannot be minified
-    script(src='javascripts/angular2/angular2-polyfills.min.js')
-    script(src='javascripts/angular2/router.dev.js')
-    script(src='javascripts/system.config.js')
+    // production 
+    if enviroment=="production" 
+      script(src='javascripts/minified/core.js' defer)
+      script.
+        function loadScript(src) {
+          var element = document.createElement("script");
+          element.src = src;
+          document.body.appendChild(element);
+        }
+        // Add a script element as a child of the body
+        function downloadJSAtOnload() {        
+          loadScript("javascripts/angular2/angular2-polyfills.min.js");
+          loadScript("javascripts/angular2/router.dev.js");
+          loadScript("javascripts/system.config.js");
+          loadScript("javascripts/minified/framework.js");
+        }
+        // Check for browser support of event handling capability
+        if (window.addEventListener)
+        window.addEventListener("load", downloadJSAtOnload, false);
+        else if (window.attachEvent)
+        window.attachEvent("onload", downloadJSAtOnload);
+        else window.onload = downloadJSAtOnload;
 
-    // framework
-    script(src='javascripts/minified/framework.js') 
     
-    // live reload for development
-    if enviroment=="development"    
+    // development
+    if enviroment=="development"   
+      // angular 2 core files
+      script(src='javascripts/minified/core.js')
+      
+      // cannot be minified
+      script(src='javascripts/angular2/angular2-polyfills.min.js')
+      script(src='javascripts/angular2/router.dev.js')
+      script(src='javascripts/system.config.js')
+
+      // framework
+      script(src='javascripts/minified/framework.js') 
+      
+      // livereload          
       script(src='//localhost:35729/livereload.js')  
     
-  // padding set to 0 for sidebar
   body
     block content
   
+  
+  // declare globals
+  script(type='text/javascript').
+    _root = {
+      globals: {
+        enviroment: "#{enviroment}",
+        isMobile: "#{isMobile}",
+        isIphone: "#{isIphone}",
+        isIpad: "#{isIpad}",
+        isAndroid: "#{isAndroid}",
+        userAgent: "#{userAgent}"
+      }
+    }
+    

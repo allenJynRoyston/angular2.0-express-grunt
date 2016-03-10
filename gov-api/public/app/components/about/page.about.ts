@@ -7,11 +7,14 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 // directives
 
 // parts
+import {fuelStations} from '../../apiComponents/fuelstations/fuelstations'
 
 // declare
 
 @Component({
 	directives: [
+		fuelStations,
+
 		CORE_DIRECTIVES,
 	],
   templateUrl: './app/components/about/about.html'

@@ -39,13 +39,26 @@ System.register(['angular2/core', 'angular2/common', '../../services/api.gov'], 
                     this._apiService.getFuelStations(function (res) {
                         d.fuelstations = res;
                     });
+                    this._apiService.getGoogleMaps(function (res) {
+                        console.log(res);
+                    });
+                    /*
+                    var map;
+                    function initMap() {
+                      map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                      });
+                    }
+                    */
                 };
                 fuelStations = __decorate([
                     core_1.Component({
                         selector: 'fuel-stations',
                         directives: [common_1.CORE_DIRECTIVES],
                         providers: [api_gov_1.apiServices],
-                        template: "\n  <h1>Fuel Stations</h1>\n  <li *ngFor=\"#station of data.fuelstations.fuel_stations; #index = index\">\n    {{index}}: {{station.city}}\n  </li>\n\n  "
+                        styles: ["\n    #map {\n        height: 100%;\n    }\n  "],
+                        template: "\n  <h1>Fuel Stations</h1>\n  <li *ngFor=\"#station of data.fuelstations.fuel_stations; #index = index\">\n    {{index}}: {{station.city}}\n  </li>\n  <div id=\"map\"></div>\n  "
                     }), 
                     __metadata('design:paramtypes', [api_gov_1.apiServices])
                 ], fuelStations);

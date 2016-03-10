@@ -1,50 +1,15 @@
-var express = require('express');
-var router = express.Router();
+//---------------------------------------------- default
+exports.home = function(req, res){
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	var app = express();
-	var ua = req.header('user-agent');
+	res.render('index', {
+		title: 'Government API',
+		enviroment: req.device.enviroment,
+		isMobile: 	req.device.isMobile,
+		isIphone: 	req.device.isIphone,
+		isIpad: 		req.device.isIpad,
+		isAndroid: 	req.device.isAndroid,
+		userAgent: 	req.device.ua
+	});
 
-		// detect mobile
-		if(/mobile/i.test(ua)) {
-				isMobile = true;
-		} else {
-				isMobile = false;
-		}
-
-		// detect iPhone
-		if(/iPhone/i.test(ua)) {
-				isIphone = true;
-		} else {
-				isIphone = false;
-		}
-
-		// detect iPhone
-		if(/iPad/i.test(ua)) {
-				isIpad = true;
-		} else {
-				isIpad = false;
-		}
-
-		// detect Android
-		if(/Android/i.test(ua)) {
-				isAndroid = true;
-		} else {
-				isAndroid = false;
-		}
-
-		//
-	  res.render('index', {
-			title: 'Government API',
-			enviroment: app.get('env'),
-			isMobile: isMobile,
-			isIphone: isIphone,
-			isIpad: isIpad,
-			isAndroid: isAndroid,
-			userAgent: ua
-		});
-
-});
-
-module.exports = router;
+};
+//----------------------------------------------
