@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../directives/semantic-ui-dropdown/dropdown.directive', '../../directives/semantic-ui-visibility/visibility.directive', '../../directives/semantic-ui-sidebar/sidebar.directive', '../../directives/semantic-ui-dimmer/dimmer.directive', '../../directives/semantic-ui-shape/shape.directive', '../../directives/semantic-ui-modal/modal.directive', '../../components/parts/boilerplate.parts'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../directives/semantic-ui-dropdown/dropdown.directive', '../../directives/semantic-ui-visibility/visibility.directive', '../../directives/semantic-ui-sidebar/sidebar.directive', '../../directives/semantic-ui-dimmer/dimmer.directive', '../../directives/semantic-ui-shape/shape.directive', '../../directives/semantic-ui-modal/modal.directive', '../../components/parts/boilerplate.parts', '../../apiComponents/fuelstations/fuelstations'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../d
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, common_1, dropdown_directive_1, visibility_directive_1, sidebar_directive_1, dimmer_directive_1, shape_directive_1, modal_directive_1, boilerplate_parts_1;
+    var core_1, router_1, common_1, dropdown_directive_1, visibility_directive_1, sidebar_directive_1, dimmer_directive_1, shape_directive_1, modal_directive_1, boilerplate_parts_1, fuelstations_1;
     var homePage;
     return {
         setters:[
@@ -42,6 +42,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../d
             },
             function (boilerplate_parts_1_1) {
                 boilerplate_parts_1 = boilerplate_parts_1_1;
+            },
+            function (fuelstations_1_1) {
+                fuelstations_1 = fuelstations_1_1;
             }],
         execute: function() {
             homePage = (function () {
@@ -93,7 +96,8 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../../d
                             shape_directive_1.uiSemanticShape,
                             modal_directive_1.uiSemanticModal,
                             boilerplate_parts_1.partsFiller,
-                            boilerplate_parts_1.loremIpsum
+                            boilerplate_parts_1.loremIpsum,
+                            fuelstations_1.fuelStations
                         ],
                         styles: ["\n    .shape-container{\n      width: 700px;\n      height: 350px;\n    }\n  "],
                         templateUrl: './app/components/home/home.html'

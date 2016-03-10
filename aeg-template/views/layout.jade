@@ -11,10 +11,10 @@ html
     
     // title
     if enviroment=="development"   
-      title=title
-        |  Development 
+      title #{title} (#{enviroment})
+
     if enviroment!="development"   
-      title=title
+      title #{title}
     
     // css
     link(rel='stylesheet', href='/stylesheets/minified/style.min.css')
@@ -35,7 +35,20 @@ html
     if enviroment=="development"    
       script(src='//localhost:35729/livereload.js')  
     
-  // padding set to 0 for sidebar
   body
     block content
   
+  
+  // declare globals
+  script(type='text/javascript').
+    _root = {
+      globals: {
+        enviroment: "#{enviroment}",
+        isMobile: "#{isMobile}",
+        isIphone: "#{isIphone}",
+        isIpad: "#{isIpad}",
+        isAndroid: "#{isAndroid}",
+        userAgent: "#{userAgent}"
+      }
+    }
+    

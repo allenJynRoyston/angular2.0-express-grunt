@@ -16,6 +16,8 @@ import {uiSemanticModal} from '../../directives/semantic-ui-modal/modal.directiv
 // parts
 import {partsFiller, loremIpsum, partsFooter} from '../../components/parts/boilerplate.parts';
 
+// api components
+import {fuelStations} from '../../apiComponents/fuelstations/fuelstations'
 
 declare var $;
 
@@ -31,7 +33,9 @@ declare var $;
     uiSemanticModal,
 
     partsFiller,
-    loremIpsum
+    loremIpsum,
+
+    fuelStations
 	],
   styles: [`
     .shape-container{
