@@ -1,5 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,22 +21,17 @@ System.register(['angular2/core'], function(exports_1) {
             apiServices = (function () {
                 function apiServices() {
                 }
-                // google maps API key AIzaSyAO2sYcau79tW0H3jG3z_qmb94SE8XNSKs
                 apiServices.prototype.getGoogleMaps = function (callback) {
-                    var url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAO2sYcau79tW0H3jG3z_qmb94SE8XNSKs&callback=initMap';
+                    var url = window.location.origin + '/api/v1/google/GET/maps';
                     $.ajax({
                         url: url,
-                        type: 'GET',
-                        crossDomain: true,
                         success: function (res) {
-                            console.log(res);
                             callback(res);
                         },
                     });
                 };
-                // Uses http.get() to load a single JSON file
                 apiServices.prototype.getFuelStations = function (callback) {
-                    var url = 'https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=rVKRnhx5JbJCyqmZxeE65Sfvwrn3eREiCmdZwMjH&location=Seattle+WA&offset=20';
+                    var url = window.location.origin + '/api/v1/gov/GET/fuel';
                     $.ajax({
                         url: url,
                         success: function (res) {

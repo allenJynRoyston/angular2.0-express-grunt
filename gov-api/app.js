@@ -10,6 +10,7 @@ var favicon = require('serve-favicon'),
     os = require('os'),
     compression = require('compression');
 
+
 // routes
 var site = require('./routes/index'),
 		api = require('./routes/api'),
@@ -94,7 +95,9 @@ router.use(function(req, res, next) {
 
 
 // routing
-router.get('/api/v1/', api.endpoint);
+// http://localhost:3000/api/v1/gov/GET/fuel?q1=queryString
+// http://localhost:3000/api/v1/google/GET/maps?q1=something
+router.get('/api/v1/:type/:state/:method', api.endpoint);
 router.get('/*', site.home);
 
 

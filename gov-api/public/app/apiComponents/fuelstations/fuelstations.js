@@ -1,5 +1,6 @@
-System.register(['angular2/core', 'angular2/common', '../../services/api.gov'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', '../../services/api.gov'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -37,10 +38,10 @@ System.register(['angular2/core', 'angular2/common', '../../services/api.gov'], 
                 fuelStations.prototype.getFuelStations = function () {
                     var d = this.data;
                     this._apiService.getFuelStations(function (res) {
-                        d.fuelstations = res;
+                        d.fuelstations = JSON.parse(res.data.body);
                     });
                     this._apiService.getGoogleMaps(function (res) {
-                        console.log(res);
+                        //console.log(res.data.body)
                     });
                     /*
                     var map;
@@ -57,7 +58,7 @@ System.register(['angular2/core', 'angular2/common', '../../services/api.gov'], 
                         selector: 'fuel-stations',
                         directives: [common_1.CORE_DIRECTIVES],
                         providers: [api_gov_1.apiServices],
-                        styles: ["\n    #map {\n        height: 100%;\n    }\n  "],
+                        styles: ["\n    #map {\n        height: 500px;\n    }\n  "],
                         template: "\n  <h1>Fuel Stations</h1>\n  <li *ngFor=\"#station of data.fuelstations.fuel_stations; #index = index\">\n    {{index}}: {{station.city}}\n  </li>\n  <div id=\"map\"></div>\n  "
                     }), 
                     __metadata('design:paramtypes', [api_gov_1.apiServices])

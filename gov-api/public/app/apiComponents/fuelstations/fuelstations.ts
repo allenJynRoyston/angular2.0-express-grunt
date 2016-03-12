@@ -11,7 +11,7 @@ declare var google;
   providers: [apiServices],
   styles: [`
     #map {
-        height: 100%;
+        height: 500px;
     }
   `],
   template: `
@@ -37,11 +37,11 @@ export class fuelStations {
   getFuelStations(){
     var d = this.data;
     this._apiService.getFuelStations(function(res){
-          d.fuelstations = res;
+          d.fuelstations = JSON.parse(res.data.body)
     })
 
     this._apiService.getGoogleMaps(function(res){
-      console.log(res)
+      //console.log(res.data.body)
     })
     /*
     var map;
