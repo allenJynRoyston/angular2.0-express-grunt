@@ -33,50 +33,6 @@
 </div>
 <div class="ui vertical stripe">
   <div class="ui middle aligned stackable grid container">
-    <div class="row">
-      <div class="eight wide column">
-        <h3 class="ui header">My name is Allen</h3>
-        <p>And I love to build things! It doesn't matter if it's a website, an app, or a giant killer robot designed to feast on the souls of the living (his name is Snuggles, btw).</p>
-        <h3 class="ui header">More Than Just a Developer</h3>
-        <p>
-          This isn't just a job for me; this is my passion.  
-          I'm constantly exploring new technologies and incorporating the very best of what I find.  
-        </p>
-      </div>
-      <div ui-modal="ui-modal" [options]="{selector: '#modal1', blurring: true, transition: 'scale'}" class="six wide right floated column">       <img src="{{page.imageModal.image}}" class="ui large bordered rounded image is-pointer"/></div>
-    </div>
-  </div>
-</div>
-<div class="ui container">
-  <div class="ui link cards centered four doubling">
-    <div *ngFor="#c of content" ui-dimmer="ui-dimmer" [options]="{on: 'hover'}" class="card blurring">
-      <div class="ui dimmer">
-        <div class="content">
-          <h1>{{c.text}}</h1>
-        </div>
-      </div>
-      <div class="content">
-        <div class="header"> 
-          <center>
-            <h3>{{c.title}}</h3>
-          </center>
-        </div>
-      </div>
-      <div style="padding: 10px" class="image"><img src="{{c.image}}"/></div>
-    </div>
-  </div>
-</div>
-<div class="ui vertical strip"> 
-  <div id="modal1" class="ui modal basic"><i class="close icon"></i>
-    <div class="image content">
-      <div class="ui image large centered"><img src="{{page.imageModal.image}}"/>
-        <center><small>{{page.imageModal.description}}</small></center>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="ui vertical stripe">
-  <div class="ui middle aligned stackable grid container">
     <div class="center aligned column">
       <fuel-stations></fuel-stations>
     </div>

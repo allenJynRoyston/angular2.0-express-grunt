@@ -1,0 +1,38 @@
+{
+    "cube": {
+			"data":[
+				{
+					"texture": "grass.jpg",
+					"color": null,
+			        "dimensions": 	{"x": 125, 	"y": 125, 	"z": 125},
+			        "position":		{"x": 1000,	 "y": 1000,	"z": 1000, "random":true },
+			        "outline": 		{"active": false,	"thickness": 1.0,	"color": 15045632},
+			        "animation": 
+					{
+						"enabled": false,
+			            "rotationSpd": {"x": 0, 	"y": 0.0, 	"z": 0}      
+			        }
+	        	}
+		    ]
+    },
+    
+    "sphere": {
+    		"data":[
+    			{
+					"texture": "grass.jpg",
+					"color": null,    			
+	    			"dimensions": 	{"x": 50,	 "y": 32,	"z": 16},
+	    			"position":		{"x": 1000,	 "y": 1000,	"z": 1000, "random":true },
+	    			"outline":		{"active": false,	"thickness": 1.0,	"color": 16711680},
+			        "animation": 
+					{
+						"enabled": false,
+			            "rotationSpd": {"x": 0, 	"y": 0.0, 	"z": 0}      
+			        }    			
+    			}  			
+    		]
+        
+    }      
+    
+
+}

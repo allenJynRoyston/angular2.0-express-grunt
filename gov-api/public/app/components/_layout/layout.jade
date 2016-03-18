@@ -3,11 +3,6 @@
     a.item( (click)="linkTo(r.path)" ui-sidebar [options]='{selector: "#sidebarRight", show: "false"}')
       span {{r.name}} 
   
-#sidebarLeft.ui.left.vertical.menu.sidebar.inverted
-  span(*ngFor="#r of routes")
-    a.item( (click)="linkTo(r.path)" ui-sidebar [options]='{selector: "#sidebarRight", show: "false"}')
-      span {{r.name}} 
-    
 #sidebarBottom.ui.bottom.menu.sidebar.inverted
   span(*ngFor="#r of routes")
     a.item( (click)="linkTo(r.path)" ui-sidebar [options]='{selector: "#sidebarRight", show: "false"}')

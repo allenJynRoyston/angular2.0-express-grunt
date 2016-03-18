@@ -1,0 +1,169 @@
+<div class="row" ng-init="init()">
+
+
+
+		<h1> {{greeting}}</h1>
+		<br>
+
+
+		<!-- KEYPRESS -->
+		<div class="small-12 columns">
+			<h3>KEYPRESS</h3>
+			<br>
+			<textarea ui-keypress="{13:'keypressCallback($event)'}"> Press Enter (Keypress)	</textarea>
+			<textarea ui-keydown="{'enter alt-space':'keypressCallback($event)'}"> Press Enter or Alt-Space (Keydown)</textarea>
+			<textarea ui-keyup="{'enter':'keypressCallback($event)'}"> Press Enter (Keyup)	</textarea>
+			<div tabindex="0" class="small-6 columns" ui-keyup="{'enter':'keypressCallback($event)'}" style="border: 2px solid orange">			
+				<br>
+				<small>Press Enter on this DIV</small>
+				<br><br>
+			</div>
+			<br><br>
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- ROUTE CHECKER -->
+		<div class="small-12 columns">
+			<h3>ROUTE CHECKER</h3>
+			<br>
+			<ul>
+			<li ui-route="#/home">Home
+				<strong ng-show="$uiRoute">IS</strong>
+				<strong ng-show="!$uiRoute">is NOT</strong> active.
+			</li>
+			<li ui-route="#/page1">AngularUI
+				<strong ng-show="$uiRoute">IS</strong>
+				<strong ng-show="!$uiRoute">is NOT</strong> active.
+			</li>
+			<li ui-route="#/page2">Foundation
+				<strong ng-show="$uiRoute">IS</strong>
+				<strong ng-show="!$uiRoute">is NOT</strong> active.
+			</li>
+			</ul>
+			<br><hr>
+		</div>
+
+
+
+
+		<!-- TOGGLE ALTERNATIVE -->
+		<div class="small-12 columns" >
+			<h3>TOGGLE ALTERNATIVES</h3>
+			<br>
+			<p><a class="fix-a" ng-click="showHide=!showHide">Toggle State: {{!!showHide}}</a></p>
+				<div ui-show="showHide">Show</div>
+				<div ui-hide="showHide">Hide</div>
+				<div ui-toggle="showHide">Toggle</div>
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- FILTER UNIQUE -->
+		<div class="small-12 columns">
+			<h3>FILTER</h3>
+			<div class="medium-6 small-12 columns">
+				<select ng-model="attribute">
+					<option value="">-- No Filter --</option>
+					<option>firstName</option>
+					<option>lastName</option>
+					<option>id</option>
+					<option>gender</option>
+				</select>
+				<br><br>
+				<pre>{{items | unique:attribute | json}}</pre>
+			</div>
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- TOKEN PASSTHROUGH -->
+		<div class="small-12 columns">
+			<h3>TOKEN</h3>
+			<br>
+				<label><input type="radio" value="humanize" ng-model="inflectorType"> Humanize (Default)</label><br>
+				<label><input type="radio" value="underscore" ng-model="inflectorType"> Underscore</label><br>
+				<label><input type="radio" value="variable" ng-model="inflectorType"> Variable</label><br>
+				<input placeholder="Enter some text to inflect" ng-model="inflectorText" class="small-12 columns">
+				<p>{{inflectorText|inflector:inflectorType}}</p>
+				<br><br>
+				<hr>
+		</div>
+
+
+		<!-- TOKEN -->
+		<div class="small-12 columns">
+			<h3>TOKEN</h3>
+
+			{{ "This is a string: Hello $0, how are you?" | format : tokenExampleString }}
+			<br>
+			{{ "This is an object:  Hey :name, how's the :subject?" | format : tokenExample1 }}
+			<br>
+			{{ "This is sorted by array:  $0, $1 or $2" | format : tokenExample2 }}
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- EVENT BINDER -->
+		<div class="small-12 columns">
+			<h3>EVENT BINDER</h3>
+			<br>
+				<input ui-event="{ blur  : 'blurCallback($event)' }" value="Blur">
+				<input ui-event="{ click : 'clickCallback($event)' }" value="Click">
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- CONTENT EDITABLE -->
+		<div class="small-12 columns">
+			<h3>CONTENT EDITABLE</h3>
+			<br>
+			<span contenteditable="true" ng-model="contentEdit" strip-br="true" select-non-editable="true"></span>
+			<pre>
+			{{contentEdit}}
+			</pre>
+			<br><br>
+			<hr>
+		</div>
+
+
+		<!-- CENTERED -->
+		<div class="small-12 columns">
+			<h3>CENTERED</h3>
+			<br>
+
+		    	<centered>
+		        	<img src="http://dummyimage.com/600x400/000/fff" />
+		    	</centered>
+		    	<centered>
+		        	<h2>This text should be centered</h2>
+		    	</centered>
+
+			<br><br>
+			<hr>
+	  	</div>
+
+
+
+		<!-- TOASTER -->
+		<div class="small-12 columns">
+			<h3>TOASTER</h3>
+			<br>
+			<button ng-click="testToaster('success')">SUCCESS</button>
+			<button ng-click="testToaster('warning')">WARNING</button>
+			<button ng-click="testToaster('error')">ERROR</button>
+			<button ng-click="testToaster('note')">NOTE</button>
+			<br><br>
+			<hr>
+		</div>
+
+
+
+
+
+</div>

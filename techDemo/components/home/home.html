@@ -1,0 +1,410 @@
+<div class="" ng-init="init()">
+
+	<div class="row">
+		<div class="small-12 columns">
+				<h1>HOME</h1>				
+				<br>
+		</div>		
+	</div>
+	<hr>	
+	
+
+	<div class="row">
+		<div class="small-12 columns">
+				<h1>VALIDATION</h1>				
+				<br>
+				
+				<form name="demoForm">
+					
+					<div class="small-4 columns">
+						<label>
+							Integer: {{demo.integer}}
+						<input type="text" name="integer" ng-model="demo.integer" wiz-val-integer />
+						
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Decimal: {{demo.decimal}}
+						<input type="text" step=".5" name="decimal" ng-model="demo.decimal" wiz-val-decimal />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Decimal (3 places): {{demo.decimalPlaces}}
+						<input type="text" step=".5" name="decimalPlaces" ng-model="demo.decimalPlaces" wiz-val-decimal="3" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Postcode: {{demo.postcode}}
+						<input type="text" name="postcode" ng-model="demo.postcode" wiz-val-postcode />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Zip code: {{demo.zipcode}}
+						<input type="text" name="zipcode" ng-model="demo.zipcode" maxlength="5" wiz-val-zipcode />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Date of birth (18 and over): {{demo.dateOfBirth}}
+						<input type="date" name="dateOfBirth" ng-model="demo.dateOfBirth" wiz-val-date-of-birth="18" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							At least one in group 1: {{demo.atleastone1}}
+							<input type="text" name="atleastone1" ng-model="demo.atleastone1" wiz-val-at-least-one />
+							<input type="text" name="atleastone2" ng-model="demo.atleastone2" wiz-val-at-least-one />
+							<input type="text" name="atleastone3" ng-model="demo.atleastone3" wiz-val-at-least-one />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							At least one in group 2: {{demo.atleastoneA}} | {{demo.atleastoneB}} | {{demo.atleastoneC}}
+							<input type="text" name="atleastoneA" ng-model="demo.atleastoneA" wiz-val-at-least-one="group2" />
+							<input type="text" name="atleastoneB" ng-model="demo.atleastoneB" wiz-val-at-least-one="group2" />
+							<input type="text" name="atleastoneC" ng-model="demo.atleastoneC" wiz-val-at-least-one="group2" />
+						</label>
+					</div>
+					
+					
+					<div class="small-4 columns">
+						<label>
+							Must equal group 1: {{demo.equalTo1}} | {{demo.equalTo2}} | {{demo.equalTo3}}
+							<input type="text" name="equalTo1" ng-model="demo.equalTo1" wiz-val-equal-to />
+							<input type="text" name="equalTo2" ng-model="demo.equalTo2" wiz-val-equal-to />
+							<input type="text" name="equalTo3" ng-model="demo.equalTo3" wiz-val-equal-to />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Must equal group 2: {{demo.equalToA}} | {{demo.equalToB}} | {{demo.equalToC}}
+							<input type="text" name="equalToA" ng-model="demo.equalToA" wiz-val-equal-to="group2" />
+							<input type="text" name="equalToB" ng-model="demo.equalToB" wiz-val-equal-to="group2" />
+							<input type="text" name="equalToC" ng-model="demo.equalToC" wiz-val-equal-to="group2" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Must not equal group 1: {{demo.notEqualTo1}} | {{demo.notEqualTo2}} | {{demo.notEqualTo3}}
+							<input type="text" name="notEqualTo1" ng-model="demo.notEqualTo1" wiz-val-not-equal-to="group1" />
+							<input type="text" name="notEqualTo2" ng-model="demo.notEqualTo2" wiz-val-not-equal-to="group1" />
+							<input type="text" name="notEqualTo3" ng-model="demo.notEqualTo3" wiz-val-not-equal-to="group1" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Must not equal group 2: {{demo.notEqualToA}} | {{demo.notEqualToB}} | {{demo.notEqualToC}}
+							<input type="text" name="notEqualToA" ng-model="demo.notEqualToA" wiz-val-not-equal-to="group2" />
+							<input type="text" name="notEqualToB" ng-model="demo.notEqualToB" wiz-val-not-equal-to="group2" />
+							<input type="text" name="notEqualToC" ng-model="demo.notEqualToC" wiz-val-not-equal-to="group2" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Unique group 1: {{demo.unique1}} | {{demo.unique2}} | {{demo.unique3}}
+							<input type="text" name="unique1" ng-model="demo.unique1" wiz-val-unique="group1" />
+							<input type="text" name="unique2" ng-model="demo.unique2" wiz-val-unique="group1" />
+							<input type="text" name="unique3" ng-model="demo.unique3" wiz-val-unique="group1" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Starts with "begin": {{demo.startsWith}}
+						<input type="text" name="startsWith" ng-model="demo.startsWith" wiz-val-starts-with="'begin'" />
+						</label>
+					</div>
+				
+					<div class="small-4 columns">	
+						<label>
+							Ends with "finish": {{demo.endsWith}}
+						<input type="text" name="endsWith" ng-model="demo.endsWith" wiz-val-ends-with="'finish'" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">	
+						<label>
+							Blacklist: ("red", "orange", "yellow"): {{demo.blacklist}}
+						<input type="text" name="blacklist" ng-model="demo.blacklist" wiz-val-blacklist="['red', 'orange', 'yellow']" />
+						</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							White list: ("red", "orange", "yellow"): {{demo.whitelist}}
+						<input type="text" name="whitelist" ng-model="demo.whitelist" wiz-val-whitelist="['red', 'orange', 'yellow']" />
+						</label>
+					</div>
+					
+					<hr>
+					
+					<div class="small-4 columns">
+						<label>Conditions: {{demo.conditions}}</label>
+						<ul>
+							<li><button id="btn" ng-click="addDay()">{{testDate.getDate()}}</button> must equal {{today.getDate()}}</li>
+							<li>integer field must be valid</li>
+							<li>and this field must have "hello world" in it</li>
+						</ul>						
+						<input type="text" name="conditions" ng-model="demo.conditions"	wiz-val-conditions="[testDate.getDate() == today.getDate(),demoForm.integer.$valid,demo.conditions == 'hello world']"/>
+					</div>					
+					
+					<hr>
+					
+					<div class="small-4 columns">	
+						<label>
+							File (types jpeg, gif | size 200 bytes):
+							<input type="file"
+								name="file"
+								ng-model="demo.file"
+								wiz-val-file
+								wiz-val-file-types="['image/jpeg','image/gif']"
+								wiz-val-file-size="1000000" />
+							</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							File (multiple):
+							<input type="file"
+								name="fileMultiple"
+								multiple
+								ng-model="demo.fileMultiple"
+								wiz-val-file
+								wiz-val-file-types="['image/jpeg','image/gif']" />
+							</label>
+					</div>
+					
+					<div class="small-4 columns">
+						<label>
+							Files (multiple 2 allowed):
+						<input type="file"
+							name="fileMultiple"
+							multiple
+							ng-model="demo.fileMultiple"
+							wiz-val-file
+							wiz-val-file-number="2">
+						</label>
+					</div>
+						
+					
+				</form>					
+				
+		</div>		
+	</div>
+	<hr>		
+	
+
+	
+	
+	<div class="row">
+		<div class="small-12 columns">
+				<h3>RESTRICT INPUT</h3>				
+				<br>
+				<div class="small-6 columns">
+					<label for="twoDecimals">Two decimals:</label>
+					<input name="twoDecimals" type="text" ng-pattern-restrict="^\d+(\.\d{0,2})?$" />
+					<pre>^\d+(\.\d{0,2})?$</pre>
+				</div>
+				
+				<div class="small-6 columns">
+					<label for="dates">Dates, 99/99/9999, and partial entries:</label>
+					<input name="dates" type="text" ng-pattern-restrict="^\d\d?(\/(\d{1,2}(\/(\d{1,4})?)?)?)?$" />
+					<pre>^\d\d?(\/(\d{1,2}(\/(\d{1,4})?)?)?)?$</pre>
+				</div>
+		
+		
+				<div class="small-6 columns">
+					<label for="alphanum">Alphanumeric, including empty:</label>
+					<input name="alphanum" type="text" ng-pattern-restrict="^[A-Za-z0-9]*$" />
+					<pre>^[A-Za-z0-9]*$</pre>
+				</div>
+				
+					
+				<div class="small-6 columns">
+			    	<label for="numeric">Numeric, optional:</label>
+			    	<input name="numeric" type="text" ng-pattern-restrict="^\d*$" ng-model="value" />
+			    	<pre>^\d*$</pre>
+			    	<p>Value bound: {{value}}</p>
+			    </div>				
+								
+				
+		</div>		
+	</div>
+	<hr>	
+	
+
+	
+	<div class="row">
+		<div class="small-12 columns">
+		
+		<h3>SMART TABLES</h3>
+		
+        <div>
+			<style>
+			    .firstName-header {
+			        color: red;
+			    }
+			
+			    .lastName-cell {
+			        font-weight: bold;
+			    }
+			
+			    tbody tr:nth-child(odd) {
+			        background-color: #cbcbcb;
+			    }
+			
+			    tbody .selected{
+			        color: black;
+			    }
+			
+			</style>        	
+            <smart-table style="text-align: left; cursor: pointer; width: 100%" config="globalConfig" columns="columnCollection" rows="rowCollection"></smart-table>
+        </div>
+
+		
+        <!-- REMOVE ENTRY BUTTON -->
+        <button class="btn btn-danger" style="margin: 0" ng-class="{true:'visible', false:'hidden'}[actionCollection.length > 0]" ng-click="deleteAction()">Remove {{actionCollection[0].object.firstName}} {{actionCollection[0].object.lastName}}</button>
+        <br /> <br />
+        <small><strong>* To edit a field, double click on it.</strong></small>	
+		</div>
+		<hr>
+	</div>
+	
+	
+
+	<div class="row">
+		<div class="small-12 columns">
+				<h1  data-fittext="1" data-fittext-min="30" data-fittext-max="45">FITTEXT</h1>
+				<h4  data-fittext="1" data-fittext-min="8" data-fittext-max="20">Resizing the browser will shrink/enlarge this.</h4>				
+				<br>
+		</div>		
+	</div>
+	<hr>	
+	
+	
+		<!-- CHECKBOX -->
+		<div class="row">
+			<div class="small-12 columns">		
+					
+			    	<h3>CHECKBOX</h3>
+			    	
+			    	<div class="small-8 small-offset-4 columns">
+			    		<label>Multi</label>
+						<div multi-select input-model="multiWebBrowsers" button-label="icon name" item-label="icon name maker" 
+						    tick-property="ticked"  output-model="multiResultData" selection-mode="multi">
+						</div>
+						<br><br>
+						<json-explorer json-data="{{multiResultData}}"></json-explorer>
+						
+						<br><br>
+					</div>
+					
+			    	
+			    	<div class="small-8 small-offset-4 columns">
+			    		<label>Single</label>
+						<div multi-select input-model="singleWebBrowsers" button-label="icon name" item-label="icon name maker" 
+						    tick-property="ticked" output-model="singleResultData" selection-mode="single">
+						</div>
+						<br><br>
+						<json-explorer json-data="{{singleResultData}}"></json-explorer>
+					</div>					
+			</div>			
+			
+		</div>
+		<hr>	
+
+		<!-- CHECKBOX -->
+		<div class="row">
+			<div class="small-12 columns">		
+					
+			    	<h3>CHECKBOX</h3>
+			    
+					<label ng-repeat="role in roles">
+					  <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role.text}}
+					</label>
+					  <br>
+					  <button ng-click="checkAll()">check all</button>
+					  <button ng-click="uncheckAll()">uncheck all</button>
+					  <button ng-click="checkFirst()">check first</button>
+					  <br><br>
+					  <pre>user.roles {{ user.roles | json }}</pre>
+					  	    
+			</div>			
+			
+		</div>
+		<hr>	
+
+		<!-- FORMLY -->
+		<div class="row">
+			<div class="small-12 columns">		
+					
+			    	<h3>FORMLY (Forms into  JSON Object)</h3>
+
+							<div class="small-6 columns white-font">
+					
+								<h3>Form</h3> <!-- TO EDIT FORM STYLE, GO INTO FORMLY.JS -->
+								<formly-form result="formData"
+											 fields="formFields"
+											 options="formOptions"
+											 ng-submit="onSubmit()">
+								</formly-form>
+							</div>
+							<br><br>
+							<div class="small-6 columns" ng-class="{true: 'visable', false: 'hidden'}[isReady]">
+								
+								<div style="background-color: white" ng-class="{false: 'visiable', true: 'hidden'}[firebaseLoaded]">
+									<json-explorer json-data="{{submittedData}}"></json-explorer>
+								</div>								
+								
+								<h5>Email: {{formData.email}}</h5>
+								<h5>First Name: {{formData.1}}</h5>
+								<h5>Last Name: {{formData.2}}</h5>
+								<h5>Textarea: {{formData.3}}</h5>
+								<h5>Radio: {{formData.4}}</h5>	
+								<h5>Disabled: {{formData.5}}</h5>
+								<h5>Numbered: {{formData.6}}</h5>	
+								<h5>Select: {{formData.7.name}}, {{formData.7.group}}</h5>
+								<h5>Password: {{formData.8}}</h5>
+								<h5>Checkbox: {{formData.9}}</h5>																									
+
+
+							</div>	   
+					    
+			</div>			
+			
+		</div>
+		<hr>	
+		
+		
+		<!-- ADMIN -->
+		<div class="row">
+			<div class="small-12 columns">		
+					
+			    	<h3>AUTOSELECT ALL</h3>
+			    
+					<input type="text" ng-click-select value="Select everything!"/>
+					<br>
+					<textarea class="ng-click-select">I am the textarea click on me to select everything!</textarea>
+					  	    
+			</div>			
+			
+		</div>
+		<hr>			
+			
+</div>	
+

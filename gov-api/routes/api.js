@@ -14,15 +14,15 @@ exports.endpoint = function(req, res){
 	var q1 = req.query.q1;
 	var q2 = req.query.q2;
 	var q3 = req.query.q3;
-	console.log(type, state, method)
 
-	//------------------- GOOGLE API
-	if(type == "google"){
 
-		// http://localhost:3000/api/v1/google/GET/maps
+	//------------------- GOV API
+	if(type == "gov"){
+
+		// http://localhost:3000/api/v1/gov/GET/fuel
 		//------------------- MAPS
-		if(method == "maps"){
-			var url = 'https://maps.googleapis.com/maps/api/js?key=' + googleAPIKey + '&callback=initMap';
+		if(method == "fuel"){
+			var url = 'https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=' + govAPIKey + '&location=' + q1 + '+' + q2 + '&offset=' + q3;
 			request({
 			    url: url,
 			    method: state,
@@ -53,38 +53,62 @@ exports.endpoint = function(req, res){
 
 
 	//------------------- GOV API
-	else if(type == "gov"){
+	else if(type == "google"){
 
 		// http://localhost:3000/api/v1/gov/GET/fuel
 		//------------------- MAPS
-		if(method == "fuel"){
-			var url = 'https://api.data.gov/nrel/alt-fuel-stations/v1/nearest.json?api_key=' + govAPIKey + '&location=Seattle+WA&offset=20';
+		if(method == "geocode"){
+			var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + q1 + ',' + q2 + '&sensor=false';
+
 			request({
-			    url: url,
-			    method: state,
+					url: url,
+					method: state,
 			}, function(error, response, body){
-			    if(error) {
-			      res.json({success: false})
-			    } else {
+					if(error) {
+						res.json({success: false})
+					} else {
 						if(response.statusCode == 200){
 							res.json({success: true, data: response});
 						}
 						else{
 							res.json({success: false, data: response})
 						}
-			    }
+					}
 			});
 		}
 		//-------------------
 
-		//------------------- CATCHES
-		else{
-			res.json({success: true, data: type + "/" + method + " is not a valid endpoint."});
+
+		//------------------- MAPS
+		else if(method == "zip"){
+			var url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + q1 + '&sensor=false';
+
+			request({
+					url: url,
+					method: state,
+			}, function(error, response, body){
+					if(error) {
+						res.json({success: false})
+					} else {
+						if(response.statusCode == 200){
+							res.json({success: true, data: response});
+						}
+						else{
+							res.json({success: false, data: response})
+						}
+					}
+			});
 		}
 		//-------------------
 
+	//------------------- CATCHES
+	else{
+		res.json({success: true, data: type + "/" + method + " is not a valid endpoint."});
 	}
 	//-------------------
+
+}
+//-------------------
 
 	else{
 				res.json({success: true, data: type + " is not a valid endpoint."});

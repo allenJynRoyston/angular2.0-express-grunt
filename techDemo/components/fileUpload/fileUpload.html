@@ -1,0 +1,140 @@
+<br><br>
+	<div class="" ng-init="init()">
+	
+		<div class="row">
+			<div class="small-12 columns">
+				
+					<h1> {{greeting}}</h1>
+									
+					<br>
+				
+			</div>		
+		</div>
+		<hr>	
+		
+		<!-- DRAG AND DROP -->
+		<div class="row">
+			<div class="small-12 columns">
+						<h3>Drag & Drop and Select</h3>	
+						<br>
+				        <div class="small-6 columns">
+							<div class="file-input-wrapper">
+							  <button class="btn-file-input"><small>Single File Select</small></button>
+							  <input input type="file" class="dropzone-input-btn" placeholder="Select Single File" ng-file-select="previewImage($files)" />
+							</div>							        								        								          
+				        </div>
+
+				        <div class="small-6 columns">							        	
+							<div class="file-input-wrapper">
+							  <button class="btn-file-input"><small>Multiple File Select</small></button>
+							  <input type="file" placeholder="Select Multiple Files" ng-file-select="previewImage($files)" multiple />
+							</div>								        	
+				        </div>
+				        
+						<br><br>
+						<br><br>
+	
+						<div class="small-12 columns">		
+						  <div ng-file-drop="previewImage($files)" ng-file-drag-over-class="dropzone-ready"  ng-show="dropSupported" class="dropzone small-12 columns">			  	
+						  	<div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+						  	
+						  	
+						  	
+						  	<centered ng-class="{true: 'visible', false: 'hidden'}[fileData.length < 1]">
+						  		<br><br><br>
+								<i class="fa fa-upload fa-3x"></i><br>	
+								<small>Drop Files Here</small>					  		
+						  	</centered>
+						  	
+						  	<div ng-repeat="image in fileData">						  		
+						  		<div class="small-12 medium-3 columns">
+						  			<button ng-click="removeImage($index)" class="tiny expand alert">Delete</button>						  			
+						  			<div class="dropzone-image-container">
+						  				<img ng-src="{{image.src}}" class="dropzone-image" />
+						  				<small>{{image.name | characters:25: false}}</small> 
+						  			</div>
+						  			<br><br>
+						  			<br><br>
+						  			<br><br>						  									  							  	
+						  		</div>
+						  		
+						  	</div>	
+						  </div>
+						  
+						  <centered>	
+						  	<br>					  
+						  	<div ng-class="{true: 'visible', false: 'hidden'}[fileData.length > 0]">
+						  		<button class="button" ng-click="uploadFiles()">Start Upload</button>
+						  		&nbsp&nbsp&nbsp&nbsp&nbsp
+						  		<button class="button alert" ng-click="upload.abort()" disabled>Cancel Upload</button>
+						  	</div>
+						  </centered>
+					</div>		 
+
+			</div>		
+		</div>
+		<hr>	
+		<!-- END -->
+		
+		
+		
+		<!-- MULTI IMAGE -->
+		<div class="row">
+			<div class="small-12 columns">
+				<h3>Client-side Image Resizing</h3>	
+				<br>
+					
+			        <div>	
+			        	<div class="row">		          
+					        <div class="small-6 columns">	
+					        	<br>						        	
+								<div class="file-input-wrapper">
+								  <centered><label class="white-font">Image Quality: {{resizeData.quality}}%</label></centered>
+								  <br>
+								  <button class="btn-file-input"><small>Single File Select</small></button>	
+								  																	  
+								  <input id="imageDuplicate1" type="file" accept="image/*"  image="imageDuplicate1"  resize-max-width="{{resizeData.sizes}}"  resize-quality="{{resizeData.quality}}" resize-type="resizeData.type" />
+								</div>
+								<br>								        	
+					        </div>        
+					    </div>
+
+	            		     
+		            	<div ng-repeat="image in imageDuplicate1.data">
+			          		<div class="small-12 columns" style="padding: 20px;">				          			
+			          			<centered>
+			          				<small>- {{$index}} -</small>
+			          				<br>
+			            			<img ng-show="imageDuplicate1"  ng-src="{{image.src}}"/>
+			            			<br>
+			            			<small>Width: {{image.width}}px / Height: {{image.height}}px</small>
+			            			<br>
+			            			<small>Quality: {{image.quality}}</small>
+			            			<br>
+			            			<small>Approximate File Size: {{image.size}}</small>
+			            		</centered>
+			            	</div>
+		            	</div>
+		            		
+						  <centered>	
+						  	<br>					  
+						  	<div ng-class="{true: 'visible', false: 'hidden'}[imageDuplicate1.data.length > 0]">
+						  		<button class="button" ng-click="uploadMultiFiles(imageDuplicate1.data)">Start Upload</button>
+						  	</div>
+						  </centered>				            	
+		            	
+			        </div>
+			     
+				
+			</div>
+		</div>	
+		<hr />	
+		<!-- END -->
+		
+		
+		
+
+		
+	</div>	
+
+			

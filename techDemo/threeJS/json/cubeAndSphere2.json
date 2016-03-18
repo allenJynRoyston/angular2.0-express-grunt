@@ -1,0 +1,124 @@
+{
+	"scene":{
+		"fog":{
+			"enabled": false, "color": 13426943, "near": 500, "far": 3000
+		},
+		"axesHelper":{
+			"enabled": true, "length": 500
+		}		
+	},
+    "camera": {
+        "fov": 50,	"aspectRatio": "auto",	"near": 0.1,	"far": 100000,
+        "position": {"x": 0, "y": 1200, "z": 0}
+    },
+    "renderer": {
+        "bgColor": null,
+        "bgOpacity": 1
+    },
+    "stats": {
+        "show": true,
+        "domEle": "#fpsContainer"
+    },
+    "mouse": {
+        "controls": true
+    },    
+    "light": {
+    	"data":[
+    	
+    			{
+    			"enable": true,
+    			"type": "Ambient",
+    			"color": 16777215,
+    			"shadow": {"enabled": false}
+        		},   
+        		    	
+    			{
+    			"enable": false,
+    			"type": "SpotLight",
+    			"color": 16777215,
+    			"position": {"x": 0, 	"y": 1050, 	"z": 0},
+    			"shadow": {"enabled": true, "shadowCameraVisible": true, "shadowDarkness": 0.75, "intensity": 0.75, "fov": 1000} 	
+        		},    	
+    			
+    			{
+    			"enable": true,
+    			"type": "Area",
+    			"color": 16711680,
+    			"position": {"x":  -1000, 	"y": 500, 	"z": -1000},
+    			"shadow": {"enabled": false, "shadowCameraVisible": true, "shadowDarkness": 0.65, "intensity": 0.5, "fov": 20} 	
+        		},
+        		
+    			{
+    			"enable": false,
+    			"type": "Area",
+    			"color": 80,
+    			"position": {"x": 90, 	"y": 1000, 	"z":1000},
+    			"shadow": {"enabled": true, "shadowCameraVisible": true, "shadowDarkness": 0.5, "intensity": 1} 	
+        		}        		
+		]
+    },
+    "plane": {
+    	"data":[
+    			{
+    			"texture": "wood.jpg",
+       			"dimensions": 	{"width": 1000,	"height": 1000,  "widthSegment": 10, "heightSegment": 10 },
+        		"repeatSet": 	{"x": 10, "y": 10 },
+        		"position": 	{"x": 1.5707963267948966,  "y": -0.5, "z": 0 }
+        		}
+        ]
+    },
+    "skybox": {
+    		"data":[
+    			{
+    			 "package": "set1",  
+       			 "dimensions": { "x": 10000,	"y": 10000,	"z": 10000},
+       			 "color": { "color": 15225632 }
+        		}
+        	]
+        
+    },
+    "cube": {
+			"data":[
+				{
+				"texture": "metal_hd.jpg",
+				"color": null,
+		        "dimensions": 	{"x": 125, 	"y": 125, 	"z": 125},
+		        "position": 	{"x": 0, "y": 340,	"z": 0},
+		        "outline": 		{"active": true,	"thickness": 1.0,	"color": 15045632}
+		    	},
+				{
+				"texture": "metal_hd.jpg",
+				"color": null,
+		        "dimensions": 	{"x": 60, 	"y": 60, 	"z": 60},
+		        "position": 	{"x": 300, 	"y": 100,	"z": 290},
+		        "outline": 		{"active": true,	"thickness": 1.0,	"color": 15045632}
+		    	},
+		    	{
+		    	"texture": "metal_hd.jpg",
+		    	"color": null,
+		        "dimensions": 	{"x": 80, 	"y": 80, 	"z": 80},
+		        "position": 	{"x": 100, "y": 100,	"z": -90},
+		        "outline": 		{"active": true,	"thickness": 1.0,	"color": 15045632}
+		    	}	
+		    ]
+    },
+    "sphere": {
+    		"data":[
+    			{
+				"texture": "metal_hd.jpg",
+				"color": null,    			
+    			"dimensions": 	{"x": 50,	 "y": 32,	"z": 16},
+    			"position":		{"x": 50,	 "y": 150,	"z": 100 },
+    			"outline":		{"active": true,	"thickness": 1.0,	"color": 16711680}
+    			},
+    			{
+				"texture": "metal_hd.jpg",
+				"color": null,  			
+    			"dimensions": 	{"x": 50,	 "y": 32,	"z": 16},
+    			"position":		{"x": -200,	 "y": 50,	"z": -200 },
+    			"outline":		{"active": true,	"thickness": 1.0,	"color": 16711680}
+    			}    			
+    		]
+        
+    }
+}

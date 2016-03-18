@@ -1,0 +1,34 @@
+{
+  "userLists":{
+	"emailingList":{
+        "list" : [	
+			"email1@gmail.com", 
+			"email2@gmail.com",
+			"email3@gmail.com"
+					
+		]		  
+		  
+	}
+  },
+  "users" : {
+	"74" : {
+      "images" : {
+        "profile" : {
+          ".priority" : "74",
+          "standard" : "http://dummyimage.com/100x100/000/fff",
+          "thumbnail" : "http://dummyimage.com/100x100/000/fff",
+          "small" : "http://dummyimage.com/100x100/000/fff"
+        }
+      },
+      "info" : {
+        ".priority" : "74",
+        "lastName" : "royston",
+        "userName" : "username",
+        "email" : "allen.acr@gmail.com",
+        "permission" : "user",
+        "id" : "74",
+        "firstName" : "allen"
+      }
+    }
+  }
+}

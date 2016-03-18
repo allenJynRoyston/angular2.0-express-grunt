@@ -1,0 +1,166 @@
+<div class="" ng-init="init()">
+	<!-- WRAPPER -->
+	<div id="main-wrapper">
+			<div id="game-wrapper" class="">  <!-- ADD ROW TO CLASS IF YOU WANT IT TO STAY CENTERED -->
+
+
+				<div id="game-grid-container"   class="small-12"   ng-style="{'height': aspectHeight + 'px', 'border': container_border_size + 'px solid black'}" tabindex="0" ui-keydown="{'left right up down space enter':'io.keypressCallback($event)'}">
+					
+					
+					
+					<!-- PROGRESS BAR -->
+					<div id="progressBar" class="small-10 small-offset-1" ng-class="{true:'progressfadeOut', false:'progressfadeIn'}[assetsLoaded==totalAssets]" ng-style="{'z-index': layer_fg1 + 150}">
+						<centered>
+							<h1>{{(assetsLoaded/totalAssets)*100 | number:0 }}% Loaded</h1>
+							<div class="progress small-12 success radius">
+						  			<span class="meter" ng-style="{'width': (assetsLoaded/totalAssets)*100 + '%'}"></span>
+							</div>
+						</centered>
+					</div>	
+
+
+
+					<!-- TOP -->
+					<div id="game-grid-top" ng-style="{'z-index': layer_fg1 + 50}" class="hideForLoad">
+							<!-- INFO -->
+							<div id="game-grid-top-seciton" class="small-12 columns" >
+								<div class="small-1 columns pull-left"><small><i class="fa fa-download"></i>{{loadPercentage}}%</small></div>							
+								<div class="small-2 columns pull-left"><small>Resolution ({{resolution_type | uppercase}}):  {{resolution_x}}x{{resolution_y}} </small></div>							
+								<div class="small-2 columns pull-left"><small>Active Canvas: {{activeCanvas}}</small></div>
+	
+								<div class="small-1 columns pull-right pointer" ng-click="web.callModal()" ><centered><i class="fa fa-gears"></i></centered></div>
+								<div class="small-2 columns pull-right"><small>Touching: {{touchingObject.shape.type}}{{touchingObject.shape.name}}</small></div>
+								<div class="small-2 columns pull-right" ng-click="camera.toggleTopdown()"><centered><small>Screen: {{container_width}}x{{container_height}}</small></centered></div>
+								<div class="small-2 columns pull-right" ><centered><small>Mouse {{mouseCoords.x}},{{mouseCoords.y}}</small></centered></div>
+							</div>	
+									
+							<!-- HIDDEN WINDOWS -->
+							<div id="hidden-windows-container" ng-repeat="item in hiddenWindows" class="" >
+									<div class="game-small-window" style="margin-top: 10px" >
+										<div class="game-window-description pointer" ng-click="system.restoreWindow(item.id, $index);">
+										<centered><small>{{item.description | characters:5 | uppercase }}</small></centered>
+										</div>
+										<div class="game-window-options">											
+											<i class="fa fa-desktop pointer to-green" ng-click="system.restoreWindow(item.id, $index)"></i>&nbsp;
+											<i class="fa fa-times-circle pointer to-red" ng-class="{false: 'hidden'}[item.allowRemove]" ng-click="system.removeWindow(item.id, $index)"></i>
+										</div>
+										
+									</div>
+							</div>						
+					</div>
+
+
+					<!-- BOTTOM -->
+					<div id="game-grid-bottom" ng-style="{'z-index': layer_fg1 + 50}" class="hideForLoad">
+							<!-- INFO -->
+							<div class="">
+								<div class="small-2 columns pull-left"> <small><i class="fa fa-camera"></i> x:{{canvasCSS[activeCanvas].cX}}  y:{{canvasCSS[activeCanvas].cY}}  z:{{canvasCSS[activeCanvas].cZ}}  </small></div>
+								<div class="small-2 columns pull-left pointer"  ng-click="io.selectCameraType('translate')" >	<centered><i class="fa fa-cube"></i> : <small> T:{{canvasCSS[activeCanvas].tX}}, {{canvasCSS[activeCanvas].tY}}, {{canvasCSS[activeCanvas].tZ}} </small></centered></div>
+								<div class="small-2 columns pull-left pointer"  ng-click="io.selectCameraType('rotate')" >		<centered><i class="fa fa-cubes"></i> : <small> R: {{canvasCSS[activeCanvas].rX}}, {{canvasCSS[activeCanvas].rY}}, {{canvasCSS[activeCanvas].rZ}} </small></centered></div>
+								<div class="small-2 columns pull-left pointer"  ng-click="io.selectCameraType('zoom')" >		<centered><i class="fa fa-arrows"></i> : <small> Z:{{canvasCSS[activeCanvas].rZ}} </small></centered></div>
+								<div class="small-2 columns pull-left pointer"  ng-click="io.selectCameraType('perspective')">	<centered><i class="fa fa-eye"></i> : <small> {{canvasCSS[activeCanvas].p}} </small> </centered></div>
+								<div class="small-2 columns pull-right pointer" ng-click="canvas.getCanvasDefaults()"><centered><i class="fa fa-sliders"></i></centered></div>
+							</div>
+					</div>
+
+					<!-- INFO -->
+					<div id="game-grid-bottom-info-a" ng-style="{'z-index': layer_fg1 + 25}" class="hideForLoad">
+						<div class="closeBtn" ng-click="system.hideWindow('#game-grid-bottom-info-a', 'Help', true)"><centered><i class="fa fa-times-circle"></i></div></centered>
+						<div class="small-12 columns">
+							<centered>
+								<br>
+							<p>Use your arrow keys to change window shape.  You can select translate, rotate, or zoom.
+							Use the mouse to move around the 3D plane.  Click to change windows.</p>
+							</centered>
+						</div>
+					</div>
+					
+
+					<!-- INFO -->
+					<div id="game-grid-bottom-info-b" ng-style="{'z-index': layer_fg1 + 75}" class="hideForLoad">
+						<div class="closeBtn" ng-click="system.hideWindow('#game-grid-bottom-info-b', 'Buttons', false)"><centered><i class="fa fa-times-circle"></i></div></centered>
+						<div class="small-12 columns">							
+							<button class="button tiny" ng-click="testing.screenLayout(3)"><i class="fa fa-laptop"> 1</i></button>
+							<button class="button tiny" ng-click="testing.screenLayout(4)"><i class="fa fa-laptop"> 2</i></button>
+							<button class="button tiny" ng-click="testing.screenLayout(5)"><i class="fa fa-laptop"> 3</i></button>	
+							<button class="button tiny" ng-click="testing.screenLayout(6)"><i class="fa fa-cubes"> B</i></button>	
+							<button class="button tiny" ng-click="testing.screenLayout(7)"><i class="fa fa-cubes"> T</i></button>
+							<button class="button tiny" ng-click="testing.screenLayout(2)"><i class="fa fa-h-square"> H</i></button>	
+							<br>
+														
+							<button class="button tiny" ng-click="testing.changeGravity(0)">Normal Gravity</button>
+							<button class="button tiny" ng-click="testing.changeGravity(1)">Reverse Gravity</button>
+							<button class="button tiny" ng-click="testing.changeGravity(2)">Float</button>
+							<br>
+																					
+							<button class="button tiny" ng-click="testing.clear(0)">Clear</button>
+							<button class="button tiny" ng-click="testing.rebuild(0)">Rebuild</button>
+							<button class="button tiny" ng-click="testing.addToCanvas(0)">Add</button>
+							<br>
+							
+							<button class="button tiny" ng-click="testing.pause()"><i class="fa fa-pause"></i> {{canvasData[activeCanvas].status}}</button>
+							<button class="button tiny" ng-click="testing.pauseAll()"><i class="fa fa-pause"></i> Pause All</button>
+							<button class="button tiny" ng-click="testing.unpauseAll()"><i class="fa fa-play"></i> Unpause All</button>
+							<br>
+							
+							<button class="button tiny hidden" ng-click="testing.render()"><i class="fa fa-stop"></i> Render Toggle: {{canvasData[activeCanvas].render}}</button>
+							<button class="button tiny hidden" ng-click="testing.renderOnly()"><i class="fa fa-stop"></i> Render Only This</button>
+							<button class="button tiny hidden" ng-click="testing.renderAll()"><i class="fa fa-stop"></i> Render All</button>
+							<button class="button tiny hidden" ng-click="testing.unrenderAll()"><i class="fa fa-stop"></i> Unrender All</button>
+							<br>
+							
+							
+						</div>
+					</div>
+					
+					<!-- WINDOW A -->
+					<div id="game-grid-bottom-info-c" ng-style="{'z-index': layer_fg1 + 25}" class="hideForLoad">
+						
+						<div class="small-12">
+								<button class="tiny" style="margin-left: 5px" ng-class="{null: 'pull-left', 0: 'pull-left', 1:'pull-right'}[activeCanvas]" ng-click="io.selectCameraType('translate')"><centered>TRANSLATE</centered></button>
+								<button class="tiny" style="margin-left: 5px" ng-class="{null: 'pull-left', 0: 'pull-left', 1:'pull-right'}[activeCanvas]" ng-click="io.selectCameraType('rotate')"><centered>ROTATE</centered></button>
+								<button class="tiny" style="margin-left: 5px" ng-class="{null: 'pull-left', 0: 'pull-left', 1:'pull-right'}[activeCanvas]" ng-click="io.selectCameraType('zoom')"><centered>ZOOM</centered></button>
+								<button class="tiny" style="margin-left: 5px" ng-class="{null: 'pull-left', 0: 'pull-left', 1:'pull-right'}[activeCanvas]" ng-click="system.hideWindow('#game-grid-bottom-info-c', 'T/R/Z', false)"><centered>HIDE</centered></button>
+						</div>
+					</div>					
+					
+										
+
+					<!-- FPS CONTAINER -->
+					<div id="fpsContainer" ng-style="{'z-index': layer_fg1 + 50}" class="hideForLoad">
+						<div class="closeBtn" ng-click="system.hideWindow('#fpsContainer', 'FPS', false)"><centered><i class="fa fa-times-circle"></i></div></centered>
+						<br><br>
+					</div>
+
+
+
+
+
+					<!-- 3D CANVAS -->
+					<div class="hideForLoad">
+						<div id="game-grid-control_1" ng-mouseover="canvas.changeFocus('canvasContainer_a')" ng-class="{'canvasContainer_a': 'active-outline'}[activeCanvas]"  ng-style="{'-webkit-perspective': camera_perspective_1 + 'px', 'z-index': layer_main + 1}"  >						
+							<canvas id="canvasContainer_a" class="gameCanvas"   ng-style="canvas_css_1" ng-class="{false: 'fadeOut', true: 'fadeIn'}[loadReady]"></canvas>		
+							<div class="gameMask"></div>						
+						</div>	
+						
+						<div id="game-grid-control_2" ng-mouseover="canvas.changeFocus('canvasContainer_b')" ng-class="{'canvasContainer_b': 'active-outline'}[activeCanvas]" ng-style="{'-webkit-perspective': camera_perspective_2 + 'px', 'z-index': layer_main}"  >
+							<canvas id="canvasContainer_b" class="gameCanvas"  ng-style="canvas_css_2" ng-class="{false: 'fadeOut', true: 'fadeIn'}[loadReady]"></canvas>
+							<div class="gameMask"></div>	
+						</div>
+	
+						<div id="game-grid-control_3" ng-mouseover="canvas.changeFocus('canvasContainer_c')" ng-class="{'canvasContainer_c': 'active-outline'}[activeCanvas]" ng-style="{'-webkit-perspective': camera_perspective_2 + 'px', 'z-index': layer_main -1}"  >
+							<canvas id="canvasContainer_c" class="gameCanvas"  ng-style="canvas_css_3" ng-class="{false: 'fadeOut', true: 'fadeIn'}[loadReady]"></canvas>
+							<div class="gameMask"></div>	
+						</div>
+					</div>
+													
+					
+
+
+
+				</div>
+
+
+		</div>
+	</div>
+</div>

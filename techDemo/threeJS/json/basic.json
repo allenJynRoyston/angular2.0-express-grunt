@@ -1,0 +1,62 @@
+{
+	"scene":{
+		"fog":{
+			"enabled": false, "color": 13426943, "near": 500, "far": 5000
+		},
+		"axesHelper":{
+			"enabled": true, "length": 500
+		}
+	},
+    "camera": {
+        "fov": 50,	"aspectRatio": "auto",	"near": 0.1,	"far": 100000,
+        "position": {"x": 0, "y": 1200, "z": 0}
+    },
+    "renderer": {
+        "bgColor": null,
+        "bgOpacity": 1
+    },
+    "stats": {
+        "show": true,
+        "domEle": "#fpsContainer"
+    },
+    "mouse": {
+        "controls": true
+    },    
+    "light": {
+    	"data":[
+    			{
+    			"enable": false,
+    			"type": "Ambient",
+    			"color": 16777215,
+    			"shadow": {"enabled": false}
+        		},       	
+    			{
+    			"enable": true,
+    			"type": "SpotLight",
+    			"color": 16777215,
+    			"position": {"x": 0, 	"y": 1550, 	"z": 0},
+    			"shadow": {"enabled": true, "shadowCameraVisible": true, "shadowDarkness": 0.75, "intensity": 3, "fov": 2000} 	
+        		}
+		]
+    },
+    "plane": {
+    	"data":[
+    			{
+    			"texture": "metal.jpg",
+       			"dimensions": 	{"width": 1000,	"height": 1000,  "widthSegment": 10, "heightSegment": 10 },
+        		"repeatSet": 	{"x": 10, "y": 10 },
+        		"position": 	{"x": 1.5707963267948966,  "y": -0.5, "z": 0 }
+        		}
+        ]
+    },
+    "skybox": {
+    		"data":[
+    			{
+    			 "package": "set1",  
+       			 "dimensions": { "x": 5000,	"y": 5000,	"z": 5000},
+       			 "color": { "color": 15225632 }
+        		}
+        	]
+        
+    }
+}

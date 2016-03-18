@@ -1,0 +1,14 @@
+<div id="mainSlider" style="background-color: transparent; color: white; ">  <!-- MINHEIGHT HAS TO MATCH THE IMAGE SIZE OR THE STICKY WILL GET CONFUSED -->
+		<div id="carousel-1" class="rn-carousel-container" >
+			<ul rn-carousel="" rn-carousel-control="">
+	            <li ng-repeat="slide in slides" >	              
+	                <div class="carousel-blackbar-top">
+	                		<small>slide {{slide.id}}</small>
+	                </div>
+	                	 
+	                	<img ng-src="{{slide.img}}" class="img-responsive" style="cursor: pointer" style-parent>   
+	                       
+	            </li>
+     	   </ul>
+        </div>
+</div>

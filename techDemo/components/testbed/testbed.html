@@ -1,0 +1,280 @@
+
+<div ng-init="init()">
+					
+	
+		<div class="row">
+			<div class="small-12 columns">
+				
+					<h1> {{greeting}}</h1>
+									
+					<br>
+				
+			</div>		
+		</div>
+		<hr>	
+		
+
+
+
+	
+		<!-- YOUTUBE -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>YOUTUBE EMBEDDED</h3>		    		
+	    		<br>
+	    			<div class="small-10 small-offset-1" style="background-color: gray">
+	    				<youtube video="youtubeId" style="width: 100%; height: 500px"></youtube>
+	    			</div>							
+	    		<br><br>
+			</div>
+		</div>
+		<hr>			
+
+
+   
+
+		<!-- LOAD EXTERNAL SCRIPT -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>LOAD EXTERNAL SCRIPT / CSS</h3>		    		
+	    		<br>
+	    			<p>Javascript Selected: &nbsp&nbsp <strong>{{JSexternalScript}}</strong></p>
+	    			<br>
+	    			<centered>
+						{{isJSLoadingComplete}}
+					</centered>
+				<br><br>
+	    			<p>CSS Selected: &nbsp&nbsp <strong>{{CSSexternalScript}}</strong></p>
+	    			<br>
+	    			<centered>
+						{{isCSSLoadingComplete}}
+					</centered>				
+					
+	    		<br><br>
+			</div>
+		</div>
+		<hr>	
+		
+				
+		
+		<!-- JSON EXPLORER -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>JSON EXPLORER</h3>		    		
+	    		<br>
+	    		<br>
+	    		<span ng-class="{true: 'visiable', false: 'hidden'}[firebaseLoaded]"><wave-spinner></wave-spinner></span>
+	    			<div style="background-color: white" ng-class="{false: 'visiable', true: 'hidden'}[firebaseLoaded]">
+	    				<br>
+	    				<div class="container">
+	    					<json-explorer json-data="{{users}}"></json-explorer>
+	    				</div>
+	    				<br>
+	    			</div>
+	    		<br>
+			</div>
+		</div>
+		<hr>	
+		
+
+		<!-- RESPONSIV -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>RESPONSIVE</h3>		    		
+	    		<br>
+	    		<br>
+	    		<centered>	
+				    <table style="margin-left: auto; margin-right: auto">
+				        <tr>
+				            <th>Size Label</th>
+				            <td>responsive()</td>
+				            <td>{{ responsive() }}</td>
+				        </tr>
+				        <tr>
+				            <th>Bigger than Large</th>
+				            <td>responsive('< large')</td>
+				            <td>{{ responsive('< large') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Bigger than tiny</th>
+				            <td>responsive('>= small')</td>
+				            <td>{{ responsive('>= small') }}</td>
+				        </tr>        
+				        <tr>
+				            <th>Is Large</th>
+				            <td>responsive('large')</td>
+				            <td>{{ responsive('large') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Is Tiny</th>
+				            <td>responsive('tiny')</td>
+				            <td>{{ responsive('tiny') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Is Small</th>
+				            <td>responsive('small')</td>
+				            <td>{{ responsive('small') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Bigger than 500px (w)</th>
+				            <td>responsive('> 500')</td>
+				            <td>{{ responsive('> 500') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Less than 500px (w)</th>
+				            <td>responsive('< 500')</td>
+				            <td>{{ responsive('< 500') }}</td>
+				        </tr>        
+				        <tr>
+				            <th>Height</th>
+				            <td>responsive('height')</td>
+				            <td>{{ responsive('height') }}</td>
+				        </tr>
+				        <tr>
+				            <th>Width</th>
+				            <td>responsive('width')</td>
+				            <td>{{ responsive('width') }}</td>
+				        </tr>        
+				    </table>
+				    
+				    <h4>Your Window is "{{responsive()}}"</h4>
+				
+				    <h4>Orientation is "{{responsive('orientation')}}"</h4>
+				    
+				    
+	    		</centered>
+	    		<br>
+			</div>
+		</div>
+		<hr>
+
+
+		<!-- CONTENTEDITABLE -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>CONTENT EDITABLE</h3>		    		
+	    		<br>
+	    		<br>
+	    		<centered>	
+	    			<h3>{{contentEdit}}</h3>    			
+					  <span contenteditable="true"
+					        ng-model="contentEdit"
+					        strip-br="true"
+					        select-non-editable="true">
+					  </span>		
+	    		</centered>
+	    		<br>
+			</div>
+		</div>
+		<hr>
+		
+		<!-- PLACEHOLDER -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>DUMMY IMAGE</h3>		    		
+	    		<br>
+	    		<br>
+	    		<centered>	    			
+	    			<img ng-src="http://dummyimage.com/600x400/000/222&text=test+image" fallback-src="media/fallback/jar-loading.gif" />
+	    			<br>
+	    			<small>A jar image will show up when its busy loading, but since these images load so fast you wont see it</small>
+	    		</centered>
+	    		<br>
+			</div>
+		</div>
+		<hr>
+		
+		
+		<!-- FULLSCREEN -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>FULLSCREEN</h3>	
+	    		<br>
+	    		<centered>
+					<button ng-click="goFullscreen()">Enable/Disable fullscreen</button>
+				</centered>
+			</div>
+		</div>
+		<hr>
+
+		
+		<!-- FRAGMENTS -->
+		<div class="row">	
+	    	<div class="small-12 columns">		
+	    		<h3>FRAGMENT EXAMPLES</h3>	
+	    		<br>
+				<div ng-include src="'fragments/examples/fragment1.html'"></div>
+				<div ng-include src="'fragments/examples/fragment2.html'"></div>
+				<div ng-include src="'fragments/examples/fragment3.html'"></div>
+			</div>
+		</div>
+		<hr>
+		
+		<!-- STRING EXAMPLES -->
+		<div class="row">	
+	    	<div class="small-12 columns">
+	    		<h3>STRING EXAMPLES</h3>	    			    		
+	    		  		
+				{{mystring = 'this is a string'}}<br>
+				{{mystring|stringCamelize}} [Camelize] 'thisIsAString'<br>
+				{{mystring|stringCapitalize}} [Capitalize] 'This is a string'<br>
+				{{mystring|stringChompLeft:'string'}} [ChompLeft] 'this is a '<br>
+				{{mystring|stringChompRight:'this'}} [ChompRight] ' is a string'<br>
+			
+	    	</div>	    	
+    	</div>
+    	<hr>
+    	<!-- END -->
+    	
+    	
+    	<!-- SPINNERS -->		
+		<div class="row">	
+	    	<div class="small-12 columns">   
+	    		<h3>SPINNER EXAMPLES</h3> 	
+	    		<centered>
+	    			<div class="small-2 columns pull-left">	    		
+						<rotating-plane-spinner></rotating-plane-spinner>
+					</div>
+					<div class="small-2 columns pull-left">	
+						<double-bounce-spinner></double-bounce-spinner>
+					</div>
+					<div class="small-2 columns pull-left">
+						<wave-spinner></wave-spinner>
+					</div>
+					<div class="small-2 columns pull-left">
+						<wandering-cubes-spinner></wandering-cubes-spinner>
+					</div>
+					<div class="small-2 columns pull-left">
+						<pulse-spinner></pulse-spinner>
+					</div>
+					<div class="small-2 columns pull-left">
+						<chasing-dots-spinner></chasing-dots-spinner>
+					</div>
+					<div class="small-12 columns pull-left">
+						<circle-spinner></circle-spinner>
+					</div>
+				</centered>
+			</div>
+		</div>
+		<hr>
+	    	
+
+    	<!-- LAZY LOAD -->		
+		<div class="row">	
+	    	<div class="small-12 columns">   
+	    		<h3>LAZY LOADER</h3> 	
+	    		<centered>
+	    			<img lazy="http://lorempixel.com/800/600/sports" fallback-src="media/fallback/jar-loading.gif"/>	
+	    			<img lazy="http://lorempixel.com/800/600/food" fallback-src="media/fallback/jar-loading.gif"/>
+	    			<img lazy="http://lorempixel.com/800/600/nature" fallback-src="media/fallback/jar-loading.gif"/>
+	    			<img lazy="http://lorempixel.com/800/600/nightlife" fallback-src="media/fallback/jar-loading.gif"/>
+				</centered>
+			</div>
+		</div>
+		<hr>	    	
+	    
+ 
+	    
+
+</div>
+			

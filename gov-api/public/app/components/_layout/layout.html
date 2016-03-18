@@ -1,6 +1,5 @@
 
 <div id="sidebarRight" class="ui right vertical menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
-<div id="sidebarLeft" class="ui left vertical menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
 <div id="sidebarBottom" class="ui bottom menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
 <div id="sidebarTop" class="ui top menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" class="item"><i class="{{r.icon}}">&nbsp;&nbsp;</i><span>{{r.name}} </span></a></span></div>
 <!-- NORMAL HEADER-->

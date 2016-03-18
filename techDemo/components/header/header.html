@@ -1,0 +1,57 @@
+<div ng-init="init()">
+	<div class="show-for-medium-up" style="height:5px; background-color: rgba(0, 0, 0, .2)"></div>
+	<div sticky id="headerMain"  style="width: 100%; z-index: 990000"> 
+			
+			<div class="flat-base show-for-medium-up">
+				<div class="row">
+					<div class="small-9 columns">
+						
+						<centered>
+							<span class="pull-left">
+							     <a style="margin-right: 10px" ui-sref="home">Home</a>
+							     <a style="margin-right: 10px"ui-sref="page1">AngularUI </a>
+							     <a style="margin-right: 10px"ui-sref="page2">Foundation </a>
+							     <a style="margin-right: 10px"ui-sref="page3">Carousel </a>
+								 <a style="margin-right: 10px"ui-sref="page4">Testbed </a>
+								 <a style="margin-right: 10px"ui-sref="page5">Firebase </a>
+								 <a style="margin-right: 10px"ui-sref="page6">FileUpload </a>
+								 <a style="margin-right: 10px"ui-sref="page7">Parallax </a>
+
+							</span>
+						</centered>
+					</div>
+					
+					<div class="small-1 columns pull-right">			
+						<div ng-class="{false: 'visable', true: 'hidden'}[pageStatus.isLoading]">							
+							<a class='pull-right' ng-click="login()" ng-class="{true: 'hidden', false: 'visible'}[logState]">Login</a>					
+							<a class='pull-right' ng-click="logout()" ng-class="{false: 'hidden', true: 'visible'}[logState]">Logout</a>
+						</div>
+					</div>
+					
+					<div class="small-2 columns pull-right" ng-click="offcanvasToggle()">
+						<centered>		
+							<i class="pull-right" ng-class="{	desktop: 'fa fa-desktop ', 
+																large: 'fa fa-laptop ', 
+																medium: 'fa fa-tablet ', 
+																small: 'fa fa-mobile ', 
+																mobile: 'fa fa-mobile'}[responsive()]">
+							</i>
+							
+							<i class="pull-right" ng-class="{	landscape: 'fa fa-arrows-h ',
+																portrait: 'fa fa-arrows-v '
+																}[responsive('orientation')]">
+																</i>
+						</centered> 
+					</div>
+					
+					
+	
+					
+					
+				</div>
+					
+			</div>
+			
+			
+	</div>
+</div>

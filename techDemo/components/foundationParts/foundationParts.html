@@ -1,0 +1,224 @@
+<div class="row" ng-init="init()"> 
+	<div class="container">
+		
+	<h1> {{greeting}}</h1>
+	<br>
+	
+	
+	
+
+	<!-- MODAL CONTENTS -->
+	<div class="small-12 flat-base row">
+		<h3>MODALS</h3>
+		<br>
+  		<button class="button" ng-click="open()">Example</button>
+  		<button class="button" ng-click="openConfirm()">Confirm</button>
+  		<div ng-show="selected">Selection from a modal: {{ selected }}</div>
+  		<br>
+  	</div>
+  	<br><br>
+  	<!-- END MODAL -->
+  	
+ 
+  	
+  	<!-- DROP DOWN -->
+  	<div class="small-12 flat-base row">
+		<h3>DROPDOWN</h3>
+		<br>
+		  <a dropdown-toggle="#dropdown-example-1">Click me for a dropdown, yo!</a>
+		  <ul id="dropdown-example-1" class="f-dropdown">
+		    <li ng-repeat="choice in dropdownItems">
+		      <a>{{choice}}</a>
+		    </li>
+		  </ul>
+		  <br>
+		  <br>
+		
+		  <a class="button split">
+		    Split Button
+		    <span dropdown-toggle="#dropdown-example-2"></span>
+		  </a>
+		  <ul id="dropdown-example-2" class="f-dropdown">
+		    <li ng-repeat="choice in dropdownItems">
+		      <a>{{choice}}</a>
+		    </li>
+		  </ul>		
+	</div> 	
+	<br><br>
+  	<!-- END DROPDOWN -->
+
+  	<!-- BUTTONS -->
+  	<div class="small-12 flat-base row">
+  		<h3>BUTTONS</h3>
+  		<br>
+	    <h4>Single toggle</h4>
+	    <pre>{{singleModel}}</pre>
+	    <button type="button" class="button" ng-model="singleModel" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+	        Single Toggle
+	    </button>
+	    <h4>Checkbox</h4>
+	    <pre>{{checkModel}}</pre>
+	    <div class="button-group">
+	        <button type="button" class="button" ng-model="checkModel.left" btn-checkbox>Left</button>
+	        <button type="button" class="button" ng-model="checkModel.middle" btn-checkbox>Middle</button>
+	        <button type="button" class="button" ng-model="checkModel.right" btn-checkbox>Right</button>
+	    </div>
+	    <h4>Radio</h4>
+	    <pre>{{radioModel}}</pre>
+	    <div class="button-group">
+	        <button type="button" class="button" ng-model="radioModel" btn-radio="'Left'">Left</button>
+	        <button type="button" class="button" ng-model="radioModel" btn-radio="'Middle'">Middle</button>
+	        <button type="button" class="button" ng-model="radioModel" btn-radio="'Right'">Right</button>
+	    </div>
+    </div> 	
+    <br><br>
+    <!-- END BUTTONS -->  	
+  	
+  	
+  	<!-- ALERT -->
+  	<div class="small-12 flat-base row">
+  		<h3>ALERT</h3>
+  		<button class='button' ng-click="addAlert()">Add Alert</button>
+  		<div class="small-6">
+  			<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+  		</div>  		
+  	</div> 	
+  	<br><br>
+  	<!-- END ALERT -->  	
+  	
+  	
+  	<!-- ACCORDIAN -->
+  	<div class="small-12 flat-base row">
+  	  <h3>ACCORDIAN</h3>
+	  <label class="checkbox">
+	    <input type="checkbox" ng-model="oneAtATime">
+	    Open only one at a time
+	  </label>
+	
+	  <accordion close-others="oneAtATime">
+	    <accordion-group heading="Static Header, initially expanded" is-open="true">
+	      This content is straight in the template.
+	    </accordion-group>
+	    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+	      {{group.content}}
+	    </accordion-group>
+	    <accordion-group heading="Dynamic Body Content">
+	      <p>The body of the accordion group grows to fit the contents</p>
+	        <button class="button small" ng-click="addItem()">Add Item</button>
+	        <div ng-repeat="item in items">{{item}}</div>
+	    </accordion-group>
+	    <accordion-group is-open="isopen">
+	        <accordion-heading>
+	            I can have markup, too! <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+	        </accordion-heading>
+	        This is just some content to illustrate fancy headings.
+	    </accordion-group>
+	  </accordion>
+	</div>
+	<br><br>
+  	<!-- END ACCORDIAN -->  
+  	
+  	
+  	<!-- PROGRESSBAR -->
+  	<div class="small-12 flat-base row">
+  		<h3>PROGRESS BAR}</h3>
+	    <h4>Static</h4>
+	    <div class="row">
+	        <div class="small-4 columns"><progressbar value="55"></progressbar></div>
+	        <div class="small-4 columns"><progressbar value="22" type="warning">22%</progressbar></div>
+	        <div class="small-4 columns"><progressbar max="200" value="166" type="alert"><i>166 / 200</i></progressbar></div>
+	    </div>
+	
+	    <hr />
+	    <h4>Dynamic</h4> 
+	    <button class="button small" type="button" ng-click="random()">Randomize</button>
+	    <div class="row">
+	        <div class="small-12 columns">
+	        	<progressbar value="dynamic">{{dynamic}} / {{max}}</progressbar>
+	        </div>
+	        <div class="small-12 columns">
+	        	<progressbar value="dynamic" type="success">{{dynamic}}%</progressbar>
+	        </div>
+	        <div class="small-12 columns">
+	        	<progressbar class="progress-striped" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></progressbar>
+	        </div>
+	    </div>	 
+  	</div>
+  	<br><br>
+  	<!-- END TOOLTIPS -->
+  	
+  	<!-- RATINGS -->
+  	<div class="small-12 flat-base row">
+  		<h3>RATINGS</h3>
+	    <h4>Default</h4>
+	    <rating value="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+	    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+	
+	    <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+	
+	    <button class="button small alert" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+	    <button class="button small" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+	    <hr />
+	
+	    <h4>Custom icons</h4>
+	    <div ng-init="x = 5">
+	      <rating value="x" max="15" state-on="'fa-check-circle'" state-off="'fa-check-circle-o'"></rating>
+	      <b>(<i>Rate:</i> {{x}})</b>
+	    </div>
+	    <div ng-init="y = 2">
+	      <rating value="y" rating-states="ratingStates"></rating>
+	      <b>(<i>Rate:</i> {{y}})</b>
+	    </div>
+  	</div>
+  	<br><br>
+  	<!-- END TOOLTIPS -->  	
+  	
+  	
+  	<!-- TABS -->
+  	<div class="small-12 flat-base row">
+	  	<h3>TABS</h3>
+		  <p>Select a tab by setting active binding to true:</p>
+		  <p>
+		    <button class="button small" ng-click="tabs[0].active = true">Select second tab</button>
+		    <button class="button small" ng-click="tabs[1].active = true">Select third tab</button>
+		  </p>
+		  <hr />
+		
+		  <tabset>
+		    <tab heading="Static title">		    	
+		    	Static content		    	
+		    </tab>
+		    
+		    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
+		      {{tab.content}}
+		    </tab>
+		    
+		    <tab select="alertMe()">
+		      <tab-heading>
+		        <i class="fa fa-bell"></i> Alert!
+		      </tab-heading>
+		      I've got an HTML heading, and a select callback. Pretty cool!
+		    </tab>		    
+		  </tabset>
+		
+		  <hr />
+		
+		  <tabset vertical="true" type="navType">
+		    <tab heading="Vertical 1">Vertical content 1</tab>
+		    <tab heading="Vertical 2">Vertical content 2</tab>
+		  </tabset>
+	</div>
+	<br><br>
+  	<!-- END TAB -->  
+  	
+  	
+ 	
+  	
+  	
+  	
+	</div>
+ 
+  	
+</div>
+
+			

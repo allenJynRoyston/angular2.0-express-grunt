@@ -1,0 +1,88 @@
+{
+	"scene":{
+		"fog":{
+			"enabled": false, "color": 13426943, "near": 500, "far": 5000
+		},
+		"axesHelper":{
+			"enabled": false, "length": 500
+		}
+	},
+    "camera": {
+        "fov": 50,	"aspectRatio": "auto",	"near": 0.1,	"far": 100000,
+        "position": {"x": 0, "y": 200, "z": 700}
+    },
+    "renderer": {
+        "bgColor": null,
+        "bgOpacity": 1
+    },
+    "stats": {
+        "show": true,
+        "domEle": "#fpsContainer"
+    },
+    "mouse": {
+        "controls": true
+    },  
+    "light": {
+    	"data":[
+    			{
+    			"enable": true,
+    			"type": "SpotLight",
+    			"color": 16777215,
+    			"position": {"x": 0, 	"y": 1050, 	"z": 0},
+    			"shadow": {"enabled": true, "shadowCameraVisible": true, "shadowDarkness": 0.75, "intensity": 2, "fov": 1000} 	
+        		}    	     		
+		]
+    },    
+     
+    "plane": {
+    	"data":[
+    			{
+    			"texture": "metal.jpg",
+       			"dimensions": 	{"width": 2000,	"height": 2000,  "widthSegment": 100, "heightSegment": 100 },
+        		"repeatSet": 	{"x": 10, "y": 10 },
+        		"position": 	{"x": 1.5707963267948966,  "y": -0.5, "z": 0 }
+        		}
+        ]
+    }, 
+    "skybox": {
+    		"data":[
+    			{
+    			 "package": "set1",  
+       			 "dimensions": { "x": 5000,	"y": 5000,	"z": 5000},
+       			 "color": { "color": 15225632 }
+        		}
+        	]
+        
+    },            
+    "particles": {
+    	"data":[
+    			{
+		        "make": true,
+		        "amount": 700,
+		        "size": {
+		        	"base": 50, "variation": 0
+		        },
+		        "range":{
+		        	"x":  1200, 	"y": 1500, 	"z": 1200,
+		        	"vx": 0, 		"vy":1000, 	"vz": 0,
+		        	"floor": 8, 	"ceiling": 1500
+		        },
+		        "type":{
+		        	"is": "texture",
+		        	"image": "particle.png"
+		        },	
+		        "physics":{
+		        	"gravity": "normal",
+		        	"behavior": "loop", 	
+		        	"loopType": "half"
+		        },			        	        
+		        "animation": 
+					{
+		            "rotationSpd": {"x": 0, 	"y": 0.02, 	"z": 0},
+		            "velocitySpd": {"x": 0.05, 	"y": 0.5,	"z": 0.0},
+		            "maxVelocity": {"x": 1,		"y": 18, 	"z": 5}         
+		        	}
+	        	}	        	
+        ]
+    }
+}

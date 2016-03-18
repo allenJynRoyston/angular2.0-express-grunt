@@ -1,0 +1,54 @@
+{
+    "camera": {
+        "fov": 25,
+        "aspectRatio": "auto",
+        "near": 0.1,
+        "far": 10000,
+        "position": {
+            "x": -15,
+            "y": -2500,
+            "z": 15
+        }
+    },
+    "renderer": {
+        "bgColor": null,
+        "bgOpacity": 1
+    },
+    "stats": {
+        "show": true,
+        "domEle": "#fpsContainer"
+    },
+    "light": {
+    
+        "color": 16777215,
+        "position": {
+            "x": -10,
+            "y": 10,
+            "z": 10
+        }
+    },  
+    
+    "plane": {
+			"data":
+			[
+			    {	"firstname":"john",  
+			    	"dimensions": { "width": 1000, "height": 1000, "widthSegment": 10, "heightSegment": 10},  
+			    	"repeatSet": {"x": 10,"y": 10},
+			    	 "position": {"x": 1.5707963267948966, "y": -0.5, "z": 0} 
+			    }
+			]
+			
+    },
+    
+    "effect":{
+    	
+    }, 
+      
+    "mouse": {
+        "controls": true
+    }    
+}
+
+       
+        
+

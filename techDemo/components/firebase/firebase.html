@@ -1,0 +1,154 @@
+<div ng-init="init()">
+	
+	<div ng-class="{false: 'hidden', true: 'visable'}[pageStatus.isLoading]">
+		<div ng-include src="'fragments/waiting/waveSpinner.html'"></div>
+	</div>
+	
+	<!-- PAGE LOADING -->
+	<div ng-class="{true: 'hidden', false: 'visable'}[pageStatus.isLoading]">
+
+		<!-- LOADED WITH ERRORS -->
+		<div ng-class="{true: 'visable', false: 'hidden'}[pageStatus.hasErrors]">
+			<div ng-include src="'fragments/error/hasErrors.html'"></div>			
+		</div>
+		
+		<!-- LOADED WITH NO ERRORS -->
+		<div ng-class="{false: 'visable', true: 'hidden'}[pageStatus.hasErrors]">
+			
+			
+			<div class="row">
+				<div class="small-12 columns">
+						<h1> {{greeting}}</h1>				
+						<br>
+				</div>		
+			</div>
+			<hr>	
+			
+	
+			<!-- REGISTER -->
+			<div class="row" ng-class="{false: 'visable', true: 'hidden'}[pageStatus.hasData]">		
+				<div class="small-12 columns">
+						
+				    	<h3>Registration</h3>
+				    	
+				    	
+				    		<centered>	    
+								<button ng-click="createNewAccount()" class="button"><small>Create New Account</small></button>
+								
+								<button ng-click="login()" class="button"><small>Login</small></button>
+							</centered>
+						    
+				</div>			
+			
+			</div>
+			
+		
+	
+			
+			<div ng-class="{true: 'visable', false: 'hidden'}[pageStatus.hasData]">	
+					<!-- ADMIN -->
+					<div class="row"> 
+						<div class="small-12 columns">	
+							
+							
+								<div class="small-12 columns">
+									<h3>Settings <button ng-click="openDeleteModal()" class="tiny alert pull-right">Delete Account</button></h3>	
+									<br><br>
+								</div>
+								<div class="small-6 columns">
+									<centered>
+										
+										<img ng-src="{{userImage.small}}" />
+										<figcaption><small>Profile Picture</small></figcaption><br>
+										<button class="button tiny" ng-click="editProfilePic()">Edit</button><br>
+										
+									</centered>
+								</div>
+								<div class="small-6 columns">
+							    		
+										<p>	
+											Email: <strong>{{userData.email}}</strong><br>
+											Username: <strong>{{userData.userName}}</strong><br>
+											Permission: <strong>{{userData.permission}}</strong><br>
+											<br>
+											First Name: <strong>{{userData.firstName|inflector:'humanize'}}</strong><br>
+											Last Name: <strong>{{userData.lastName|inflector:'humanize'}}</strong>
+											
+											
+										</p>
+										<br>	
+										<button class="button tiny" ng-click="editProfileData()">Edit</button>
+										<button class="button tiny" ng-click="changePassword()">Change Password</button>
+										<br>
+										
+								</div>  
+								
+								<div class="small-12 columns">
+										<br><br>
+										
+									
+								</div>
+	
+								    
+						</div>			
+						
+					</div>
+					<hr>
+					
+			
+					
+					
+					
+					<!-- POST COMMENT -->
+					<div class="row">
+						<div class="medium-6 small-12 columns">		
+								<br>
+						    	<h3>Post Comment</h3>
+								<br>
+								
+							
+									<div ng-class="{true: 'hidden', false: 'visable'}[logState]">
+										<h6>You must be logged in to post a comment.</h6>
+									</div>
+									
+									<div ng-class="{true: 'visable', false: 'hidden'}[userData.logState]">
+	
+								    	<textarea type='text' class="form-control" ng-model="msg" placeholder='Message'></textarea>
+								    	<button  ng-click="addToFirebase()" class="pull-right tiny small-12 columns">Submit</button>
+								    	
+									</div>
+								
+						</div>
+						
+						
+						
+						
+						
+						
+						<div class="medium-6 small-12 columns">	
+							
+						    <div>
+						    	<br>
+						    	<h3>Messages:</h3>
+						    	<br>
+								    <ul ng-repeat="data in allPosts">
+								      <a class="white-font" ng-click="deleteItem($index)">{{$index}}: {{data.name}}: {{data.message}} {{data.data}}</a>
+								    </ul>	    	
+						    </div>
+						</div>			
+						
+					</div>
+					<hr>
+			
+			</div>
+		
+		</div>
+		<!-- NO ERRORS LOADING -->
+		
+	</div>
+	<!-- END PAGE LOADING -->
+
+</div>
+
+
+

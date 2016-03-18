@@ -62,16 +62,6 @@ html
   body
     block content
   
-  script(type='text/javascript').
-    function initMap() {
-      setTimeout(function(){
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-      }, 2000)
-    }
-  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAO2sYcau79tW0H3jG3z_qmb94SE8XNSKs&callback=initMap')
   
   // declare globals
   script(type='text/javascript').

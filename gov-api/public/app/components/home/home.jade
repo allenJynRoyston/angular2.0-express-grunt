@@ -33,43 +33,7 @@
     h1 - Yo! -
     img.ui.large.bordered.rounded.image.centered(src='media/images/fullstack.png' )   
 
-.ui.vertical.stripe
-  .ui.middle.aligned.stackable.grid.container
-    .row
-      .eight.wide.column
-        h3.ui.header My name is Allen
-        p
-          | And I love to build things! It doesn't matter if it's a website, an app, or a giant killer robot designed to feast on the souls of the living (his name is Snuggles, btw).
-        h3.ui.header More Than Just a Developer
-        p
-          | This isn't just a job for me; this is my passion.  
-          | I'm constantly exploring new technologies and incorporating the very best of what I find.  
-      .six.wide.right.floated.column( ui-modal [options]="{selector: '#modal1', blurring: true, transition: 'scale'}")        
-        img.ui.large.bordered.rounded.image.is-pointer(src='{{page.imageModal.image}}') 
-      
-.ui.container
-  .ui.link.cards.centered.four.doubling
-    .card.blurring(*ngFor="#c of content" ui-dimmer [options]="{on: 'hover'}")
-      .ui.dimmer
-        .content
-          h1 {{c.text}}
-      .content
-        .header 
-          center
-            h3 {{c.title}}
-      .image(style='padding: 10px')
-        img(src='{{c.image}}' )        
 
-.ui.vertical.strip  
-  #modal1.ui.modal.basic
-    i.close.icon
-    .image.content
-      .ui.image.large.centered
-        img(src='{{page.imageModal.image}}')
-        center
-          small {{page.imageModal.description}}
-
-  
 .ui.vertical.stripe
   .ui.middle.aligned.stackable.grid.container
     .center.aligned.column
