@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../../components/ngClassExample/ngClassExample'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, ngClassExample_1;
+    var core_1, common_1;
     var ThreeApp;
     return {
         setters:[
@@ -19,18 +19,19 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
             },
             function (common_1_1) {
                 common_1 = common_1_1;
-            },
-            function (ngClassExample_1_1) {
-                ngClassExample_1 = ngClassExample_1_1;
             }],
         execute: function() {
             //------------------------------------
             ThreeApp = (function () {
-                function ThreeApp() {
+                //--------------
+                function ThreeApp(el) {
+                    this.el = el;
                     //--------------
                     this.globals = _root.globals;
+                    // send data to a listener
+                    //this.toParent.emit({message: "Sent from child!"})
                     this.toParent = new core_1.EventEmitter();
-                    this._toChild = { old: null, new: null, execute: function (data) { } };
+                    this._fromParent = { old: null, new: null, execute: null };
                     //--------------
                     //--------------
                     this.threeJS = {
@@ -52,12 +53,13 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                                 // INITIALIZE SCENE
                                 assets.scene = new THREE.Scene();
                                 assets.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 20000);
-                                assets.canvas = $("#myCanvas")[0];
+                                assets.canvas = $(root.selfRef).find('canvas')[0];
                                 assets.renderer = new THREE.WebGLRenderer({ canvas: assets.canvas });
                                 // WATCH FOR RESIZING
                                 $(window).bind('resize', function (e) {
                                     // do something on resize
                                 });
+                                // SETUP FULLSCREEN BUTTON
                                 $('.fullscreen-btn').bind('click', function () {
                                     var el = $('#game-container')[0], rfs = el.requestFullScreen ||
                                         el.webkitRequestFullScreen ||
@@ -65,6 +67,7 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                                     ;
                                     rfs.call(el);
                                 });
+                                // INITIALIZE THREEJS LAYOUT
                                 this.changeResolution(1);
                                 root.changeLayout('standard');
                                 // BEGIN RENDER LOOP
@@ -83,25 +86,27 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                                 //}
                                 var settings = options || {
                                     heightRatio: 1,
-                                    centerVert: true
+                                    widthRatio: 1,
+                                    align: 'center'
                                 };
-                                setTimeout(function () {
-                                    // resize containers
-                                    $('#canvas-container').height($('#game-container').height());
-                                    $('#myCanvas').width($('#game-layout').width());
-                                    $('#myCanvas').height($('#game-layout').height());
-                                    // set resolution of canvas
-                                    var aspectX = $('#game-layout').width(), aspectY = $('#game-container').height() * (settings.heightRatio);
-                                    if (self.assets.camera != null) {
-                                        self.assets.camera.aspect = aspectX / aspectY;
-                                        self.assets.camera.updateProjectionMatrix();
-                                        self.assets.renderer.setSize(aspectX, aspectY);
-                                        if (settings.centerVert) {
-                                            var centerTop = Math.abs((aspectY - parseInt($('#game-container').height())) / 2) + "px";
-                                            $('#myCanvas').css('margin-top', centerTop);
-                                        }
+                                // set resolution of canvas
+                                var aspectX = $($(root.selfRef).parent()[0]).width(), //* (settings.widthRatio),
+                                aspectY = $($(root.selfRef).parent()[0]).height() * (settings.heightRatio);
+                                if (self.assets.camera != null) {
+                                    self.assets.camera.aspect = aspectX / aspectY;
+                                    self.assets.camera.updateProjectionMatrix();
+                                    self.assets.renderer.setSize(aspectX, aspectY);
+                                    if (settings.align == 'center') {
+                                        var centerTop = Math.abs((aspectY - parseInt($(root.selfRef).parent().height())) / 2) + "px";
+                                        $(root.selfRef).find('canvas').css('margin-top', centerTop);
                                     }
-                                });
+                                    if (settings.align == 'top') {
+                                        $(root.selfRef).find('canvas').css('top', '0px');
+                                    }
+                                    if (settings.align == 'bottom') {
+                                        $(root.selfRef).find('canvas').css('bottom', '0px');
+                                    }
+                                }
                             },
                             //-------------------
                             //-------------------
@@ -150,35 +155,44 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                             }
                         }
                     };
+                    this.selfRef = el.nativeElement;
                 }
+                //--------------
                 //--------------
                 ThreeApp.prototype.ngOnInit = function () {
                     var t = this;
                     // load Threejs
-                    var js = document.createElement("script");
-                    js.type = "text/javascript";
-                    js.src = "node_modules/three/three.min.js";
-                    document.body.appendChild(js);
-                    js.onload = function () {
-                        t.threeJS.canvas.init();
-                    };
+                    if ($('[src="node_modules/three/three.min.js"]').length == 0) {
+                        var js = document.createElement("script");
+                        js.type = "text/javascript";
+                        js.src = "node_modules/three/three.min.js";
+                        document.body.appendChild(js);
+                        js.onload = function () {
+                            t.threeJS.canvas.init();
+                        };
+                    }
+                    else {
+                        setTimeout(function () {
+                            t.threeJS.canvas.init();
+                        }, 100);
+                    }
                     // create observable - watches for change
-                    t._toChild.execute = function (d) {
+                    t._fromParent.execute = function (d) {
                         this.new = JSON.stringify(d);
                         if (this.old !== this.new) {
                             t.executeInstructions(d);
                             this.old = this.new;
                         }
                     };
+                    // set timeout and run to initalize
                     setInterval(function () {
-                        t._toChild.execute(t.toChild);
+                        t._fromParent.execute(t.fromParent);
                     }, 100);
-                    t._toChild.execute(t.toChild);
+                    t._fromParent.execute(t.fromParent);
                 };
                 //--------------
                 //--------------
                 ThreeApp.prototype.executeInstructions = function (data) {
-                    console.log(data);
                     this.changeLayout(data.type);
                 };
                 //--------------
@@ -187,19 +201,19 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                     if (type == 'standard') {
                         this.threeJS.canvas.resizeCanvas({
                             heightRatio: .25,
-                            centerVert: true
+                            align: 'center'
                         });
                     }
                     if (type == 'standardFull') {
                         this.threeJS.canvas.resizeCanvas({
                             heightRatio: 1,
-                            centerVert: true
+                            align: 'center'
                         });
                     }
                     if (type == 'fullCanvas') {
                         this.threeJS.canvas.resizeCanvas({
                             heightRatio: 1,
-                            centerVert: true
+                            align: 'center'
                         });
                     }
                 };
@@ -210,15 +224,15 @@ System.register(['angular2/core', 'angular2/common', '../../components/ngClassEx
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], ThreeApp.prototype, "toChild", void 0);
+                ], ThreeApp.prototype, "fromParent", void 0);
                 ThreeApp = __decorate([
                     core_1.Component({
                         selector: 'three-js',
                         inputs: ['toChild'],
-                        directives: [common_1.CORE_DIRECTIVES, ngClassExample_1.ToggleButton],
-                        template: "\n    <canvas id=\"myCanvas\"></canvas>\n\n  "
+                        directives: [common_1.CORE_DIRECTIVES],
+                        template: "\n    <canvas></canvas>\n  "
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [core_1.ElementRef])
                 ], ThreeApp);
                 return ThreeApp;
             }());

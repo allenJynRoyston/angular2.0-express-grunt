@@ -1,19 +1,11 @@
 
-<!--output:template.html-->
-<div id="game-container">
-  <div class="ui grid">   
-    <div id="game-layout" [ngClass]="{standard: 'four wide column', fullCanvas: 'sixteen wide column', standardFull: 'nine wide column'}[layout.type]">
-      <div id="canvas-container">
-        <three-js (toParent)="executeEmit($event)" [toChild]="layout"></three-js>
-      </div>
-    </div>
-    <div [ngClass]="{standard: 'eight wide column', fullCanvas: '', standardFull: 'seven wide column'}[layout.type]">
-      <h1>type: {{layout.type}}</h1>
-      <h1>isFullscreen: {{layout.isFullscreen()}}</h1>
-      <h1>Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}</h1>
-      <h1>Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}</h1>
-      <h1>Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}</h1>
-    </div>
+<!--output:template.html--><br/>
+<div id="game-container" class="ui grid">     
+  <div style="padding: 0px; height: 100%" [ngClass]="{standard: 'eight wide column', fullCanvas: 'sixteen wide column', standardFull: 'nine wide column'}[layout.type]">
+    <three-js (toParent)="executeEmit($event)" [fromParent]="layout"></three-js>
+  </div>
+  <div style="padding: 0px; height: 100%" [ngClass]="{standard: 'eight wide column', fullCanvas: '', standardFull: 'seven wide column'}[layout.type]">
+    <three-js (toParent)="executeEmit($event)" [fromParent]="layout"></three-js>
   </div>
 </div>
 <div class="ui grid">
@@ -23,4 +15,11 @@
     <button [ngClass]="{standard: 'red'}[layout.type]" (click)="changeLayout(&quot;standard&quot;)" class="ui button">Standard (1:1 Ratio)</button>
     <button [ngClass]="{fullCanvas: 'red'}[layout.type]" (click)="changeLayout(&quot;fullCanvas&quot;)" class="ui button">Full Canvas (1:1 Ratio)</button>
   </div>
+</div>
+<div class="ui grid">
+  <div class="three wide column"><small>type: {{layout.type}}</small></div>
+  <div class="three wide column"><small>isFullscreen: {{layout.isFullscreen()}}</small></div>
+  <div class="three wide column"><small>Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}</small></div>
+  <div class="three wide column"><small>Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}</small></div>
+  <div class="three wide column"><small>Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}</small></div>
 </div>
