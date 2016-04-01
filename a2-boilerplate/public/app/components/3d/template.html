@@ -1,0 +1,24 @@
+<br/><br/>
+<div id="game-container">
+  <div class="ui grid">   
+    <div [ngClass]="{standard: 'four wide column', fullCanvas: 'sixteen wide column', standardFull: 'four wide column'}[layout.type]">
+      <div id="canvas-container">
+        <canvas id="myCanvas"></canvas>
+      </div>
+    </div>
+    <div [ngClass]="{standard: 'eight wide column', fullCanvas: '', standardFull: 'eight wide column'}[layout.type]">
+      <h1>isFullscreen: {{layout.isFullscreen()}}</h1>
+      <h1>Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}</h1>
+      <h1>Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}</h1>
+      <h1>Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}</h1>
+    </div>
+  </div>
+</div><br/><br/>
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <button class="ui button fullscreen-btn">Fullscreen Mode</button>
+    <button [ngClass]="{standardFull: 'red'}[layout.type]" (click)="changeLayout(&quot;standardFull&quot;)" class="ui button">Standard (Maintain Full Ratio)</button>
+    <button [ngClass]="{standard: 'red'}[layout.type]" (click)="changeLayout(&quot;standard&quot;)" class="ui button">Standard (1:1 Ratio)</button>
+    <button [ngClass]="{fullCanvas: 'red'}[layout.type]" (click)="changeLayout(&quot;fullCanvas&quot;)" class="ui button">Full Canvas (1:1 Ratio)</button>
+  </div>
+</div><br/><br/>

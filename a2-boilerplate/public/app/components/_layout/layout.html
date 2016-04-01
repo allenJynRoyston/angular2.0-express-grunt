@@ -1,0 +1,35 @@
+
+<div id="sidebarRight" class="ui right vertical menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
+<div id="sidebarLeft" class="ui left vertical menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
+<div id="sidebarBottom" class="ui bottom menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" ui-sidebar="ui-sidebar" [options]="{selector: &quot;#sidebarRight&quot;, show: &quot;false&quot;}" class="item"><span>{{r.name}} </span></a></span></div>
+<div id="sidebarTop" class="ui top menu sidebar inverted"><span *ngFor="#r of routes"><a (click)="linkTo(r.path)" class="item"><i class="{{r.icon}}">&nbsp;&nbsp;</i><span>{{r.name}} </span></a></span></div>
+<!-- NORMAL HEADER-->
+<div ui-visibility="ui-visibility" [options]="{once: false, onBottomPassed: {selector: '.fixed.menu', action: 'transition', params: 'fade in'}, onBottomPassedReverse: {selector: '.fixed.menu', action: 'transition', params: 'fade out'} }" class="ui inverted vertical center aligned segment mobile vanish">
+  <div class="ui">
+    <div class="ui large secondary inverted pointing menu">
+      <div class="left menu">   
+        <div class="item"><a ui-sidebar="ui-sidebar" [options]="{selector: '#sidebarTop', animation: 'scale down'}" class="ui facebook button"><i class="fa fa-bars"></i></a></div>
+        <div class="item"><a (click)="linkTo(['Home'])" class="ui button facebook"><i class="fa fa-home fa">                 </i></a></div>
+      </div>
+      <div class="right menu">
+        <div class="item"><a class="ui button">
+                       
+            Button 1</a></div>
+        <div class="item"><a class="ui button">Button 2            </a></div>
+      </div>
+    </div>
+  </div>
+  <!-- FIXED HEADER-->
+  <div class="ui large top fixed hidden menu mobile hidden">
+    <div class="ui container"><a (click)="linkTo(['Home'])" class="item"><img src="media/images/logo.png" style="width: auto; height: 50px"/></a><a *ngFor="#r of routes" (click)="linkTo(r.path)" class="item">{{r.name}}</a></div>
+  </div>
+</div>
+<!-- MOBILE ONLY-->
+<div ui-sticky="ui-sticky" style="width: 100%" class="ui inverted vertical center aligned segment mobile only fixed top sticky">
+  <div class="ui container"><a ui-sidebar="ui-sidebar" [options]="{selector: '#sidebarRight', animation: 'uncover'}" class="ui button circular facebook"><i class="fa fa-th fa"></i></a></div>
+</div>
+<!-- Page Contents-->
+<div class="pusher">
+  <router-outlet></router-outlet>
+</div>
+<parts-footer></parts-footer>

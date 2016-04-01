@@ -1,0 +1,25 @@
+//output:template.html
+
+#game-container
+  .ui.grid    
+    div#game-layout([ngClass]="{standard: 'four wide column', fullCanvas: 'sixteen wide column', standardFull: 'nine wide column'}[layout.type]")
+      #canvas-container
+        three-js(  (toParent)="executeEmit($event)", [toChild]='layout'  )
+    div([ngClass]="{standard: 'eight wide column', fullCanvas: '', standardFull: 'seven wide column'}[layout.type]")
+          h1 type: {{layout.type}}
+          h1 isFullscreen: {{layout.isFullscreen()}}
+          h1 Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}
+          h1 Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}
+          h1 Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}
+
+
+.ui.grid
+  .sixteen.wide.column
+    button.ui.button.fullscreen-btn
+      | Fullscreen Mode
+    button.ui.button([ngClass]="{standardFull: 'red'}[layout.type]", (click)='changeLayout("standardFull")')
+      | Standard (Maintain Full Ratio)
+    button.ui.button([ngClass]="{standard: 'red'}[layout.type]", (click)='changeLayout("standard")')
+      | Standard (1:1 Ratio)
+    button.ui.button([ngClass]="{fullCanvas: 'red'}[layout.type]", (click)='changeLayout("fullCanvas")')
+      | Full Canvas (1:1 Ratio)
