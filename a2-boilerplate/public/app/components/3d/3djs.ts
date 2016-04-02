@@ -74,10 +74,29 @@ export class ThreeApp {
               t.threeJS.canvas.init()
           }
     }
+    // if threeJS already exists, but needs to be checked for it to be loaded
     else{
-      setTimeout(function(){
-        t.threeJS.canvas.init()
-      }, 100)
+      function scriptLoadedTest(){
+        setTimeout(function(){
+          try {
+              var test = new THREE.Scene();
+              clearInterval(this)
+          }
+          catch(err) {
+              console.log("Three does not exist")
+          }
+          finally{
+              if(test != undefined){
+                t.threeJS.canvas.init()
+              }
+              else{
+                scriptLoadedTest()
+              }
+          }
+        }, 1)
+      }
+      var intv = scriptLoadedTest();
+
     }
 
 

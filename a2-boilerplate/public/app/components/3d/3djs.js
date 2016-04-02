@@ -172,9 +172,26 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                         };
                     }
                     else {
-                        setTimeout(function () {
-                            t.threeJS.canvas.init();
-                        }, 100);
+                        function scriptLoadedTest() {
+                            setTimeout(function () {
+                                try {
+                                    var test = new THREE.Scene();
+                                    clearInterval(this);
+                                }
+                                catch (err) {
+                                    console.log("Three does not exist");
+                                }
+                                finally {
+                                    if (test != undefined) {
+                                        t.threeJS.canvas.init();
+                                    }
+                                    else {
+                                        scriptLoadedTest();
+                                    }
+                                }
+                            }, 1);
+                        }
+                        var intv = scriptLoadedTest();
                     }
                     // create observable - watches for change
                     t._fromParent.execute = function (d) {
