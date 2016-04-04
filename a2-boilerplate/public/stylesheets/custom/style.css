@@ -154,6 +154,10 @@ html.ios body {
 
 
 /* HOMEPAGE */
+.hidden{
+  display: none;
+}
+
 .hidden.menu {
   display: none;
 }

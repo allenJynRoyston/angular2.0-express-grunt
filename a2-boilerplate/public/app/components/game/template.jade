@@ -1,31 +1,38 @@
 //output:template.html
 br 
+br
 
-#game-container.ui.grid      
-    div(style='padding: 0px; height: 100%', [ngClass]="{standard: 'eight wide column', fullCanvas: 'sixteen wide column', standardFull: 'nine wide column'}[layout.type]")
-        three-js( (toParent)="executeEmit($event)", [fromParent]='layout' )
-    div(style='padding: 0px; height: 100%', [ngClass]="{standard: 'eight wide column', fullCanvas: '', standardFull: 'seven wide column'}[layout.type]")
-        three-js( (toParent)="executeEmit($event)", [fromParent]='layout' )
+#game-container.ui.grid    
+    div(style='padding: 0px; height: 100%; overflow: hidden', [ngClass]="{FullThreeJS: 'sixteen wide column left', FullPhaser: 'hidden', Split: 'eight wide column'}[layout.type]")
+        h1(style='position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px') ThreeJS (3D  Engine)
+        three-js( (three)="threeData1($event)",  [settings]="{file: 'node_modules/three/three.min.js'}")
+    div(style='padding: 0px; height: 100%; overflow: hidden',  [ngClass]="{FullThreeJS: 'hidden', FullPhaser: 'sixteen wide column left', Split: 'eight wide column'}[layout.type]")
+        h1(style='position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px') Phaser (2D  Engine)
+        phaser( (phaser)="phaserData1($event)", [settings]="{file: 'node_modules/phaser/build/phaser.min.js'}")
 
-.ui.grid
+.ui.grid.container
   .sixteen.wide.column
-    button.ui.button.fullscreen-btn
+    button.ui.button(fullscreen-btn [options]='{selector: "game-container"}')
       | Fullscreen Mode
-    button.ui.button([ngClass]="{standardFull: 'red'}[layout.type]", (click)='changeLayout("standardFull")')
-      | Standard (Maintain Full Ratio)
-    button.ui.button([ngClass]="{standard: 'red'}[layout.type]", (click)='changeLayout("standard")')
-      | Standard (1:1 Ratio)
-    button.ui.button([ngClass]="{fullCanvas: 'red'}[layout.type]", (click)='changeLayout("fullCanvas")')
-      | Full Canvas (1:1 Ratio)
+    button.ui.button([ngClass]="{FullThreeJS: 'red'}[layout.type]", (click)='changeLayout("FullThreeJS")')
+      | ThreeJS
+    button.ui.button([ngClass]="{FullPhaser: 'red'}[layout.type]", (click)='changeLayout("FullPhaser")')
+      | Phaser
+    button.ui.button([ngClass]="{Split: 'red'}[layout.type]", (click)='changeLayout("Split")')
+      | Split
 
-.ui.grid
-  .three.wide.column
-    small type: {{layout.type}}
-  .three.wide.column
-    small isFullscreen: {{layout.isFullscreen()}}
-  .three.wide.column
-    small Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}
-  .three.wide.column
-    small Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}
-  .three.wide.column
-    small Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}
+br
+br
+
+//-
+  .ui.grid
+    .three.wide.column
+      small type: {{layout.type}}
+    .three.wide.column
+      small isFullscreen: {{layout.isFullscreen()}}
+    .three.wide.column
+      small Screen is good: {{layout.meetsDesktopRequirement().screenSizeGood}}
+    .three.wide.column
+      small Window Is Good: {{layout.meetsDesktopRequirement().windowSizeGood}}
+    .three.wide.column
+      small Offer Fullscreen?: {{layout.meetsDesktopRequirement().offerFS}}

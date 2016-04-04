@@ -12,16 +12,16 @@ import {CORE_DIRECTIVES}     from 'angular2/common';
 declare var $;
 declare var Object;
 declare var _root;
-declare var THREE;
+declare var Phaser;
 //------------------------------------
 @Component({
-  selector: 'three-js',
+  selector: 'phaser',
   directives: [CORE_DIRECTIVES],
   template: `
-    <canvas></canvas>
+    <div></div>
   `
 })
-export class ThreeComponent {
+export class PhaserComponent {
 
   //--------------
   public globals = _root.globals;
@@ -30,30 +30,10 @@ export class ThreeComponent {
 
 
   // send data to a listener
-  //this.threeObj.emit({message: "Sent from child!"})
-  @Output() three = new EventEmitter();
-  //@ExportObj() threeJS = new EventEmitter();
-
-  // recieve information from parent
-  /*
-    // create observable - watches for change
-    t._fromParent.execute = function(d){
-      this.new = JSON.stringify(d);
-      if(this.old !== this.new){
-          // do something
-          this.old = this.new;
-      }
-    }
-    // set timeout and run to initalize
-    setInterval(function(){
-      t._fromParent.execute(t.fromParent);
-    }, 100);
-    t._fromParent.execute(t.fromParent);
-
-  */
+  //this.phaser.emit({message: "Sent from child!"})
+  @Output() phaser = new EventEmitter();
   @Input() settings:any;
   @Input() layout:any;
-   public _layout = {old: null, new: null, execute: null}
 
    //--------------
    constructor(private el: ElementRef) {
@@ -73,21 +53,21 @@ export class ThreeComponent {
           js.src = t.settings.file;
           document.body.appendChild(js);
           js.onload = function(){
-              t.initThreejs()
+              t.initPhaser()
           }
     }
-    // if threeJS already exists, but needs to be checked for it to be loaded
+    // if phaser already exists, but needs to be checked for it to be loaded
     else{
       function scriptLoadedTest(){
         setTimeout(function(){
           try {
-              var test = new THREE.Scene();
+              var test = new Phaser.Game();
               clearInterval(this)
           }
           catch(err) {}
           finally{
               if(test != undefined){
-                t.initThreejs();
+                t.initPhaser();
               }
               else{
                 scriptLoadedTest()
@@ -99,28 +79,12 @@ export class ThreeComponent {
 
     }
 
-    /*
-    // create observable - watches for change
-    t._layout.execute = function(d){
-      this.new = JSON.stringify(d);
-      if(this.old !== this.new){
-          t.executeInstructions(d);
-          this.old = this.new;
-      }
-    }
-    // set timeout and run to initalize
-    setInterval(function(){
-      t._layout.execute(t.layout);
-    }, 100);
-    t._layout.execute(t.layout);
-    */
-
   }
   //--------------
 
   //--------------
-  initThreejs(){
-    this.three.emit({container: this.selfRef.getElementsByTagName('canvas')})
+  initPhaser(){
+    this.phaser.emit({container: this.selfRef})
   }
   //--------------
 
