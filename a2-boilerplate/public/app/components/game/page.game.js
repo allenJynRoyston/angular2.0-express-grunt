@@ -73,45 +73,83 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                         },
                         meetsWindowRequirement: function () {
                         },
-                        type: "Split" // standard, fullCanvas
+                        type: null // standard, fullCanvas
                     };
                     //---------------
                     //--------------
                     this.phaser = {
+                        //------------------- declare assets
+                        assets: {
+                            canvas: null,
+                            gameObj: null,
+                            camera: null,
+                            renderer: null,
+                            planes: []
+                        },
+                        //-------------------
+                        //-------------------
                         canvas: {
-                            resizeCanvas: function (options) {
-                                var root = this.parent;
-                                var self = this.parent.threeJS;
-                                /*
-                                var settings = options || {
-                                  heightRatio: 1,
-                                  widthRatio: 1,
-                                  align: 'center'
+                            parent: this,
+                            //-------------------
+                            init: function (d) {
+                                var t = this, root = this.parent, self = this.parent.phaser, assets = this.parent.phaser.assets;
+                                assets.canvas = d.container;
+                                assets.gameObj = new Phaser.Game(1080, 800, Phaser.WEBGL, d.container, { preload: preload, create: create, update: update });
+                                var stars;
+                                var waveformX;
+                                var waveformY;
+                                var xl;
+                                var yl;
+                                var cx = 0;
+                                var cy = 0;
+                                function preload() {
+                                    assets.gameObj.load.image('pic', 'media/images/mobilefirst.png');
                                 }
-                      
+                                function create() {
+                                    assets.gameObj.stage.backgroundColor = '#0055ff';
+                                    var pic = assets.gameObj.add.sprite(assets.gameObj.world.centerX, assets.gameObj.world.centerY, 'pic');
+                                    pic.anchor.setTo(0.5, 0.5);
+                                }
+                                function update() {
+                                }
+                            },
+                            resizeCanvas: function (options) {
+                                var assets = this.parent.phaser.assets;
+                                var assets = this.parent.phaser.assets;
+                                var settings = options || {
+                                    heightRatio: 1,
+                                    widthRatio: 1,
+                                    align: 'center',
+                                    type: 'full'
+                                };
                                 // set resolution of canvas
-                                var	aspectX = $( $(assets.canvas).parent().parent()[0] ).width(),   //* (settings.widthRatio),
-                                    aspectY = $( $(assets.canvas).parent().parent()[0] ).height()  * (settings.heightRatio);
-                      
-                                if(self.assets.camera != null){
-                                  self.assets.camera.aspect = aspectX / aspectY;
-                                  self.assets.camera.updateProjectionMatrix();
-                                  self.assets.renderer.setSize( aspectX, aspectY );
-                      
-                                  if(settings.align == 'center'){
-                                      var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height()))/2)+ "px";
-                                      $(assets.canvas).css('margin-top', m )
-                                  }
-                      
-                                  if(settings.align == 'top'){
-                                      $(assets.canvas).css('margin-top', '0px' )
-                                  }
-                      
-                                  if(settings.align == 'bottom'){
-                                      var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height())+ "px";
-                                      $(assets.canvas).css('margin-top', m )
-                                  }
-                                  */
+                                var aspectX = $($(assets.canvas).parent()[0]).width(), //* (settings.widthRatio),
+                                aspectY = $($(assets.canvas).parent()[0]).height() * (settings.heightRatio);
+                                // alignment
+                                if (settings.align == 'center') {
+                                    var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height())) / 2) + "px";
+                                    $(assets.canvas).parent().css('margin-top', m);
+                                }
+                                if (settings.align == 'top') {
+                                    $(assets.canvas).parent().css('margin-top', '0px');
+                                }
+                                if (settings.align == 'bottom') {
+                                    var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height()) + "px";
+                                    $(assets.canvas).parent().css('margin-top', m);
+                                }
+                                // resolution
+                                if (settings.type == "fit") {
+                                    $(assets.canvas).find('canvas').css('width', aspectX);
+                                    $(assets.canvas).find('canvas').css('height', aspectY);
+                                    assets.gameObj.width = aspectX;
+                                    assets.gameObj.height = aspectY;
+                                }
+                                if (settings.type == "full") {
+                                    $(assets.canvas).find('canvas').css('width', $($(assets.canvas).parent().parent()[0]).width());
+                                    $(assets.canvas).find('canvas').css('height', $($(assets.canvas).parent().parent()[0]).height());
+                                    assets.gameObj.width = $($(assets.canvas).parent().parent()[0]).width();
+                                    assets.gameObj.height = $($(assets.canvas).parent().parent()[0]).height();
+                                }
                             }
                         }
                     };
@@ -243,15 +281,42 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                             });
                         }
                         if (type == 'FullPhaser') {
-                            t.threeJS.canvas.resizeCanvas({
+                            t.phaser.canvas.resizeCanvas({
                                 heightRatio: 1,
-                                align: 'center'
+                                align: 'center',
+                                type: 'full'
                             });
                         }
                         if (type == 'Split') {
                             t.threeJS.canvas.resizeCanvas({
                                 heightRatio: 1,
                                 align: 'center'
+                            });
+                            t.phaser.canvas.resizeCanvas({
+                                heightRatio: 1,
+                                align: 'center',
+                                type: 'fit'
+                            });
+                        }
+                        if (type == 'ThreeFit') {
+                            t.threeJS.canvas.resizeCanvas({
+                                heightRatio: .50,
+                                align: 'center'
+                            });
+                            t.phaser.canvas.resizeCanvas({
+                                heightRatio: 1,
+                                align: 'center'
+                            });
+                        }
+                        if (type == 'PhaserFit') {
+                            t.threeJS.canvas.resizeCanvas({
+                                heightRatio: 1,
+                                align: 'center'
+                            });
+                            t.phaser.canvas.resizeCanvas({
+                                heightRatio: .50,
+                                align: 'center',
+                                type: 'fit'
                             });
                         }
                     });
@@ -260,67 +325,12 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                 //---------------
                 gameComponent.prototype.threeData1 = function (three) {
                     this.threeJS.canvas.init(three);
-                    this.changeLayout("FullPhaser");
+                    this.changeLayout("Split");
                 };
                 //---------------
                 //---------------
                 gameComponent.prototype.phaserData1 = function (phaser) {
-                    var game = new Phaser.Game(1080, 800, Phaser.AUTO, phaser.container, { preload: preload, create: create, update: update });
-                    var stars;
-                    var waveformX;
-                    var waveformY;
-                    var xl;
-                    var yl;
-                    var cx = 0;
-                    var cy = 0;
-                    function preload() {
-                        game.load.image('pic', 'media/images/10.gif');
-                    }
-                    function create() {
-                        game.stage.backgroundColor = '#0055ff';
-                        //  Generate our motion data
-                        var sprite = { x: 256, y: 0 };
-                        var tween = game.add.tween(sprite).to({ x: 0 }, 3000, "Cubic.easeInOut", true, 0, -1, true);
-                        var tween2 = game.add.tween(sprite).to({ y: 200 }, 2000, "Bounce.easeInOut", true, 0, -1, true);
-                        waveformX = tween.generateData(60);
-                        waveformY = tween2.generateData(60);
-                        xl = waveformX.length - 1;
-                        yl = waveformY.length - 1;
-                        var sprites = game.add.spriteBatch();
-                        stars = [];
-                        var picWidth = game.cache.getImage('pic').width;
-                        var picHeight = game.cache.getImage('pic').height;
-                        //  Divide it into 16x10 chunks
-                        var xs = 32;
-                        var ys = 16;
-                        for (var y = 0; y < Math.floor(picHeight / ys); y++) {
-                            for (var x = 0; x < Math.floor(picWidth / xs); x++) {
-                                var star = game.make.sprite(150 + (x * xs), 50 + (y * ys), 'pic');
-                                star.crop(new Phaser.Rectangle(x * xs, y * ys, xs * 1.5, ys * 1.6));
-                                star.ox = star.x;
-                                star.oy = star.y;
-                                star.cx = x;
-                                star.cy = y;
-                                star.anchor.set(0.5);
-                                sprites.addChild(star);
-                                stars.push(star);
-                            }
-                        }
-                    }
-                    function update() {
-                        for (var i = 0, len = stars.length; i < len; i++) {
-                            stars[i].x = stars[i].ox + waveformX[stars[i].cx].x;
-                            stars[i].y = stars[i].oy + waveformY[stars[i].cy].y;
-                            stars[i].cx++;
-                            if (stars[i].cx > xl) {
-                                stars[i].cx = 0;
-                            }
-                            stars[i].cy++;
-                            if (stars[i].cy > yl) {
-                                stars[i].cy = 0;
-                            }
-                        }
-                    }
+                    this.phaser.canvas.init(phaser);
                 };
                 gameComponent = __decorate([
                     core_1.Component({

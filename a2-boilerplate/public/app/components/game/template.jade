@@ -3,10 +3,12 @@ br
 br
 
 #game-container.ui.grid    
-    div(style='padding: 0px; height: 100%; overflow: hidden', [ngClass]="{FullThreeJS: 'sixteen wide column left', FullPhaser: 'hidden', Split: 'eight wide column'}[layout.type]")
+    div(style='padding: 0px; height: 100%; overflow: hidden', 
+        [ngClass]="{FullThreeJS: 'sixteen wide column left', FullPhaser: 'hidden', Split: 'eight wide column', ThreeFit: 'eight wide column left', PhaserFit: 'eight wide column left'}[layout.type]")
         h1(style='position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px') ThreeJS (3D  Engine)
         three-js( (three)="threeData1($event)",  [settings]="{file: 'node_modules/three/three.min.js'}")
-    div(style='padding: 0px; height: 100%; overflow: hidden',  [ngClass]="{FullThreeJS: 'hidden', FullPhaser: 'sixteen wide column left', Split: 'eight wide column'}[layout.type]")
+    div(style='padding: 0px; height: 100%; overflow: hidden',  
+        [ngClass]="{FullThreeJS: 'hidden', FullPhaser: 'sixteen wide column left', Split: 'eight wide column', ThreeFit: 'eight wide column left', PhaserFit: 'eight wide column left'}[layout.type]")
         h1(style='position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px') Phaser (2D  Engine)
         phaser( (phaser)="phaserData1($event)", [settings]="{file: 'node_modules/phaser/build/phaser.min.js'}")
 
@@ -20,7 +22,10 @@ br
       | Phaser
     button.ui.button([ngClass]="{Split: 'red'}[layout.type]", (click)='changeLayout("Split")')
       | Split
-
+    button.ui.button([ngClass]="{ThreeFit: 'red'}[layout.type]", (click)='changeLayout("ThreeFit")')
+      | Three (Fit)
+    button.ui.button([ngClass]="{PhaserFit: 'red'}[layout.type]", (click)='changeLayout("PhaserFit")')
+      | Phaser (Fit)
 br
 br
 

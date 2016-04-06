@@ -1,11 +1,11 @@
 
 <!--output:template.html--><br/><br/>
 <div id="game-container" class="ui grid">   
-  <div style="padding: 0px; height: 100%; overflow: hidden" [ngClass]="{FullThreeJS: 'sixteen wide column left', FullPhaser: 'hidden', Split: 'eight wide column'}[layout.type]">
+  <div style="padding: 0px; height: 100%; overflow: hidden" [ngClass]="{FullThreeJS: 'sixteen wide column left', FullPhaser: 'hidden', Split: 'eight wide column', ThreeFit: 'eight wide column left', PhaserFit: 'eight wide column left'}[layout.type]">
     <h1 style="position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px">ThreeJS (3D  Engine)</h1>
     <three-js (three)="threeData1($event)" [settings]="{file: 'node_modules/three/three.min.js'}"></three-js>
   </div>
-  <div style="padding: 0px; height: 100%; overflow: hidden" [ngClass]="{FullThreeJS: 'hidden', FullPhaser: 'sixteen wide column left', Split: 'eight wide column'}[layout.type]">
+  <div style="padding: 0px; height: 100%; overflow: hidden" [ngClass]="{FullThreeJS: 'hidden', FullPhaser: 'sixteen wide column left', Split: 'eight wide column', ThreeFit: 'eight wide column left', PhaserFit: 'eight wide column left'}[layout.type]">
     <h1 style="position: absolute; color: white; width: 100%; text-align: center; margin-top: 10px">Phaser (2D  Engine)</h1>
     <phaser (phaser)="phaserData1($event)" [settings]="{file: 'node_modules/phaser/build/phaser.min.js'}"></phaser>
   </div>
@@ -16,5 +16,7 @@
     <button [ngClass]="{FullThreeJS: 'red'}[layout.type]" (click)="changeLayout(&quot;FullThreeJS&quot;)" class="ui button">ThreeJS</button>
     <button [ngClass]="{FullPhaser: 'red'}[layout.type]" (click)="changeLayout(&quot;FullPhaser&quot;)" class="ui button">Phaser</button>
     <button [ngClass]="{Split: 'red'}[layout.type]" (click)="changeLayout(&quot;Split&quot;)" class="ui button">Split</button>
+    <button [ngClass]="{ThreeFit: 'red'}[layout.type]" (click)="changeLayout(&quot;ThreeFit&quot;)" class="ui button">Three (Fit)</button>
+    <button [ngClass]="{PhaserFit: 'red'}[layout.type]" (click)="changeLayout(&quot;PhaserFit&quot;)" class="ui button">Phaser (Fit)</button>
   </div>
 </div><br/><br/>
