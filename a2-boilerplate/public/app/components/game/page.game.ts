@@ -5,6 +5,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 // components
 import {ThreeComponent}  from '../../components/3d/3djs';
 import {PhaserComponent}  from '../../components/phaser/phaser'
+import {uiSemanticEmbed} from '../../directives/semantic-ui-embed/embed.directive';
 
 // directives
 import {fullscreenBtn}  from '../../directives/fullscreenBtn/fullscreenBtn';
@@ -23,6 +24,7 @@ declare var Phaser;
 		CORE_DIRECTIVES,
 		ThreeComponent,
     PhaserComponent,
+    uiSemanticEmbed,
     fullscreenBtn
 	],
 	styles: [`

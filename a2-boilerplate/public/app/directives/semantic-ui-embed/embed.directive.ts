@@ -18,6 +18,7 @@ export class uiSemanticEmbed {
       if(i.options == undefined){
         i.options = {}
       }
+      console.log(i.options)
       $(el.nativeElement).embed(i.options)
     }, 0)
   }

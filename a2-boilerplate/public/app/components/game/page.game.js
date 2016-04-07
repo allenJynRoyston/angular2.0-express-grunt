@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs', '../../components/phaser/phaser', '../../directives/fullscreenBtn/fullscreenBtn'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs', '../../components/phaser/phaser', '../../directives/semantic-ui-embed/embed.directive', '../../directives/fullscreenBtn/fullscreenBtn'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, _3djs_1, phaser_1, fullscreenBtn_1;
+    var core_1, common_1, _3djs_1, phaser_1, embed_directive_1, fullscreenBtn_1;
     var gameComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
             },
             function (phaser_1_1) {
                 phaser_1 = phaser_1_1;
+            },
+            function (embed_directive_1_1) {
+                embed_directive_1 = embed_directive_1_1;
             },
             function (fullscreenBtn_1_1) {
                 fullscreenBtn_1 = fullscreenBtn_1_1;
@@ -341,6 +344,7 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                             common_1.CORE_DIRECTIVES,
                             _3djs_1.ThreeComponent,
                             phaser_1.PhaserComponent,
+                            embed_directive_1.uiSemanticEmbed,
                             fullscreenBtn_1.fullscreenBtn
                         ],
                         styles: ["\n    #game-container{\n      margin-left: auto;\n      margin-right: auto;\n      width: 1080px;\n      height: 800px;\n      background-color: gray;\n      overflow: hidden;\n    }\n\n    #canvas-container{\n        background-color: black;\n    }\n\n    #myCanvas{\n      padding-left: 0;\n      padding-right: 0;\n      margin-left: auto;\n      margin-right: auto;\n      vertical-align:center;\n      display: block;\n    }\n  "],
