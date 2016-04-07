@@ -141,7 +141,7 @@ export class gameComponent {
         t.phaser.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center',
-          type: 'fit'
+          type: 'full'
         });
       }
 
@@ -153,7 +153,8 @@ export class gameComponent {
 
         t.phaser.canvas.resizeCanvas({
           heightRatio: 1,
-          align: 'center'
+          align: 'center',
+          type: 'full'
         });
       }
 
@@ -265,23 +266,6 @@ export class gameComponent {
           var	aspectX = $( $(assets.canvas).parent()[0] ).width(),   //* (settings.widthRatio),
               aspectY = $( $(assets.canvas).parent()[0] ).height() * (settings.heightRatio);
 
-
-          // alignment
-          if(settings.align == 'center'){
-              var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height()))/2)+ "px";
-              $(assets.canvas).parent().css('margin-top', m )
-          }
-
-          if(settings.align == 'top'){
-                $(assets.canvas).parent().css('margin-top', '0px' )
-          }
-
-          if(settings.align == 'bottom'){
-              var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height())+ "px";
-                $(assets.canvas).parent().css('margin-top', m )
-          }
-
-
           // resolution
           if(settings.type == "fit"){
             $(assets.canvas).find('canvas').css('width', aspectX)
@@ -295,6 +279,24 @@ export class gameComponent {
             $(assets.canvas).find('canvas').css('height', $( $(assets.canvas).parent().parent()[0] ).height())
             assets.gameObj.width = $( $(assets.canvas).parent().parent()[0] ).width();
             assets.gameObj.height = $( $(assets.canvas).parent().parent()[0] ).height();
+          }
+
+
+
+          // alignment
+          if(settings.align == 'center'){
+              var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height()))/2)+ "px";
+              $(assets.canvas).parent().css('margin-top', m  )
+              $(assets.canvas).parent().css('border', '2px solid green' )
+          }
+
+          if(settings.align == 'top'){
+                $(assets.canvas).parent().css('margin-top', '0px' )
+          }
+
+          if(settings.align == 'bottom'){
+              var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height())+ "px";
+                $(assets.canvas).parent().css('margin-top', m )
           }
 
         }
