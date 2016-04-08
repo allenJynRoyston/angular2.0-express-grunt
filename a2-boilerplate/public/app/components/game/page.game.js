@@ -271,6 +271,14 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                 //--------------
                 //---------------
                 gameComponent.prototype.ngOnInit = function () {
+                    // load Threejs
+                    var js = document.createElement("script");
+                    js.type = "text/javascript";
+                    js.src = '/javascripts/objects/threeJS.js';
+                    document.body.appendChild(js);
+                    js.onload = function () {
+                        console.log(__threeJS);
+                    };
                 };
                 //---------------
                 //--------------

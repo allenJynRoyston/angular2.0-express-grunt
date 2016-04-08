@@ -17,6 +17,7 @@ declare var $;
 declare var _root;
 declare var THREE;
 declare var Phaser;
+declare var __threeJS;
 
 @Component({
 	selector: 'game-component',
@@ -108,6 +109,17 @@ export class gameComponent {
 
   //---------------
 	ngOnInit(){
+
+    // load Threejs
+
+      var js = document.createElement("script");
+          js.type = "text/javascript";
+          js.src = '/javascripts/objects/threeJS.js';
+          document.body.appendChild(js);
+          js.onload = function(){
+              console.log(__threeJS)
+          }
+
 
 	}
   //---------------
