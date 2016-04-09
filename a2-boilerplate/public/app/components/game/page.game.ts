@@ -18,6 +18,7 @@ declare var _root;
 declare var THREE;
 declare var Phaser;
 declare var __threeJS;
+declare var __phaser;
 
 @Component({
 	selector: 'game-component',
@@ -56,7 +57,8 @@ declare var __threeJS;
 export class gameComponent {
 
   //--------------
-
+  public needed = [false, false, false, false]
+  public temp = {phaser: null, three: null};
   //--------------
 
   //--------------
@@ -106,24 +108,88 @@ export class gameComponent {
   }
   //--------------
 
+  //--------------
+  checkComplete(){
+    var t = this;
+    var count = 0;
+    for(var i = 0; i < this.needed.length; ++i){
+        if(this.needed[i]){
+          count++;
+        }
+    }
+    if(count == this.needed.length){
+        this.startGame();
+    }
+  }
+  //--------------
 
   //---------------
 	ngOnInit(){
+    var t = this;
 
     // load Threejs
+    var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = '/javascripts/objects/threeJS.js';
+        document.body.appendChild(js);
+        js.onload = function(){
+            t.needed[0] = true;
+            t.checkComplete();
+        }
 
-      var js = document.createElement("script");
-          js.type = "text/javascript";
-          js.src = '/javascripts/objects/threeJS.js';
-          document.body.appendChild(js);
-          js.onload = function(){
-              console.log(__threeJS)
-          }
-
-
+    var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = '/javascripts/objects/phaser.js';
+        document.body.appendChild(js);
+        js.onload = function(){
+            t.needed[1] = true;
+            t.checkComplete();
+        }
 	}
   //---------------
 
+
+  //---------------
+  threeData1(three){
+      this.temp.three = three;
+      this.needed[2] = true;
+      this.checkComplete();
+    //this.threeJS.canvas.init(three)
+    //this.changeLayout("Split")
+  }
+  //---------------
+
+  //---------------
+  phaserData1(phaser){
+    this.temp.phaser = phaser;
+    this.needed[3] = true;
+    this.checkComplete();
+    //this.phaser.canvas.init(phaser)
+  }
+  //---------------
+
+  //---------------
+  startGame(){
+    var t = this;
+
+    __phaser.assets.canvas = this.temp.phaser.container;
+    __phaser.assets.root = this;
+    __phaser.canvas.init();
+
+
+
+    __threeJS.assets.canvas = this.temp.three.container[0];
+    __threeJS.assets.root = this;
+    __threeJS.canvas.init();
+
+
+
+    setTimeout(function(){
+      t.changeLayout("Split");
+    }, 100)
+
+  }
+  //---------------
 
   //--------------
   changeLayout(type) {
@@ -131,15 +197,16 @@ export class gameComponent {
     this.layout.type = type;
 
     setTimeout(function(){
+
       if(type == 'FullThreeJS'){
-        t.threeJS.canvas.resizeCanvas({
+        __threeJS.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center'
         });
       }
 
       if(type == 'FullPhaser'){
-        t.phaser.canvas.resizeCanvas({
+        __phaser.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center',
           type: 'full'
@@ -147,25 +214,28 @@ export class gameComponent {
       }
 
       if(type == 'Split'){
-        t.threeJS.canvas.resizeCanvas({
+
+        __threeJS.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center'
         });
 
-        t.phaser.canvas.resizeCanvas({
+
+        __phaser.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center',
           type: 'full'
         });
+
       }
 
       if(type == 'ThreeFit'){
-        t.threeJS.canvas.resizeCanvas({
+        __threeJS.canvas.resizeCanvas({
           heightRatio: .50,
           align: 'center'
         });
 
-        t.phaser.canvas.resizeCanvas({
+        __phaser.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center',
           type: 'full'
@@ -173,12 +243,12 @@ export class gameComponent {
       }
 
       if(type == 'PhaserFit'){
-        t.threeJS.canvas.resizeCanvas({
+        __threeJS.canvas.resizeCanvas({
           heightRatio: 1,
           align: 'center'
         });
 
-        t.phaser.canvas.resizeCanvas({
+        __phaser.canvas.resizeCanvas({
           heightRatio: .50,
           align: 'center',
           type: 'fit'
@@ -191,139 +261,11 @@ export class gameComponent {
   //--------------
 
 
-  //---------------
-  threeData1(three){
-    this.threeJS.canvas.init(three)
-    this.changeLayout("Split")
-  }
-  //---------------
-
-  //---------------
-  phaserData1(phaser){
-    this.phaser.canvas.init(phaser)
-  }
-  //---------------
-
-
-  //--------------
-  phaser = {
-
-      //------------------- declare assets
-      assets: {
-        canvas: null,
-        gameObj: null,
-        camera: null,
-        renderer: null,
-        planes: []
-      },
-      //-------------------
-
-
-      //-------------------
-      canvas:{
-        parent: this,
-
-        //-------------------
-        init(d){
-          var t = this,
-              root = this.parent,
-              self = this.parent.phaser,
-              assets = this.parent.phaser.assets;
-
-              assets.canvas = d.container;
-              assets.gameObj = new Phaser.Game(1080, 800, Phaser.WEBGL, d.container, { preload: preload, create: create, update: update });
-
-
-              var stars;
-              var waveformX;
-              var waveformY;
-
-              var xl;
-              var yl;
-
-              var cx = 0;
-              var cy = 0;
-
-
-              function preload() {
-                assets.gameObj.load.image('pic', 'media/images/mobilefirst.png');
-              }
-
-              function create() {
-                assets.gameObj.stage.backgroundColor = '#0055ff';
-                var pic = assets.gameObj.add.sprite(assets.gameObj.world.centerX, assets.gameObj.world.centerY, 'pic');
-                    pic.anchor.setTo(0.5, 0.5);
-
-              }
-
-              function update() {
-
-              }
-
-        },
-
-        resizeCanvas(options){
-
-          var assets = this.parent.phaser.assets;
-
-
-          var assets = this.parent.phaser.assets;
-
-          var settings = options || {
-            heightRatio: 1,
-            widthRatio: 1,
-            align: 'center',
-            type: 'full'
-          }
-
-          // set resolution of canvas
-          var	aspectX = $( $(assets.canvas).parent()[0] ).width(),   //* (settings.widthRatio),
-              aspectY = $( $(assets.canvas).parent()[0] ).height() * (settings.heightRatio);
-
-          // resolution
-          if(settings.type == "fit"){
-            $(assets.canvas).find('canvas').css('width', aspectX)
-            $(assets.canvas).find('canvas').css('height', aspectY)
-            assets.gameObj.width = aspectX;
-            assets.gameObj.height = aspectY;
-          }
-
-          if(settings.type == "full"){
-            $(assets.canvas).find('canvas').css('width', $( $(assets.canvas).parent().parent()[0] ).width() )
-            $(assets.canvas).find('canvas').css('height', $( $(assets.canvas).parent().parent()[0] ).height())
-            assets.gameObj.width = $( $(assets.canvas).parent().parent()[0] ).width();
-            assets.gameObj.height = $( $(assets.canvas).parent().parent()[0] ).height();
-          }
 
 
 
-          // alignment
-          if(settings.align == 'center'){
-              var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height()))/2)+ "px";
-              $(assets.canvas).parent().css('margin-top', m  )
-              $(assets.canvas).parent().css('border', '2px solid green' )
-          }
 
-          if(settings.align == 'top'){
-                $(assets.canvas).parent().css('margin-top', '0px' )
-          }
-
-          if(settings.align == 'bottom'){
-              var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height())+ "px";
-                $(assets.canvas).parent().css('margin-top', m )
-          }
-
-        }
-
-      }
-      //-------------------
-
-
-  }
-  //--------------
-
-
-
+  /*
   //--------------
   threeJS = {
 
@@ -475,5 +417,7 @@ export class gameComponent {
 
   }
   //--------------
+  */
+
 
 }

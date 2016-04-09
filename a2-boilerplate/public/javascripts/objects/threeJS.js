@@ -3,6 +3,7 @@ __threeJS = {
 
   //------------------- declare assets
   assets: {
+    root: null,
     scene: null,
     camera: null,
     canvas: null,
@@ -16,32 +17,26 @@ __threeJS = {
       parent: this,
 
       //-------------------
-      init(d){
+      init(){
 
-        console.log("INIT!")
+        var assets = __threeJS.assets;
 
-        var t = this,
-            root = this.parent,
-            self = this.parent.threeJS,
-            assets = this.parent.threeJS.assets;
+        // INITIALIZE SCENE
+        assets.scene = new THREE.Scene();
+        assets.camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 20000 );
+        assets.renderer = new THREE.WebGLRenderer({ canvas:assets.canvas});
 
-            // INITIALIZE SCENE
-            assets.scene = new THREE.Scene();
-            assets.canvas = d.container[0];
-            assets.camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 20000 );
-            assets.renderer = new THREE.WebGLRenderer({ canvas:assets.canvas});
 
-            // WATCH FOR RESIZING
-            $(window).bind('resize', function(e){
-              // do something on resize
-            });
+        // WATCH FOR RESIZING
+        $(window).bind('resize', function(e){
+          // do something on resize
+        });
 
-            // INITIALIZE THREEJS LAYOUT
-            this.changeResolution(1)
-            //root.changeLayout('standard')
+        // INITIALIZE THREEJS LAYOUT
+        this.changeResolution(1)
 
-            // BEGIN RENDER LOOP
-            this.renderLoop();
+        // BEGIN RENDER LOOP
+        this.renderLoop();
 
       },
       //-------------------
@@ -49,9 +44,7 @@ __threeJS = {
       //-------------------
       resizeCanvas(options){
 
-        var root = this.parent;
-        var self = this.parent.threeJS;
-        var assets = this.parent.threeJS.assets;
+        var assets = __threeJS.assets;
 
         var settings = options || {
           heightRatio: 1,
@@ -62,11 +55,13 @@ __threeJS = {
         // set resolution of canvas
         var	aspectX = $( $(assets.canvas).parent().parent()[0] ).width(),   //* (settings.widthRatio),
             aspectY = $( $(assets.canvas).parent().parent()[0] ).height()  * (settings.heightRatio);
+              console.log(aspectX, aspectY)
 
-        if(self.assets.camera != null){
-          self.assets.camera.aspect = aspectX / aspectY;
-          self.assets.camera.updateProjectionMatrix();
-          self.assets.renderer.setSize( aspectX, aspectY );
+        if(assets.camera != null){
+            assets.camera.aspect = aspectX / aspectY;
+            assets.camera.updateProjectionMatrix();
+
+            assets.renderer.setSize( aspectX, aspectY );
 
           if(settings.align == 'center'){
               var m = Math.abs((aspectY - parseInt($(assets.canvas).parent().parent().height()))/2)+ "px";
@@ -81,25 +76,27 @@ __threeJS = {
               var m = Math.abs((parseInt($(assets.canvas).parent().parent().height()))) - parseInt($(assets.canvas).height())+ "px";
               $(assets.canvas).css('margin-top', m )
           }
-
         }
+
 
       },
       //-------------------
 
       //-------------------
       changeResolution(factorOf){
+
+        /*
         var root = this.parent;
         var self = this.parent.threeJS;
             self.assets.renderer.setPixelRatio(factorOf);
+        */
       },
       //-------------------
 
       //-------------------
       renderLoop(){
-        var root = this.parent,
-            self = this.parent.threeJS,
-            assets = this.parent.threeJS.assets;
+
+        var assets = __threeJS.assets;
 
         var texture = THREE.ImageUtils.loadTexture( "/media/images/10.gif" );
 
@@ -127,6 +124,8 @@ __threeJS = {
         };
 
         render();
+
+
       },
       //-------------------
 
