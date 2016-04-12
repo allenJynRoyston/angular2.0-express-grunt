@@ -350,8 +350,6 @@ __phaser = {
       },
 
       resizeCanvas(options){
-
-          console.log("here")
         var t = this
             assets = __phaser.assets;
 
@@ -397,9 +395,15 @@ __phaser = {
         }
 
 
+      },
+
+      destroy(){
+          var t = this
+              assets = __phaser.assets;
+
+
+        assets.gameObj.destroy();
       }
-
-
 
     }
     //-------------------

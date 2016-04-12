@@ -12,6 +12,13 @@
 </div>
 <div class="ui grid container">
   <div class="sixteen wide column">
+    <button (click)="destroyPhaser()" class="ui button orange">Destroy     </button>
+    <button (click)="loadPhaser(&quot;/javascripts/objects/phaserGame1.js&quot;)" class="ui button green">Load Game 1      </button>
+    <button (click)="loadPhaser(&quot;/javascripts/objects/phaserGame2.js&quot;)" class="ui button green">Load Game 2</button>
+  </div>
+</div>
+<div class="ui grid container">
+  <div class="sixteen wide column">
     <button fullscreen-btn="fullscreen-btn" [options]="{selector: &quot;game-container&quot;}" class="ui button">Fullscreen Mode</button>
     <button [ngClass]="{FullThreeJS: 'red'}[layout.type]" (click)="changeLayout(&quot;FullThreeJS&quot;)" class="ui button">ThreeJS</button>
     <button [ngClass]="{FullPhaser: 'red'}[layout.type]" (click)="changeLayout(&quot;FullPhaser&quot;)" class="ui button">Phaser</button>

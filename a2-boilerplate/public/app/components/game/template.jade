@@ -14,6 +14,15 @@ br
 
 .ui.grid.container
   .sixteen.wide.column
+    button.ui.button.orange( (click)='destroyPhaser()')
+      | Destroy     
+    button.ui.button.green( (click)='loadPhaser("/javascripts/objects/phaserGame1.js")')
+      | Load Game 1      
+    button.ui.button.green( (click)='loadPhaser("/javascripts/objects/phaserGame2.js")')
+      | Load Game 2
+
+.ui.grid.container
+  .sixteen.wide.column
     button.ui.button(fullscreen-btn [options]='{selector: "game-container"}')
       | Fullscreen Mode
     button.ui.button([ngClass]="{FullThreeJS: 'red'}[layout.type]", (click)='changeLayout("FullThreeJS")')

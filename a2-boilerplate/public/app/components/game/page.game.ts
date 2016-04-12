@@ -57,9 +57,12 @@ declare var __phaser;
 export class gameComponent {
 
   //--------------
-  public needed = [false, false, false, false]
+  public threeReady = [false, false];
+  public phaserReady = [false, false];
+  public isReady = [false, false];
   public temp = {phaser: null, three: null};
   //--------------
+
 
   //--------------
   public layout = {
@@ -109,19 +112,53 @@ export class gameComponent {
   //--------------
 
   //--------------
-  checkComplete(){
+  checkThreeComplete(){
     var t = this;
     var count = 0;
-    for(var i = 0; i < this.needed.length; ++i){
-        if(this.needed[i]){
+    for(var i = 0; i < this.threeReady.length; ++i){
+        if(this.threeReady[i]){
           count++;
         }
     }
-    if(count == this.needed.length){
-        this.startGame();
+    if(count == this.threeReady.length){
+        t.isReady[0] = true;
+        t.checkAllReady()
     }
   }
   //--------------
+
+
+  //--------------
+  checkPhaserComplete(){
+    var t = this;
+    var count = 0;
+    for(var i = 0; i < this.phaserReady.length; ++i){
+        if(this.phaserReady[i]){
+          count++;
+        }
+    }
+    if(count == this.phaserReady.length){
+        t.isReady[1] = true;
+        t.checkAllReady()
+    }
+  }
+  //--------------
+
+  //--------------
+  checkAllReady(){
+    var t = this;
+    var count = 0;
+    for(var i = 0; i < this.isReady.length; ++i){
+        if(this.isReady[i]){
+          count++;
+        }
+    }
+    if(count == this.isReady.length){
+        t.startGame()
+    }
+  }
+  //--------------
+
 
   //---------------
 	ngOnInit(){
@@ -133,38 +170,47 @@ export class gameComponent {
         js.src = '/javascripts/objects/threeJS.js';
         document.body.appendChild(js);
         js.onload = function(){
-            t.needed[0] = true;
-            t.checkComplete();
+            t.threeReady[0] = true;
+            t.checkThreeComplete();
         }
 
-    var js = document.createElement("script");
-        js.type = "text/javascript";
-        js.src = '/javascripts/objects/phaser.js';
-        document.body.appendChild(js);
-        js.onload = function(){
-            t.needed[1] = true;
-            t.checkComplete();
-        }
+
 	}
   //---------------
 
+  //---------------
+  loadPhaser(file){
+    var t = this;
+    var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = file;
+        document.body.appendChild(js);
+        js.onload = function(){
+            t.phaserReady[0] = true;
+            t.checkPhaserComplete();
+        }
+  }
+  //---------------
+
+  //---------------
+  destroyPhaser(){
+    __phaser.canvas.destroy()
+  }
+  //---------------
 
   //---------------
   threeData1(three){
       this.temp.three = three;
-      this.needed[2] = true;
-      this.checkComplete();
-    //this.threeJS.canvas.init(three)
-    //this.changeLayout("Split")
+      this.threeReady[1] = true;
+      this.checkThreeComplete();
   }
   //---------------
 
   //---------------
   phaserData1(phaser){
     this.temp.phaser = phaser;
-    this.needed[3] = true;
-    this.checkComplete();
-    //this.phaser.canvas.init(phaser)
+    this.phaserReady[1] = true;
+    this.checkPhaserComplete();
   }
   //---------------
 

@@ -36,7 +36,9 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
             gameComponent = (function () {
                 function gameComponent() {
                     //--------------
-                    this.needed = [false, false, false, false];
+                    this.threeReady = [false, false];
+                    this.phaserReady = [false, false];
+                    this.isReady = [false, false];
                     this.temp = { phaser: null, three: null };
                     //--------------
                     //--------------
@@ -83,16 +85,46 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                 }
                 //--------------
                 //--------------
-                gameComponent.prototype.checkComplete = function () {
+                gameComponent.prototype.checkThreeComplete = function () {
                     var t = this;
                     var count = 0;
-                    for (var i = 0; i < this.needed.length; ++i) {
-                        if (this.needed[i]) {
+                    for (var i = 0; i < this.threeReady.length; ++i) {
+                        if (this.threeReady[i]) {
                             count++;
                         }
                     }
-                    if (count == this.needed.length) {
-                        this.startGame();
+                    if (count == this.threeReady.length) {
+                        t.isReady[0] = true;
+                        t.checkAllReady();
+                    }
+                };
+                //--------------
+                //--------------
+                gameComponent.prototype.checkPhaserComplete = function () {
+                    var t = this;
+                    var count = 0;
+                    for (var i = 0; i < this.phaserReady.length; ++i) {
+                        if (this.phaserReady[i]) {
+                            count++;
+                        }
+                    }
+                    if (count == this.phaserReady.length) {
+                        t.isReady[1] = true;
+                        t.checkAllReady();
+                    }
+                };
+                //--------------
+                //--------------
+                gameComponent.prototype.checkAllReady = function () {
+                    var t = this;
+                    var count = 0;
+                    for (var i = 0; i < this.isReady.length; ++i) {
+                        if (this.isReady[i]) {
+                            count++;
+                        }
+                    }
+                    if (count == this.isReady.length) {
+                        t.startGame();
                     }
                 };
                 //--------------
@@ -105,34 +137,41 @@ System.register(['angular2/core', 'angular2/common', '../../components/3d/3djs',
                     js.src = '/javascripts/objects/threeJS.js';
                     document.body.appendChild(js);
                     js.onload = function () {
-                        t.needed[0] = true;
-                        t.checkComplete();
+                        t.threeReady[0] = true;
+                        t.checkThreeComplete();
                     };
+                };
+                //---------------
+                //---------------
+                gameComponent.prototype.loadPhaser = function (file) {
+                    var t = this;
                     var js = document.createElement("script");
                     js.type = "text/javascript";
-                    js.src = '/javascripts/objects/phaser.js';
+                    js.src = file;
                     document.body.appendChild(js);
                     js.onload = function () {
-                        t.needed[1] = true;
-                        t.checkComplete();
+                        t.phaserReady[0] = true;
+                        t.checkPhaserComplete();
                     };
+                };
+                //---------------
+                //---------------
+                gameComponent.prototype.destroyPhaser = function () {
+                    __phaser.canvas.destroy();
                 };
                 //---------------
                 //---------------
                 gameComponent.prototype.threeData1 = function (three) {
                     this.temp.three = three;
-                    this.needed[2] = true;
-                    this.checkComplete();
-                    //this.threeJS.canvas.init(three)
-                    //this.changeLayout("Split")
+                    this.threeReady[1] = true;
+                    this.checkThreeComplete();
                 };
                 //---------------
                 //---------------
                 gameComponent.prototype.phaserData1 = function (phaser) {
                     this.temp.phaser = phaser;
-                    this.needed[3] = true;
-                    this.checkComplete();
-                    //this.phaser.canvas.init(phaser)
+                    this.phaserReady[1] = true;
+                    this.checkPhaserComplete();
                 };
                 //---------------
                 //---------------
